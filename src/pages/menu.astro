@@ -6,7 +6,7 @@ const menuSections = [
     title: "Appetizers",
     description: "Start your meal with our delicious starters",
     items: [
-      { name: "House Salad", description: "Fresh mixed greens with tomatoes, onions, and our house dressing" },
+      { name: "House Salad", description: "Fresh mixed greens with tomatoes, onions, and our house dressing", price: "$5" },
       { name: "Cheese Crisp", description: "A large flour tortilla topped with melted cheese, served crispy" },
       { name: "Nachos", description: "Crispy tortilla chips smothered in melted cheese" },
       { name: "Super Nachos", description: "Tortilla chips loaded with beans, your choice of meat, melted cheese, guacamole, sour cream, tomatoes, and olives" },
@@ -135,6 +135,7 @@ const menuSections = [
                 <div class="item-header">
                   <h3>{item.name}</h3>
                   <span class="item-dots"></span>
+                  {item.price && <span class="item-price">{item.price}</span>}
                 </div>
                 <p class="item-description">{item.description}</p>
               </div>
@@ -306,6 +307,13 @@ const menuSections = [
     color: var(--color-brown-dark);
     font-size: 1.1rem;
     margin: 0;
+    flex-shrink: 0;
+  }
+
+  .item-price {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.1rem;
     flex-shrink: 0;
   }
 
