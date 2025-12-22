@@ -1,0 +1,494 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const dailySpecials = [
+  {
+    day: "Monday",
+    name: "Margarita Monday",
+    description: "Enjoy discounted house margaritas all day long",
+    icon: "🍹"
+  },
+  {
+    day: "Tuesday",
+    name: "Taco Tuesday",
+    description: "Special pricing on all tacos - mix and match your favorites",
+    icon: "🌮"
+  },
+  {
+    day: "Wednesday",
+    name: "Family Wednesday",
+    description: "Kids eat free with purchase of adult entrée",
+    icon: "👨‍👩‍👧‍👦"
+  },
+  {
+    day: "Thursday",
+    name: "Burrito Thursday",
+    description: "All burritos at special prices - add smothered topping for less",
+    icon: "🌯"
+  },
+  {
+    day: "Friday",
+    name: "Fiesta Friday",
+    description: "Extended happy hour and live music (when available)",
+    icon: "🎉"
+  },
+  {
+    day: "Saturday",
+    name: "Weekend Specials",
+    description: "Chef's special plates and premium margaritas",
+    icon: "⭐"
+  }
+];
+
+const lunchSpecials = [
+  {
+    name: "Lunch Combo #1",
+    description: "One taco, one enchilada, rice and beans",
+    available: "Mon-Fri 11am-3pm"
+  },
+  {
+    name: "Lunch Combo #2",
+    description: "Small burrito with rice and beans",
+    available: "Mon-Fri 11am-3pm"
+  },
+  {
+    name: "Lunch Combo #3",
+    description: "Two tacos with rice and beans",
+    available: "Mon-Fri 11am-3pm"
+  },
+  {
+    name: "Soup & Quesadilla",
+    description: "Cup of soup with a cheese quesadilla",
+    available: "Mon-Fri 11am-3pm"
+  }
+];
+
+const happyHourItems = [
+  "Discounted house margaritas",
+  "Special pricing on domestic beers",
+  "Appetizer specials",
+  "Chips and salsa",
+  "Loaded nachos"
+];
+---
+
+<Layout
+  title="Specials"
+  description="Check out our daily specials, lunch combos, and happy hour deals at Su Casa Mexican Restaurant in Midvale, UT."
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Specials & Deals</h1>
+      <p>Great food at great prices, every day of the week</p>
+    </div>
+  </section>
+
+  <div class="specials-content">
+    <div class="container">
+      <!-- Daily Specials -->
+      <section class="specials-section">
+        <h2 class="section-title">Daily Specials</h2>
+        <p class="section-subtitle">Something special every day of the week</p>
+        <div class="daily-grid">
+          {dailySpecials.map((special) => (
+            <div class="daily-card">
+              <span class="daily-icon">{special.icon}</span>
+              <div class="daily-day">{special.day}</div>
+              <h3>{special.name}</h3>
+              <p>{special.description}</p>
+            </div>
+          ))}
+        </div>
+        <p class="specials-note">* Daily specials subject to change. Contact restaurant for current offerings.</p>
+      </section>
+
+      <!-- Lunch Specials -->
+      <section class="specials-section lunch-section">
+        <div class="lunch-header">
+          <span class="lunch-icon">☀️</span>
+          <div>
+            <h2>Lunch Specials</h2>
+            <p>Quick, delicious, and affordable - perfect for your lunch break</p>
+          </div>
+        </div>
+        <div class="lunch-grid">
+          {lunchSpecials.map((special) => (
+            <div class="lunch-item">
+              <h3>{special.name}</h3>
+              <p class="lunch-desc">{special.description}</p>
+              <span class="lunch-time">{special.available}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Happy Hour -->
+      <section class="specials-section happy-hour-section">
+        <div class="happy-hour-content">
+          <div class="happy-hour-text">
+            <span class="happy-icon">🎊</span>
+            <h2>Happy Hour</h2>
+            <p class="happy-times">Monday - Friday | 3:00 PM - 6:00 PM</p>
+            <p>Join us for the best happy hour deals in Midvale! Unwind after work with discounted drinks and appetizers.</p>
+            <ul class="happy-list">
+              {happyHourItems.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="happy-hour-visual">
+            <div class="visual-content">
+              <span class="visual-emoji">🍹🌮🎉</span>
+              <span class="visual-text">Join the Fiesta!</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Catering Promo -->
+      <section class="specials-section promo-section">
+        <div class="promo-card">
+          <div class="promo-content">
+            <h2>Planning an Event?</h2>
+            <p>Ask about our catering specials for large orders! We offer package deals for corporate events, parties, and celebrations.</p>
+            <a href="/catering" class="btn btn-primary">Get Catering Info</a>
+          </div>
+          <div class="promo-icon">🎂</div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="specials-cta">
+        <h2>Ready to Take Advantage?</h2>
+        <p>Visit us today or call to learn more about our current specials</p>
+        <div class="cta-buttons">
+          <a href="tel:+18012551042" class="btn btn-primary">📞 Call (801) 255-1042</a>
+          <a href="/contact" class="btn btn-secondary">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #3D2518 100%);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(196, 30, 58, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(244, 163, 0, 0.15) 0%, transparent 50%);
+  }
+
+  .page-header h1 {
+    color: var(--color-tertiary);
+    position: relative;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .page-header p {
+    color: var(--color-sand);
+    font-size: 1.2rem;
+    position: relative;
+    margin: 0;
+  }
+
+  .specials-content {
+    padding: var(--spacing-lg) 0 var(--spacing-xl);
+  }
+
+  .specials-section {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  /* Daily Specials */
+  .daily-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+
+  .daily-card {
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: all var(--transition-normal);
+    border-top: 4px solid var(--color-tertiary);
+  }
+
+  .daily-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .daily-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .daily-day {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  .daily-card h3 {
+    color: var(--color-brown-dark);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .daily-card p {
+    color: var(--color-text-light);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .specials-note {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: var(--spacing-md);
+  }
+
+  /* Lunch Specials */
+  .lunch-section {
+    background: var(--color-cream);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+  }
+
+  .lunch-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .lunch-icon {
+    font-size: 3rem;
+  }
+
+  .lunch-header h2 {
+    margin: 0;
+    color: var(--color-brown-dark);
+  }
+
+  .lunch-header p {
+    margin: 0;
+    color: var(--color-text-light);
+  }
+
+  .lunch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-sm);
+  }
+
+  .lunch-item {
+    background: white;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lunch-item h3 {
+    color: var(--color-brown-dark);
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .lunch-desc {
+    color: var(--color-text);
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .lunch-time {
+    display: inline-block;
+    background: var(--color-tertiary);
+    color: var(--color-brown-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Happy Hour */
+  .happy-hour-section {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    color: white;
+  }
+
+  .happy-hour-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+  }
+
+  .happy-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .happy-hour-text h2 {
+    color: white;
+    margin: 0 0 var(--spacing-xs);
+  }
+
+  .happy-times {
+    color: var(--color-tertiary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm) !important;
+  }
+
+  .happy-hour-text p {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .happy-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-sm) 0 0;
+  }
+
+  .happy-list li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .happy-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-tertiary);
+    font-weight: bold;
+  }
+
+  .happy-hour-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .visual-content {
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+
+  .visual-emoji {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .visual-text {
+    color: var(--color-tertiary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+  }
+
+  /* Promo Section */
+  .promo-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-cream) 0%, #FFF5E6 100%);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-tertiary);
+  }
+
+  .promo-content h2 {
+    color: var(--color-brown-dark);
+    margin: 0 0 var(--spacing-xs);
+  }
+
+  .promo-content p {
+    color: var(--color-text);
+    margin: 0 0 var(--spacing-sm);
+    max-width: 500px;
+  }
+
+  .promo-icon {
+    font-size: 5rem;
+    flex-shrink: 0;
+  }
+
+  /* CTA */
+  .specials-cta {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .specials-cta h2 {
+    color: var(--color-brown-dark);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .specials-cta p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .happy-hour-content {
+      grid-template-columns: 1fr;
+    }
+
+    .happy-hour-visual {
+      order: -1;
+    }
+
+    .promo-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .promo-icon {
+      order: -1;
+    }
+
+    .lunch-header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
