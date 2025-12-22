@@ -1,0 +1,370 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const menuSections = [
+  {
+    title: "Appetizers",
+    description: "Start your meal with our delicious starters",
+    items: [
+      { name: "House Salad", description: "Fresh mixed greens with tomatoes, onions, and our house dressing" },
+      { name: "Cheese Crisp", description: "A large flour tortilla topped with melted cheese, served crispy" },
+      { name: "Nachos", description: "Crispy tortilla chips smothered in melted cheese" },
+      { name: "Super Nachos", description: "Tortilla chips loaded with beans, your choice of meat, melted cheese, guacamole, sour cream, tomatoes, and olives" },
+      { name: "Guacamole Dip", description: "Fresh avocado dip served with warm tortilla chips" },
+      { name: "Quesadilla", description: "Large flour tortilla filled with melted cheese, served with garnish on the side" },
+      { name: "Quesadilla Appetizer", description: "Small corn tortillas stuffed with cheese and deep fried to golden perfection" }
+    ]
+  },
+  {
+    title: "Enchiladas",
+    description: "Hand-rolled and smothered in our authentic sauces",
+    items: [
+      { name: "Cheese Enchiladas", description: "Corn tortillas filled with cheese, topped with red or green sauce and melted cheese. Served with rice and beans" },
+      { name: "Ground Beef Enchiladas", description: "Corn tortillas filled with seasoned ground beef, covered in enchilada sauce and melted cheese" },
+      { name: "Chicken Enchiladas", description: "Tender shredded chicken wrapped in corn tortillas, topped with your choice of sauce" },
+      { name: "Chile Verde Enchiladas", description: "Savory pork chile verde wrapped in corn tortillas with green sauce" },
+      { name: "Enchilada Plate (2)", description: "Two enchiladas of your choice served with rice and refried or black beans" },
+      { name: "Enchilada Plate (3)", description: "Three enchiladas of your choice served with rice and refried or black beans" }
+    ]
+  },
+  {
+    title: "Burritos",
+    description: "Generously stuffed with your favorite fillings",
+    items: [
+      { name: "Bean & Cheese Burrito", description: "Large flour tortilla filled with refried beans and melted cheese" },
+      { name: "Beef & Bean Burrito", description: "Seasoned ground beef and refried beans wrapped in a large flour tortilla" },
+      { name: "Chicken Burrito", description: "Tender shredded chicken with rice and beans in a large flour tortilla" },
+      { name: "Chile Verde Burrito", description: "Slow-cooked pork in green chile sauce wrapped in a flour tortilla" },
+      { name: "Smothered Burrito", description: "Any burrito topped with enchilada sauce, melted cheese, sour cream and guacamole" },
+      { name: "Veggie Burrito", description: "Stuffed with rice, beans, lettuce, tomatoes, cheese, sour cream, and guacamole" }
+    ]
+  },
+  {
+    title: "Tacos",
+    description: "Crispy or soft shell, your choice",
+    items: [
+      { name: "Ground Beef Taco (Hard Shell)", description: "Crispy corn shell filled with seasoned ground beef, lettuce, cheese, and tomatoes" },
+      { name: "Ground Beef Taco (Soft Shell)", description: "Soft flour tortilla with seasoned ground beef, lettuce, cheese, and tomatoes" },
+      { name: "Chicken Taco", description: "Your choice of shell filled with tender shredded chicken and fresh toppings" },
+      { name: "Carne Asada Taco", description: "Grilled steak slices with onions and cilantro in a soft corn tortilla" },
+      { name: "Taco Plate", description: "Two tacos of your choice served with rice and refried or black beans" }
+    ]
+  },
+  {
+    title: "Specialty Plates",
+    description: "Our signature dishes made with love",
+    items: [
+      { name: "Chile Verde Dinner", description: "Generous serving of our homemade chile verde (pork in green chile sauce) served with hot flour tortillas, rice, and your choice of beans" },
+      { name: "Chimichanga", description: "Deep-fried burrito filled with your choice of beef, chicken, or chile verde, topped with sour cream and guacamole. Served with rice and beans" },
+      { name: "Flautas", description: "Rolled corn tortillas filled with chicken, beef, or chile verde, deep fried until crispy. Served with guacamole, sour cream, rice and beans" },
+      { name: "Fajitas - Chicken", description: "Sizzling platter of marinated chicken strips with bell peppers and onions. Served with tortillas, guacamole, sour cream, rice and beans" },
+      { name: "Fajitas - Steak", description: "Sizzling platter of tender steak strips with bell peppers and onions. Served with tortillas, guacamole, sour cream, rice and beans" },
+      { name: "Mexican Pizza", description: "Two crisp flour tortillas layered with beans and your choice of meat, topped with enchilada sauce, melted cheese, olives, tomatoes, and sour cream" },
+      { name: "Tostada Supreme", description: "Crisp flat tortilla piled high with beans, your choice of meat, lettuce, cheese, tomatoes, guacamole, and sour cream" },
+      { name: "Chile Relleno", description: "Roasted Anaheim chile stuffed with cheese, battered and fried golden. Served with rice and beans" },
+      { name: "Combination Plate", description: "Choose any two or three items: taco, enchilada, chile relleno, tamale, or tostada. Served with rice and beans" }
+    ]
+  },
+  {
+    title: "Sides",
+    description: "Perfect additions to any meal",
+    items: [
+      { name: "Spanish Rice", description: "Traditional Mexican rice cooked with tomatoes and spices" },
+      { name: "Refried Beans", description: "Creamy pinto beans with melted cheese" },
+      { name: "Black Beans", description: "Seasoned whole black beans" },
+      { name: "Flour Tortillas", description: "Warm, fresh flour tortillas (3)" },
+      { name: "Corn Tortillas", description: "Traditional corn tortillas (3)" },
+      { name: "Sour Cream", description: "Side of cool sour cream" },
+      { name: "Guacamole", description: "Fresh made guacamole" },
+      { name: "Jalapeños", description: "Pickled or fresh jalapeño peppers" }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Menu"
+  description="Explore our full menu of authentic Mexican dishes including enchiladas, burritos, tacos, fajitas, and more at Su Casa Mexican Restaurant in Midvale, UT."
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Our Menu</h1>
+      <p>Authentic Mexican cuisine made fresh daily</p>
+    </div>
+  </section>
+
+  <!-- Menu Navigation -->
+  <nav class="menu-nav" aria-label="Menu sections">
+    <div class="container">
+      <ul class="menu-nav-list">
+        {menuSections.map((section) => (
+          <li>
+            <a href={`#${section.title.toLowerCase().replace(/\s+/g, '-')}`}>
+              {section.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Menu Content -->
+  <div class="menu-content">
+    <div class="container">
+      <div class="menu-intro">
+        <p>
+          All of our dishes are prepared fresh using family recipes passed down through generations.
+          We use quality ingredients and authentic spices to bring you the true taste of Mexico.
+        </p>
+        <p class="menu-note">
+          <strong>Note:</strong> Many items can be made vegetarian upon request.
+          Please inform your server of any dietary restrictions or allergies.
+        </p>
+      </div>
+
+      {menuSections.map((section) => (
+        <section id={section.title.toLowerCase().replace(/\s+/g, '-')} class="menu-section">
+          <div class="section-header">
+            <h2>{section.title}</h2>
+            <p>{section.description}</p>
+          </div>
+          <div class="menu-items">
+            {section.items.map((item) => (
+              <div class="menu-item">
+                <div class="item-header">
+                  <h3>{item.name}</h3>
+                  <span class="item-dots"></span>
+                </div>
+                <p class="item-description">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <div class="menu-footer">
+        <p>Prices may vary. Ask your server for current pricing.</p>
+        <div class="menu-ctas">
+          <a href="/order" class="btn btn-primary">Order Online</a>
+          <a href="/catering" class="btn btn-secondary">Catering Menu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #3D2518 100%);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(196, 30, 58, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(244, 163, 0, 0.15) 0%, transparent 50%);
+  }
+
+  .page-header h1 {
+    color: var(--color-tertiary);
+    position: relative;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .page-header p {
+    color: var(--color-sand);
+    font-size: 1.2rem;
+    position: relative;
+    margin: 0;
+  }
+
+  /* Menu Navigation */
+  .menu-nav {
+    background: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 60px;
+    z-index: 50;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .menu-nav-list {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: var(--spacing-sm) 0;
+    list-style: none;
+    margin: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .menu-nav-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu-nav-list a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .menu-nav-list a:hover {
+    background: var(--color-cream);
+    color: var(--color-primary);
+  }
+
+  /* Menu Content */
+  .menu-content {
+    padding: var(--spacing-lg) 0 var(--spacing-xl);
+  }
+
+  .menu-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
+  }
+
+  .menu-intro p {
+    color: var(--color-text-light);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .menu-note {
+    background: var(--color-cream);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-sm);
+    font-size: 0.95rem !important;
+  }
+
+  /* Menu Sections */
+  .menu-section {
+    margin-bottom: var(--spacing-xl);
+    scroll-margin-top: 140px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-cream);
+  }
+
+  .section-header h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .section-header p {
+    color: var(--color-text-light);
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* Menu Items */
+  .menu-items {
+    display: grid;
+    gap: var(--spacing-md);
+  }
+
+  .menu-item {
+    padding: var(--spacing-sm);
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .menu-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateX(5px);
+  }
+
+  .item-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    margin-bottom: 0.5rem;
+  }
+
+  .item-header h3 {
+    color: var(--color-brown-dark);
+    font-size: 1.1rem;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .item-dots {
+    flex: 1;
+    border-bottom: 2px dotted var(--color-sand);
+    margin-bottom: 0.3rem;
+  }
+
+  .item-description {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Menu Footer */
+  .menu-footer {
+    text-align: center;
+    padding-top: var(--spacing-lg);
+    border-top: 2px solid var(--color-cream);
+    margin-top: var(--spacing-lg);
+  }
+
+  .menu-footer p {
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .menu-ctas {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 768px) {
+    .menu-items {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .menu-nav {
+      top: 55px;
+    }
+
+    .menu-section {
+      scroll-margin-top: 120px;
+    }
+
+    .item-header {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .item-dots {
+      display: none;
+    }
+  }
+</style>

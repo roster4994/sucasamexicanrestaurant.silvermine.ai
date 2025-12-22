@@ -1,0 +1,340 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const drinkSections = [
+  {
+    title: "Soft Drinks",
+    icon: "🥤",
+    description: "Refreshing beverages for all ages",
+    items: [
+      { name: "Coca-Cola", description: "Classic Coca-Cola" },
+      { name: "Diet Coke", description: "Zero sugar, same great taste" },
+      { name: "Dr Pepper", description: "23 flavors of refreshment" },
+      { name: "Sprite", description: "Crisp lemon-lime soda" },
+      { name: "Root Beer", description: "Old-fashioned root beer" },
+      { name: "Iced Tea", description: "Freshly brewed, served over ice" },
+      { name: "Pink Lemonade", description: "Sweet and tangy pink lemonade" },
+      { name: "Fruit Punch", description: "Tropical fruit punch blend" }
+    ]
+  },
+  {
+    title: "Signature Drinks",
+    icon: "🧃",
+    description: "House specialties",
+    items: [
+      { name: "Horchata", description: "Traditional Mexican rice drink with cinnamon and vanilla. Creamy, sweet, and refreshing - a house favorite!", featured: true },
+      { name: "Mexican Hot Chocolate", description: "Rich hot chocolate with a hint of cinnamon and spice" },
+      { name: "Agua Fresca", description: "Fresh fruit water - ask about today's flavors" }
+    ]
+  },
+  {
+    title: "Beer Selection",
+    icon: "🍺",
+    description: "Ice cold cerveza (21+ only)",
+    items: [
+      { name: "Corona", description: "Light Mexican lager, served with lime" },
+      { name: "Corona Light", description: "Lighter version of the classic" },
+      { name: "Modelo Especial", description: "Crisp, clean Mexican pilsner" },
+      { name: "Modelo Negra", description: "Rich, smooth dark lager" },
+      { name: "Dos Equis Lager", description: "Balanced golden lager" },
+      { name: "Dos Equis Amber", description: "Vienna-style amber lager" },
+      { name: "Pacifico", description: "Light, refreshing pilsner" },
+      { name: "Tecate", description: "Bold Mexican lager" },
+      { name: "Domestic Beers", description: "Ask your server for current selection" }
+    ]
+  },
+  {
+    title: "Margaritas",
+    icon: "🍹",
+    description: "Handcrafted cocktails (21+ only)",
+    items: [
+      { name: "House Margarita", description: "Our classic margarita made with premium tequila, fresh lime juice, and triple sec. On the rocks or frozen", featured: true },
+      { name: "Strawberry Margarita", description: "Blended with real strawberries for a fruity twist" },
+      { name: "Mango Margarita", description: "Tropical mango blended into margarita perfection" },
+      { name: "Cadillac Margarita", description: "Top-shelf tequila with Grand Marnier float" },
+      { name: "Skinny Margarita", description: "Lighter version with fresh lime and agave" },
+      { name: "Pitcher of Margaritas", description: "Perfect for sharing with friends and family" }
+    ]
+  },
+  {
+    title: "Other Cocktails",
+    icon: "🍸",
+    description: "Classic Mexican cocktails (21+ only)",
+    items: [
+      { name: "Paloma", description: "Tequila with grapefruit soda and fresh lime" },
+      { name: "Mexican Mule", description: "Tequila, ginger beer, and lime" },
+      { name: "Tequila Sunrise", description: "Tequila, orange juice, and grenadine" },
+      { name: "Michelada", description: "Beer with lime, tomato juice, and spices" }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Drinks"
+  description="Explore our drink menu featuring signature horchata, refreshing margaritas, cold beers, and soft drinks at Su Casa Mexican Restaurant."
+>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Drinks Menu</h1>
+      <p>From refreshing horchata to handcrafted margaritas</p>
+    </div>
+  </section>
+
+  <!-- Drinks Content -->
+  <div class="drinks-content">
+    <div class="container">
+      <div class="drinks-intro">
+        <div class="featured-drink">
+          <span class="featured-icon">🥛</span>
+          <div class="featured-text">
+            <h2>Try Our Famous Horchata!</h2>
+            <p>A traditional Mexican rice drink with cinnamon and vanilla. Creamy, refreshing, and absolutely delicious!</p>
+          </div>
+        </div>
+      </div>
+
+      {drinkSections.map((section) => (
+        <section class="drinks-section">
+          <div class="section-header">
+            <span class="section-icon">{section.icon}</span>
+            <div>
+              <h2>{section.title}</h2>
+              <p>{section.description}</p>
+            </div>
+          </div>
+          <div class="drinks-grid">
+            {section.items.map((item) => (
+              <div class:list={["drink-item", { featured: item.featured }]}>
+                <h3>{item.name}</h3>
+                <p>{item.description}</p>
+                {item.featured && <span class="featured-badge">Staff Pick</span>}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <div class="drinks-notice">
+        <p><strong>Note:</strong> Alcoholic beverages are available for dine-in customers only. Must be 21+ with valid ID.</p>
+      </div>
+
+      <div class="drinks-cta">
+        <h2>Pair Your Drinks with Our Delicious Food</h2>
+        <p>Our drinks are the perfect complement to our authentic Mexican cuisine</p>
+        <div class="cta-buttons">
+          <a href="/menu" class="btn btn-primary">View Food Menu</a>
+          <a href="/order" class="btn btn-secondary">Order Online</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #3D2518 100%);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(196, 30, 58, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(244, 163, 0, 0.15) 0%, transparent 50%);
+  }
+
+  .page-header h1 {
+    color: var(--color-tertiary);
+    position: relative;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .page-header p {
+    color: var(--color-sand);
+    font-size: 1.2rem;
+    position: relative;
+    margin: 0;
+  }
+
+  .drinks-content {
+    padding: var(--spacing-lg) 0 var(--spacing-xl);
+  }
+
+  /* Featured Drink */
+  .drinks-intro {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .featured-drink {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-cream) 0%, #FFF5E6 100%);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-tertiary);
+  }
+
+  .featured-icon {
+    font-size: 4rem;
+    flex-shrink: 0;
+  }
+
+  .featured-text h2 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.5rem;
+  }
+
+  .featured-text p {
+    color: var(--color-text);
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  /* Drinks Sections */
+  .drinks-section {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-cream);
+  }
+
+  .section-icon {
+    font-size: 2.5rem;
+  }
+
+  .section-header h2 {
+    color: var(--color-brown-dark);
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .section-header p {
+    color: var(--color-text-light);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  /* Drinks Grid */
+  .drinks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-sm);
+  }
+
+  .drink-item {
+    background: white;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-fast);
+    position: relative;
+  }
+
+  .drink-item:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+
+  .drink-item.featured {
+    background: linear-gradient(135deg, #FFF5E6 0%, white 100%);
+    border: 2px solid var(--color-tertiary);
+  }
+
+  .drink-item h3 {
+    color: var(--color-brown-dark);
+    font-size: 1.05rem;
+    margin: 0 0 0.25rem;
+  }
+
+  .drink-item p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -8px;
+    right: var(--spacing-sm);
+    background: var(--color-tertiary);
+    color: var(--color-brown-dark);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Notice */
+  .drinks-notice {
+    background: #FFF5F5;
+    border: 1px solid #FFCDD2;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .drinks-notice p {
+    color: #C41E3A;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  /* CTA Section */
+  .drinks-cta {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-cream) 0%, #FFF5E6 100%);
+    border-radius: var(--radius-lg);
+  }
+
+  .drinks-cta h2 {
+    color: var(--color-brown-dark);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .drinks-cta p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 600px) {
+    .featured-drink {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .section-header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .drinks-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
