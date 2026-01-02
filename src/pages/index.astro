@@ -78,9 +78,9 @@ const testimonials = [
   </section>
 
   <!-- Testimonials Section -->
-  <section class="testimonials section bg-cream">
+  <section class="testimonials section">
     <div class="container">
-      <h2 class="section-title">What Our Guests Say</h2>
+      <h2 class="section-title">WHAT OUR GUESTS SAY</h2>
       <p class="section-subtitle">Join thousands of satisfied customers who call Su Casa their favorite</p>
       <div class="testimonials-grid grid grid-3">
         {testimonials.map((testimonial) => (
@@ -232,7 +232,7 @@ const testimonials = [
   }
 
   .about-content .section-title::after {
-    margin: var(--spacing-sm) 0 0;
+    display: none;
   }
 
   .about-text {
@@ -297,6 +297,22 @@ const testimonials = [
   }
 
   /* Testimonials */
+  .testimonials {
+    background: #d1615d;
+  }
+
+  .testimonials .section-title {
+    color: #000000;
+  }
+
+  .testimonials .section-title::after {
+    display: none;
+  }
+
+  .testimonials .section-subtitle {
+    color: #000000;
+  }
+
   .testimonial-card {
     padding: var(--spacing-md);
     position: relative;
@@ -334,7 +350,7 @@ const testimonials = [
 
   /* CTA Section */
   .cta {
-    background: #d1615d;
+    background: #f2ba65;
     text-align: center;
   }
 
