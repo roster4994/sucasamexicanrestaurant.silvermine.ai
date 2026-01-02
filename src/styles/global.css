@@ -1,31 +1,31 @@
 /* Su Casa Mexican Restaurant - Global Styles */
 
 :root {
-  /* Primary Colors - Warm Mexican Palette */
-  --color-primary: #C41E3A; /* Deep Red */
-  --color-primary-dark: #8B0000; /* Dark Red */
-  --color-secondary: #E85D04; /* Vibrant Orange */
-  --color-tertiary: #F4A300; /* Golden Yellow */
+  /* Primary Colors */
+  --color-primary: #d1615d; /* Coral */
+  --color-primary-dark: #415f84; /* Slate Blue */
+  --color-secondary: #66596e; /* Mauve */
+  --color-tertiary: #f2ba65; /* Golden Yellow */
 
   /* Accent Colors */
-  --color-green: #228B22; /* Fresh Green */
-  --color-green-light: #32CD32; /* Lime Green */
-  --color-teal: #20B2AA; /* Teal accent */
+  --color-green: #74bab1; /* Teal */
+  --color-green-light: #74bab1; /* Teal */
+  --color-teal: #74bab1; /* Teal */
 
   /* Neutrals */
-  --color-cream: #FFF8DC; /* Cornsilk cream */
-  --color-sand: #F5DEB3; /* Wheat/Sand */
-  --color-brown: #8B4513; /* Saddle Brown */
-  --color-brown-dark: #5D3A1A; /* Dark Brown */
+  --color-cream: #fefefe; /* Off White */
+  --color-sand: #f2ba65; /* Golden Yellow */
+  --color-brown: #66596e; /* Mauve */
+  --color-brown-dark: #415f84; /* Slate Blue */
 
   /* Text Colors */
-  --color-text: #2D2D2D;
-  --color-text-light: #5A5A5A;
-  --color-text-white: #FFFFFF;
+  --color-text: #000000;
+  --color-text-light: #66596e;
+  --color-text-white: #fefefe;
 
   /* Backgrounds */
-  --bg-light: #FFFAF0; /* Floral White */
-  --bg-dark: #2D1810; /* Dark Mexican Brown */
+  --bg-light: #fefefe; /* Off White */
+  --bg-dark: #000000; /* Black */
 
   /* Typography */
   --font-heading: 'Jost', sans-serif;
@@ -156,8 +156,8 @@ ul, ol {
 }
 
 .btn-secondary:hover {
-  background-color: #E09000;
-  border-color: #E09000;
+  background-color: #d1615d;
+  border-color: #d1615d;
   color: var(--color-brown-dark);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
