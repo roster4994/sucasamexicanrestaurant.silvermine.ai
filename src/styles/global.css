@@ -28,8 +28,8 @@
   --bg-dark: #2D1810; /* Dark Mexican Brown */
 
   /* Typography */
-  --font-heading: 'Georgia', 'Times New Roman', serif;
-  --font-body: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  --font-heading: 'Jost', sans-serif;
+  --font-body: 'Jost', sans-serif;
 
   /* Spacing */
   --spacing-xs: 0.5rem;
