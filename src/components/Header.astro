@@ -13,37 +13,39 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="header">
-  <nav class="nav container" aria-label="Main navigation">
+  <!-- Centered Logo Section -->
+  <div class="logo-section">
     <a href="/" class="logo" aria-label="Su Casa Mexican Restaurant - Home">
-      <span class="logo-icon">🌮</span>
-      <span class="logo-text">
-        <span class="logo-name">Su Casa</span>
-        <span class="logo-tagline">Mexican Restaurant</span>
-      </span>
+      <img src="/logo.svg" alt="Su Casa Mexican Restaurant" class="logo-image" />
     </a>
+  </div>
 
-    <button
-      class="mobile-menu-toggle"
-      aria-label="Toggle navigation menu"
-      aria-expanded="false"
-      aria-controls="nav-menu"
-    >
-      <span class="hamburger"></span>
-    </button>
+  <!-- Navigation Bar -->
+  <nav class="nav-bar" aria-label="Main navigation">
+    <div class="nav-container container">
+      <button
+        class="mobile-menu-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="hamburger"></span>
+      </button>
 
-    <ul id="nav-menu" class="nav-menu" role="menubar">
-      {navItems.map((item) => (
-        <li role="none">
-          <a
-            href={item.href}
-            class:list={['nav-link', { active: currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }]}
-            role="menuitem"
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+      <ul id="nav-menu" class="nav-menu" role="menubar">
+        {navItems.map((item) => (
+          <li role="none">
+            <a
+              href={item.href}
+              class:list={['nav-link', { active: currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }]}
+              role="menuitem"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   </nav>
 </header>
 
@@ -52,49 +54,42 @@ const currentPath = Astro.url.pathname;
     position: sticky;
     top: 0;
     z-index: 100;
-    background: linear-gradient(135deg, var(--bg-dark) 0%, #415f84 100%);
-    box-shadow: var(--shadow-md);
+    background: var(--color-cream, #f5f0e6);
   }
 
-  .nav {
+  /* Logo Section - Centered */
+  .logo-section {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem var(--spacing-sm);
-    max-width: 1400px;
+    padding: 1rem 0;
+    background: var(--color-cream, #f5f0e6);
   }
 
   .logo {
+    display: block;
+    text-decoration: none;
+  }
+
+  .logo-image {
+    width: 180px;
+    height: 180px;
+    display: block;
+  }
+
+  /* Navigation Bar - Solid color, lowered */
+  .nav-bar {
+    background: #d1615d;
+    margin-top: 0.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav-container {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-    color: var(--color-text-white);
-  }
-
-  .logo-icon {
-    font-size: 2.5rem;
-    line-height: 1;
-  }
-
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .logo-name {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-tertiary);
-    line-height: 1.1;
-  }
-
-  .logo-tagline {
-    font-size: 0.75rem;
-    color: var(--color-sand);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    justify-content: center;
+    padding: 0.75rem var(--spacing-sm);
+    max-width: 1400px;
   }
 
   .nav-menu {
@@ -109,7 +104,7 @@ const currentPath = Astro.url.pathname;
   .nav-link {
     display: block;
     padding: 0.625rem 1rem;
-    color: var(--color-cream);
+    color: var(--color-cream, #f5f0e6);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
@@ -119,13 +114,13 @@ const currentPath = Astro.url.pathname;
   }
 
   .nav-link:hover {
-    color: var(--color-tertiary);
-    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-tertiary, #f2ba65);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   .nav-link.active {
-    color: var(--color-tertiary);
-    background-color: rgba(244, 163, 0, 0.15);
+    color: var(--color-tertiary, #f2ba65);
+    background-color: rgba(0, 0, 0, 0.15);
   }
 
   .nav-link.active::after {
@@ -136,7 +131,7 @@ const currentPath = Astro.url.pathname;
     transform: translateX(-50%);
     width: 30px;
     height: 3px;
-    background: var(--color-tertiary);
+    background: var(--color-tertiary, #f2ba65);
     border-radius: 2px;
   }
 
@@ -154,7 +149,7 @@ const currentPath = Astro.url.pathname;
     display: block;
     width: 28px;
     height: 3px;
-    background: var(--color-cream);
+    background: var(--color-cream, #f5f0e6);
     border-radius: 2px;
     position: relative;
     transition: all var(--transition-fast);
@@ -167,7 +162,7 @@ const currentPath = Astro.url.pathname;
     left: 0;
     width: 100%;
     height: 3px;
-    background: var(--color-cream);
+    background: var(--color-cream, #f5f0e6);
     border-radius: 2px;
     transition: all var(--transition-fast);
   }
@@ -199,6 +194,12 @@ const currentPath = Astro.url.pathname;
   @media (max-width: 900px) {
     .mobile-menu-toggle {
       display: block;
+      position: absolute;
+      right: 1rem;
+    }
+
+    .nav-container {
+      position: relative;
     }
 
     .nav-menu {
@@ -211,7 +212,7 @@ const currentPath = Astro.url.pathname;
       align-items: stretch;
       gap: 0;
       padding: 5rem 1.5rem 2rem;
-      background: linear-gradient(180deg, var(--bg-dark) 0%, #415f84 100%);
+      background: #d1615d;
       box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
       transition: right var(--transition-normal);
       overflow-y: auto;
@@ -224,7 +225,7 @@ const currentPath = Astro.url.pathname;
     .nav-link {
       padding: 1rem;
       font-size: 1.1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .nav-link.active::after {
@@ -233,16 +234,9 @@ const currentPath = Astro.url.pathname;
   }
 
   @media (max-width: 480px) {
-    .logo-name {
-      font-size: 1.25rem;
-    }
-
-    .logo-tagline {
-      font-size: 0.65rem;
-    }
-
-    .logo-icon {
-      font-size: 2rem;
+    .logo-image {
+      width: 140px;
+      height: 140px;
     }
   }
 </style>

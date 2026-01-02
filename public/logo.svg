@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <path id="topArc" d="M 70 200 A 130 130 0 0 1 330 200" fill="none"/>
+    <path id="bottomArc" d="M 330 200 A 130 130 0 0 1 70 200" fill="none"/>
+  </defs>
+
+  <!-- Outer golden yellow ring -->
+  <circle cx="200" cy="200" r="180" fill="#f2ba65"/>
+
+  <!-- Teal ring -->
+  <circle cx="200" cy="200" r="145" fill="#74bab1"/>
+
+  <!-- Inner mauve circle -->
+  <circle cx="200" cy="200" r="115" fill="#66596e"/>
+
+  <!-- Curved text: MEXICAN at top -->
+  <text fill="#d1615d" font-family="Georgia, serif" font-size="32" font-weight="bold" letter-spacing="8">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">MEXICAN</textPath>
+  </text>
+
+  <!-- Curved text: RESTAURANT at bottom -->
+  <text fill="#d1615d" font-family="Georgia, serif" font-size="28" font-weight="bold" letter-spacing="4">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">RESTAURANT</textPath>
+  </text>
+
+  <!-- MI CASA ES SU CASA text -->
+  <text x="200" y="145" text-anchor="middle" fill="#f5f0e6" font-family="Georgia, serif" font-size="14" letter-spacing="1">MI CASA</text>
+  <text x="200" y="162" text-anchor="middle" fill="#f5f0e6" font-family="Georgia, serif" font-size="14" letter-spacing="1">ES SU CASA</text>
+
+  <!-- Blue banner background -->
+  <rect x="30" y="180" width="340" height="55" fill="#415f84"/>
+
+  <!-- SU CASA main text -->
+  <text x="200" y="222" text-anchor="middle" fill="#d1615d" font-family="Georgia, serif" font-size="48" font-weight="bold" letter-spacing="6">SU CASA</text>
+
+  <!-- EST. 1978 text -->
+  <text x="200" y="270" text-anchor="middle" fill="#f5f0e6" font-family="Georgia, serif" font-size="16" letter-spacing="2">EST. 1978</text>
+</svg>
