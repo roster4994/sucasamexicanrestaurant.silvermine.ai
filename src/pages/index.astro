@@ -111,9 +111,9 @@ const testimonials = [
   </section>
 
   <!-- Testimonials Section -->
-  <section class="testimonials section bg-cream">
+  <section class="testimonials section">
     <div class="container">
-      <h2 class="section-title">What Our Guests Say</h2>
+      <h2 class="section-title">WHAT OUR GUESTS SAY</h2>
       <p class="section-subtitle">Join thousands of satisfied customers who call Su Casa their favorite</p>
       <div class="testimonials-grid grid grid-3">
         {testimonials.map((testimonial) => (
@@ -257,7 +257,7 @@ const testimonials = [
   }
 
   .about-content .section-title::after {
-    margin: var(--spacing-sm) 0 0;
+    display: none;
   }
 
   .about-text {
@@ -370,6 +370,22 @@ const testimonials = [
   }
 
   /* Testimonials */
+  .testimonials {
+    background-color: #d1615d;
+  }
+
+  .testimonials .section-title {
+    color: #000000;
+  }
+
+  .testimonials .section-title::after {
+    display: none;
+  }
+
+  .testimonials .section-subtitle {
+    color: #000000;
+  }
+
   .testimonial-card {
     padding: var(--spacing-md);
     position: relative;
@@ -407,17 +423,17 @@ const testimonials = [
 
   /* CTA Section */
   .cta {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: #f2ba65;
     text-align: center;
   }
 
   .cta-content h2 {
-    color: white;
+    color: #000000;
     margin-bottom: var(--spacing-xs);
   }
 
   .cta-content p {
-    color: rgba(255, 255, 255, 0.9);
+    color: #000000;
     font-size: 1.1rem;
     margin-bottom: var(--spacing-md);
   }
@@ -430,15 +446,15 @@ const testimonials = [
   }
 
   .cta .btn-primary {
-    background: white;
-    color: var(--color-primary);
-    border-color: white;
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
   }
 
   .cta .btn-primary:hover {
-    background: var(--color-tertiary);
-    border-color: var(--color-tertiary);
-    color: var(--color-brown-dark);
+    background: #333333;
+    border-color: #333333;
+    color: #ffffff;
   }
 
   /* Responsive */
@@ -461,7 +477,7 @@ const testimonials = [
     }
 
     .about-content .section-title::after {
-      margin: var(--spacing-sm) auto 0;
+      display: none;
     }
 
     .about-content {
