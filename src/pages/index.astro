@@ -16,29 +16,6 @@ const testimonials = [
   }
 ];
 
-const features = [
-  {
-    icon: "🎉",
-    title: "Catering Services",
-    description: "Did you know we do catering? Whatever your occasion, however big or small, we have the perfect options to choose from. Cater your birthday party, holiday party, corporate events, wedding festivities and more!",
-    link: "/catering",
-    linkText: "Learn More"
-  },
-  {
-    icon: "🎊",
-    title: "Spice Up Your Celebrations",
-    description: "Host a memorable party with our flavorful menu options. From intimate gatherings to grand celebrations, we'll make your event unforgettable.",
-    link: "/contact",
-    linkText: "Contact Us"
-  },
-  {
-    icon: "🚗",
-    title: "Order Online",
-    description: "Can't dine in? No problem! Order your favorite dishes for pickup or delivery through our partner services.",
-    link: "/order",
-    linkText: "Order Now"
-  }
-];
 ---
 
 <Layout title="Home">
@@ -97,24 +74,6 @@ const features = [
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section class="features section">
-    <div class="container">
-      <h2 class="section-title">What We Offer</h2>
-      <p class="section-subtitle">More than just great food - we're here for all your celebrations</p>
-      <div class="features-grid grid grid-3">
-        {features.map((feature) => (
-          <div class="feature-card card">
-            <div class="feature-icon">{feature.icon}</div>
-            <h3>{feature.title}</h3>
-            <p>{feature.description}</p>
-            <a href={feature.link} class="feature-link">{feature.linkText} →</a>
-          </div>
-        ))}
       </div>
     </div>
   </section>
@@ -359,40 +318,6 @@ const features = [
   .stat-label {
     font-size: 0.85rem;
     color: var(--color-text-light);
-  }
-
-  /* Features Section */
-  .feature-card {
-    padding: var(--spacing-md);
-    text-align: center;
-  }
-
-  .feature-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .feature-card h3 {
-    margin-bottom: var(--spacing-xs);
-    color: var(--color-brown-dark);
-  }
-
-  .feature-card p {
-    color: var(--color-text-light);
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .feature-link {
-    display: inline-block;
-    margin-top: var(--spacing-sm);
-    color: var(--color-primary);
-    font-weight: 600;
-    transition: transform var(--transition-fast);
-  }
-
-  .feature-link:hover {
-    transform: translateX(5px);
   }
 
   /* Menu Preview */
