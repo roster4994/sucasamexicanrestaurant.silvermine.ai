@@ -38,11 +38,11 @@ const testimonials = [
   </section>
 
   <!-- About Section -->
-  <section class="about section bg-pattern">
+  <section class="about section">
     <div class="container">
       <div class="about-grid">
         <div class="about-content">
-          <h2 class="section-title">Our Story</h2>
+          <h2 class="section-title">OUR STORY</h2>
           <p class="about-text">
             Family owned since 1978, our cozy and festive atmosphere has been home to delicious, Mexican cuisine that warms the soul. Every meal here feels like home.
           </p>
@@ -77,39 +77,6 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Menu Preview Section -->
-  <section class="menu-preview section bg-dark">
-    <div class="container">
-      <h2 class="section-title">Taste Our Favorites</h2>
-      <p class="section-subtitle">From sizzling fajitas to handcrafted enchiladas</p>
-      <div class="menu-preview-grid">
-        <div class="menu-category">
-          <span class="category-icon">🌯</span>
-          <h3>Burritos</h3>
-          <p>Stuffed with your choice of fillings and smothered in our signature sauces</p>
-        </div>
-        <div class="menu-category">
-          <span class="category-icon">🌮</span>
-          <h3>Tacos</h3>
-          <p>Crispy or soft shell, filled with perfectly seasoned meats</p>
-        </div>
-        <div class="menu-category">
-          <span class="category-icon">🫔</span>
-          <h3>Enchiladas</h3>
-          <p>Hand-rolled and covered in authentic red or green sauce</p>
-        </div>
-        <div class="menu-category">
-          <span class="category-icon">🍳</span>
-          <h3>Fajitas</h3>
-          <p>Sizzling platters of steak or chicken with peppers and onions</p>
-        </div>
-      </div>
-      <div class="text-center mt-lg">
-        <a href="/menu" class="btn btn-secondary">View Full Menu</a>
-      </div>
-    </div>
-  </section>
-
   <!-- Testimonials Section -->
   <section class="testimonials section bg-cream">
     <div class="container">
@@ -133,7 +100,7 @@ const testimonials = [
   <section class="cta section">
     <div class="container">
       <div class="cta-content">
-        <h2>Ready to Experience Su Casa?</h2>
+        <h2>READY TO EXPERIENCE SU CASA?</h2>
         <p>Visit us today or order online for pickup and delivery</p>
         <div class="cta-buttons">
           <a href="/contact" class="btn btn-primary">Find Our Location</a>
@@ -245,6 +212,14 @@ const testimonials = [
   }
 
   /* About Section */
+  .about {
+    background: #74bab1;
+  }
+
+  .about .section-title {
+    color: #000000;
+  }
+
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -262,7 +237,7 @@ const testimonials = [
 
   .about-text {
     font-size: 1.1rem;
-    color: var(--color-text-light);
+    color: #000000;
     line-height: 1.8;
     margin-bottom: var(--spacing-sm);
   }
@@ -321,54 +296,6 @@ const testimonials = [
     color: var(--color-text-light);
   }
 
-  /* Menu Preview */
-  .menu-preview h2,
-  .menu-preview .section-subtitle {
-    color: var(--color-cream);
-  }
-
-  .menu-preview .section-title::after {
-    background: linear-gradient(to right, var(--color-tertiary), var(--color-secondary));
-  }
-
-  .menu-preview-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
-  }
-
-  .menu-category {
-    text-align: center;
-    padding: var(--spacing-md);
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all var(--transition-normal);
-  }
-
-  .menu-category:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-  }
-
-  .category-icon {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .menu-category h3 {
-    color: var(--color-tertiary);
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .menu-category p {
-    color: var(--color-sand);
-    font-size: 0.9rem;
-    margin: 0;
-  }
-
   /* Testimonials */
   .testimonial-card {
     padding: var(--spacing-md);
@@ -407,17 +334,17 @@ const testimonials = [
 
   /* CTA Section */
   .cta {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: #d1615d;
     text-align: center;
   }
 
   .cta-content h2 {
-    color: white;
+    color: #000000;
     margin-bottom: var(--spacing-xs);
   }
 
   .cta-content p {
-    color: rgba(255, 255, 255, 0.9);
+    color: #000000;
     font-size: 1.1rem;
     margin-bottom: var(--spacing-md);
   }
