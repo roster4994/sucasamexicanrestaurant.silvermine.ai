@@ -47,33 +47,19 @@ const testimonials = [
         <div class="about-content">
           <h2 class="section-title">OUR STORY</h2>
           <p class="about-text">
-            Family owned since 1978, our cozy and festive atmosphere has been home to delicious, Mexican cuisine that warms the soul. Every meal here feels like home.
+            Founded by longtime restaurateur Fred Osterloh, Su Casa Mexican Restaurant is rooted in a love for bold flavors, homemade recipes, and doing things the right way. Years before opening Su Casa, Fred spent time traveling, tasting, and carefully refining recipes—laying the groundwork for the menu long before the doors ever opened.
           </p>
           <p class="about-text">
-            For over four decades, we've been serving the Midvale community with authentic recipes passed down through generations. Our vibrant murals and warm hospitality reflect the heart and soul of Mexican culture.
+            After opening several beloved restaurants, including Frederico's, Fred's Burger Chalet, and his first Mexican restaurant, El Sol, Fred brought everything he learned together when he opened Su Casa in June of 1978.
+          </p>
+          <p class="about-text">
+            After Fred's retirement in 1999, the restaurant was passed down to his youngest son, Michael Osterloh, and today continues under the care of Denice Osterloh, carrying on the same comforting food and welcoming atmosphere Midvale has loved for generations.
           </p>
           <a href="/menu" class="btn btn-secondary">Explore Our Menu</a>
         </div>
         <div class="about-visual">
-          <div class="about-image-placeholder">
-            <div class="placeholder-content">
-              <span class="placeholder-icon">🌮🌯🌶️</span>
-              <span class="placeholder-text">Authentic Mexican Cuisine</span>
-            </div>
-          </div>
-          <div class="about-stats">
-            <div class="stat">
-              <span class="stat-number">45+</span>
-              <span class="stat-label">Years Serving</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">100+</span>
-              <span class="stat-label">Menu Items</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">1000s</span>
-              <span class="stat-label">Happy Customers</span>
-            </div>
+          <div class="about-image-container slide-in-image">
+            <img src="https://i.postimg.cc/C1HKnZNN/restaurant.jpg" alt="Su Casa Mexican Restaurant" class="about-image" />
           </div>
         </div>
       </div>
@@ -266,58 +252,28 @@ const testimonials = [
     margin-bottom: var(--spacing-sm);
   }
 
-  .about-image-placeholder {
+  .about-image-container {
     aspect-ratio: 4/3;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     border-radius: var(--radius-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
     box-shadow: var(--shadow-lg);
   }
 
-  .placeholder-content {
-    text-align: center;
-    color: white;
+  .about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
-  .placeholder-icon {
-    font-size: 4rem;
-    display: block;
-    margin-bottom: var(--spacing-sm);
+  .slide-in-image {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
 
-  .placeholder-text {
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-
-  .about-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-md);
-  }
-
-  .stat {
-    text-align: center;
-    padding: var(--spacing-sm);
-    background: white;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .stat-number {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-  }
-
-  .stat-label {
-    font-size: 0.85rem;
-    color: var(--color-text-light);
+  .slide-in-image.visible {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   /* Testimonials */
@@ -440,20 +396,25 @@ const testimonials = [
     .hero {
       min-height: 90vh;
     }
-
-    .about-stats {
-      grid-template-columns: 1fr;
-    }
-
-    .stat {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--spacing-sm);
-    }
-
-    .stat-number {
-      font-size: 1.5rem;
-    }
   }
 </style>
+
+<script>
+  // Scroll-triggered slide-in animation
+  document.addEventListener('DOMContentLoaded', () => {
+    const slideElements = document.querySelectorAll('.slide-in-image');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    slideElements.forEach(el => observer.observe(el));
+  });
+</script>
