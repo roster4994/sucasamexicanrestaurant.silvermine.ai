@@ -21,6 +21,9 @@ const testimonials = [
 <Layout title="Home">
   <!-- Hero Section -->
   <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="/Su Casa Edited Video_Vimeo720p3.mp4" type="video/mp4">
+    </video>
     <div class="hero-overlay"></div>
     <div class="hero-pattern"></div>
     <div class="hero-content container">
@@ -119,12 +122,31 @@ const testimonials = [
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f2ba65;
+    background: #000;
     overflow: hidden;
   }
 
+  .hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+  }
+
   .hero-overlay {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
   }
 
   .hero-pattern {
@@ -133,7 +155,7 @@ const testimonials = [
 
   .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     text-align: center;
     padding: var(--spacing-md);
     max-width: 800px;
@@ -154,17 +176,19 @@ const testimonials = [
   }
 
   .hero h1 {
-    color: #000000;
+    color: #ffffff;
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
     white-space: nowrap;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .hero-tagline {
-    color: #415f84;
+    color: #ffffff;
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     margin-bottom: var(--spacing-lg);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   }
 
   .hero-ctas {
@@ -175,13 +199,13 @@ const testimonials = [
   }
 
   .hero .btn-outline {
-    color: #000000;
-    border-color: #000000;
+    color: #ffffff;
+    border-color: #ffffff;
   }
 
   .hero .btn-outline:hover {
-    background-color: #000000;
-    color: #f2ba65;
+    background-color: #ffffff;
+    color: #000000;
   }
 
   .hero-scroll {
@@ -190,17 +214,18 @@ const testimonials = [
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: #000000;
+    color: #ffffff;
     font-size: 0.85rem;
     opacity: 0.7;
     animation: bounce 2s infinite;
+    z-index: 2;
   }
 
   .scroll-arrow {
     width: 20px;
     height: 20px;
-    border-right: 2px solid #000000;
-    border-bottom: 2px solid #000000;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
     transform: rotate(45deg);
     margin: 0.5rem auto 0;
   }
