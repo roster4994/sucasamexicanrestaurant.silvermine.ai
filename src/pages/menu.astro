@@ -1,84 +1,93 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const menuSections = [
-  {
-    title: "Appetizers",
-    description: "Start your meal with our delicious starters",
-    items: [
-      { name: "House Salad", description: "Fresh mixed greens with tomatoes, onions, and our house dressing", price: "$5" },
-      { name: "Cheese Crisp", description: "A large flour tortilla topped with melted cheese, served crispy" },
-      { name: "Nachos", description: "Crispy tortilla chips smothered in melted cheese" },
-      { name: "Super Nachos", description: "Tortilla chips loaded with beans, your choice of meat, melted cheese, guacamole, sour cream, tomatoes, and olives" },
-      { name: "Guacamole Dip", description: "Fresh avocado dip served with warm tortilla chips" },
-      { name: "Quesadilla", description: "Large flour tortilla filled with melted cheese, served with garnish on the side" },
-      { name: "Quesadilla Appetizer", description: "Small corn tortillas stuffed with cheese and deep fried to golden perfection" }
-    ]
-  },
-  {
-    title: "Enchiladas",
-    description: "Hand-rolled and smothered in our authentic sauces",
-    items: [
-      { name: "Cheese Enchiladas", description: "Corn tortillas filled with cheese, topped with red or green sauce and melted cheese. Served with rice and beans" },
-      { name: "Ground Beef Enchiladas", description: "Corn tortillas filled with seasoned ground beef, covered in enchilada sauce and melted cheese" },
-      { name: "Chicken Enchiladas", description: "Tender shredded chicken wrapped in corn tortillas, topped with your choice of sauce" },
-      { name: "Chile Verde Enchiladas", description: "Savory pork chile verde wrapped in corn tortillas with green sauce" },
-      { name: "Enchilada Plate (2)", description: "Two enchiladas of your choice served with rice and refried or black beans" },
-      { name: "Enchilada Plate (3)", description: "Three enchiladas of your choice served with rice and refried or black beans" }
-    ]
-  },
-  {
-    title: "Burritos",
-    description: "Generously stuffed with your favorite fillings",
-    items: [
-      { name: "Bean & Cheese Burrito", description: "Large flour tortilla filled with refried beans and melted cheese" },
-      { name: "Beef & Bean Burrito", description: "Seasoned ground beef and refried beans wrapped in a large flour tortilla" },
-      { name: "Chicken Burrito", description: "Tender shredded chicken with rice and beans in a large flour tortilla" },
-      { name: "Chile Verde Burrito", description: "Slow-cooked pork in green chile sauce wrapped in a flour tortilla" },
-      { name: "Smothered Burrito", description: "Any burrito topped with enchilada sauce, melted cheese, sour cream and guacamole" },
-      { name: "Veggie Burrito", description: "Stuffed with rice, beans, lettuce, tomatoes, cheese, sour cream, and guacamole" }
-    ]
-  },
-  {
-    title: "Tacos",
-    description: "Crispy or soft shell, your choice",
-    items: [
-      { name: "Ground Beef Taco (Hard Shell)", description: "Crispy corn shell filled with seasoned ground beef, lettuce, cheese, and tomatoes" },
-      { name: "Ground Beef Taco (Soft Shell)", description: "Soft flour tortilla with seasoned ground beef, lettuce, cheese, and tomatoes" },
-      { name: "Chicken Taco", description: "Your choice of shell filled with tender shredded chicken and fresh toppings" },
-      { name: "Carne Asada Taco", description: "Grilled steak slices with onions and cilantro in a soft corn tortilla" },
-      { name: "Taco Plate", description: "Two tacos of your choice served with rice and refried or black beans" }
-    ]
-  },
-  {
-    title: "Specialty Plates",
-    description: "Our signature dishes made with love",
-    items: [
-      { name: "Chile Verde Dinner", description: "Generous serving of our homemade chile verde (pork in green chile sauce) served with hot flour tortillas, rice, and your choice of beans" },
-      { name: "Chimichanga", description: "Deep-fried burrito filled with your choice of beef, chicken, or chile verde, topped with sour cream and guacamole. Served with rice and beans" },
-      { name: "Flautas", description: "Rolled corn tortillas filled with chicken, beef, or chile verde, deep fried until crispy. Served with guacamole, sour cream, rice and beans" },
-      { name: "Fajitas - Chicken", description: "Sizzling platter of marinated chicken strips with bell peppers and onions. Served with tortillas, guacamole, sour cream, rice and beans" },
-      { name: "Fajitas - Steak", description: "Sizzling platter of tender steak strips with bell peppers and onions. Served with tortillas, guacamole, sour cream, rice and beans" },
-      { name: "Mexican Pizza", description: "Two crisp flour tortillas layered with beans and your choice of meat, topped with enchilada sauce, melted cheese, olives, tomatoes, and sour cream" },
-      { name: "Tostada Supreme", description: "Crisp flat tortilla piled high with beans, your choice of meat, lettuce, cheese, tomatoes, guacamole, and sour cream" },
-      { name: "Chile Relleno", description: "Roasted Anaheim chile stuffed with cheese, battered and fried golden. Served with rice and beans" },
-      { name: "Combination Plate", description: "Choose any two or three items: taco, enchilada, chile relleno, tamale, or tostada. Served with rice and beans" }
-    ]
-  },
-  {
-    title: "Sides",
-    description: "Perfect additions to any meal",
-    items: [
-      { name: "Spanish Rice", description: "Traditional Mexican rice cooked with tomatoes and spices" },
-      { name: "Refried Beans", description: "Creamy pinto beans with melted cheese" },
-      { name: "Black Beans", description: "Seasoned whole black beans" },
-      { name: "Flour Tortillas", description: "Warm, fresh flour tortillas (3)" },
-      { name: "Corn Tortillas", description: "Traditional corn tortillas (3)" },
-      { name: "Sour Cream", description: "Side of cool sour cream" },
-      { name: "Guacamole", description: "Fresh made guacamole" },
-      { name: "Jalapeños", description: "Pickled or fresh jalapeño peppers" }
-    ]
-  }
+const appetizers = [
+  { name: "Cheese Crisp", description: "A deep-fried flour tortilla topped with melted cheese", price: "$5.39" },
+  { name: "Nachos", description: "A heaping plate of tortilla chips smothered with melted cheese", price: "$7.89" },
+  { name: "Queso Dip", description: "Melted cream cheese, diced Anaheim Chiles, and roasted corn served in a skillet with tortilla chips", price: "Small $4.99 | Large $8.79" },
+  { name: "Quesadilla App", description: "A flour tortilla covered with melted cheese, tomatoes, olives, lettuce, sour cream, and guacamole | add your choice of meat for $3.29", price: "$8.99" },
+  { name: "Guacamole and Chips", description: "Fresh guacamole topped with pico de gallo and crispy tortilla chips", price: "$9.99" },
+  { name: "House Salad", description: "Chilled lettuce, tomatoes and shredded cheese served with your choice of dressing", price: "$6.19" },
+];
+
+const houseFavorites = [
+  { name: "Santa Fe Burrito", description: "A large burrito filled with black beans, rice, and sweet pork. Smothered with our homemade red sauce and cheese", price: "$12.79" },
+  { name: "Special Burrito", description: "A large burrito filled with your choice of meat and smothered with enchilada sauce and cheese.", price: "$12.59" },
+  { name: "Chile Relleno", description: "An Anaheim chile stuffed with cheese, battered, and deep-fried to perfection.", price: "One: $10.89 (add Taco or Cheese Enchilada for $1.80) | Two: $13.79" },
+  { name: "Mexican Dinner", description: "House salad served with any two or three of the following: cheese enchilada, beef taco, bean tostada, or chile verde.", price: "Two Items: $14.99 | Three Items: $18.99" },
+  { name: "Baja Fish Tacos", description: "Marinated mahi filets grilled and served in a fried flour tortilla with cabbage, lettuce, and our own secret Baja sauce", price: "One Taco $8.79 | Two Tacos $14.99" },
+  { name: "Flauta", description: "Your choice of meat rolled into a flour tortilla, deep fried, and smothered with our homemade green Chile sauce and sour cream", price: "$11.99" },
+  { name: "Large Soft Shelled Taco", description: "A huge soft shell taco filled with your choice of meat. Enchilada style for just $1.99 extra", price: "$9.99" },
+  { name: "Quesadillas", description: "A large tortilla covered with melted cheese. Tomatoes, olives, onions, lettuce, sour cream, and guacamole are served on the side for you to garnish. Add meat for just $3.70 extra", price: "$10.59" },
+  { name: "Chile Verde Dinner", description: "A generous serving of our homemade chile verde served with hot flour tortillas", price: "$13.69" },
+  { name: "Chimichanga", description: "A deep-fried burrito filled with your choice of meat topped with sour cream and cheese.", price: "$12.99" },
+  { name: "Veggie Burrito Grande", description: "A huge burrito stuffed with beans, rice, lettuce, tomatoes, olives, cheese, sour cream, guacamole & hot sauce. (Served enchilada style for just $1.99 extra)", price: "$10.99" },
+];
+
+const specialtyPlates = [
+  { name: "Mexican Pizza", description: "A layer of beans and your choice of meat between two crisp flour tortillas, covered with enchilada sauce, cheese, olives, tomatoes, guacamole, and sour cream", price: "Medium $10.99 | Large $12.99" },
+  { name: "Nachos Supreme", description: "Tortilla chips covered with melted cheese, refried beans, olives, tomatoes, guacamole, sour cream, and your choice of meat", price: "Medium Plate $11.19 | Large Plate $14.49" },
+  { name: "Taco Salad", description: "A large flour tortilla, fried crisp and filled with lettuce, beans, cheese, tomatoes, olives, sour cream, and guacamole. Served with your choice of meat", price: "$13.99" },
+  { name: "Tostada Supreme", description: "A crisp tortilla covered with beans, lettuce, cheese, tomatoes, olives, sour cream, guacamole, and your choice of meat", price: "$14.79" },
+  { name: "Gordita", description: "Grilled Chicken served on Mexican fry bread and topped with chipotle cheese sauce, tortilla strips, shredded jack", price: "$10.49" },
+  { name: "Grilled Chicken Salad", description: "Grilled fajita chicken served atop a healthy portion of romaine lettuce, homemade salsa, Monterey Jack cheese, and tortilla strips", price: "$11.99" },
+  { name: "Fajitas", description: "Marinated strips of steak or chicken, bell peppers, and onions served sizzling on a cast iron skillet with cheese, black beans, sour cream, guacamole, and hot tortillas", price: "Veggie $13.89 | Chicken $17.29 | Steak $18.99" },
+  { name: "Enchilada Plate", description: "Add your choice of meat for $1.30 for each enchilada", price: "Two Enchilada Plate $8.49 | Three Enchilada Plate $11.09" },
+  { name: "Lunch Special", description: "A bean and cheese burrito served enchilada style with a bean tostada. Add meat for $3.29", price: "$7.89 | $9.49 (after 5pm)" },
+  { name: "Dinner Special", description: "A burrito with your choice of meat served with refried or black beans and rice. Served with a cheese enchilada.", price: "$12.39" },
+];
+
+const combinations = [
+  { name: "#1 Cheese enchilada, taco", price: "$11.19" },
+  { name: "#2 Two cheese enchiladas, taco, bean tostada", price: "$14.59" },
+  { name: "#3 Two cheese enchiladas", price: "$10.99" },
+  { name: "#4 Bean tostada, cheese enchilada", price: "$11.49" },
+  { name: "#5 Beef enchilada, cheese enchilada, taco", price: "$14.59" },
+  { name: "#6 Burrito verde", price: "$11.99" },
+  { name: "#7 Burrito verde, bean tostada & cheese enchilada", price: "$14.19" },
+  { name: "#8 Taco", price: "$7.89" },
+  { name: "#9 Cheese enchilada", price: "$7.29" },
+  { name: "#10 Bean tostada", price: "$7.89" },
+  { name: "#11 Burrito verde, cheese enchilada, ground beef taco", price: "$14.99" },
+  { name: "#12 Bean and cheese burrito enchilada style", price: "$7.99" },
+];
+
+const alaCarte = [
+  { name: "Tacos", price: "1 $4.99 | 2 $9.99 | 3 $14.99" },
+  { name: "Baja Fish Tacos", price: "1 $6.99 | 2 $13.98 | 3 $20.97" },
+  { name: "Bean and Cheese Burrito", description: "With Meat $7.99 | Enchilada style extra $1.99", price: "$4.80" },
+  { name: "Chile Rellenos", price: "1 $7.29 | 2 $10.79" },
+  { name: "Chimichanga", description: "With your choice of meat", price: "$11.29" },
+  { name: "Cheese Enchilada", description: "Add meat for $1.30 extra", price: "$4.29" },
+  { name: "Veggie Burrito Grande", description: "Served enchilada style for $1.99 extra", price: "$9.99" },
+  { name: "Flauta", price: "$9.69" },
+  { name: "Chile Verde", price: "$9.99" },
+  { name: "Large Soft Shelled Taco", description: "Enchilada style for just $1.99 extra", price: "$8.29" },
+  { name: "Special Burrito", description: "With choice of meat", price: "$9.99" },
+  { name: "Bean Tostada", description: "Add your choice of meat for $2.70", price: "$5.19" },
+];
+
+const desserts = [
+  { name: "Sopapillas", description: "Homemade crispy, deep-fried pastry dough served with honey butter", price: "1 $2.19 | 3 $4.89 | 6 $6.59" },
+  { name: "Sopapilla Bites", description: "Homemade crispy, deep-fried pastry bites dusted with cinnamon sugar", price: "4 $2.19 | 12 $4.89 | 24 $6.59" },
+  { name: "Flan", description: "A traditional Mexican favorite: rich, creamy caramel custard, topped with whipped cream, a drizzle of chocolate, and a touch of cinnamon.", price: "$6.99" },
+];
+
+const sides = [
+  { name: "Beans (refried or black)", price: "$2.49" },
+  { name: "Rice", price: "$2.49" },
+  { name: "French Fries", price: "$3.49" },
+  { name: "Tortillas (3)", price: "$3.49" },
+  { name: "Guacamole Topper", price: "$2.69" },
+  { name: "Sour Cream Topper", price: "$1.99" },
+  { name: "Chips and hot sauce to go", price: "$10.29" },
+  { name: "Chips to go", price: "$6.70" },
+  { name: "Pint of hot sauce", price: "$3.59" },
+];
+
+const drinks = [
+  { name: "Soft Drink", price: "$2.99" },
+  { name: "Horchata", price: "$2.99" },
 ];
 ---
 
@@ -98,13 +107,14 @@ const menuSections = [
   <nav class="menu-nav" aria-label="Menu sections">
     <div class="container">
       <ul class="menu-nav-list">
-        {menuSections.map((section) => (
-          <li>
-            <a href={`#${section.title.toLowerCase().replace(/\s+/g, '-')}`}>
-              {section.title}
-            </a>
-          </li>
-        ))}
+        <li><a href="#appetizers">Appetizers</a></li>
+        <li><a href="#house-favorites">House Favorites</a></li>
+        <li><a href="#specialty-plates">Specialty Plates</a></li>
+        <li><a href="#combinations">Combinations</a></li>
+        <li><a href="#a-la-carte">A La Carte</a></li>
+        <li><a href="#dessert">Dessert</a></li>
+        <li><a href="#sides">Sides</a></li>
+        <li><a href="#drinks">Drinks</a></li>
       </ul>
     </div>
   </nav>
@@ -114,35 +124,165 @@ const menuSections = [
     <div class="container">
       <div class="menu-intro">
         <p>
-          All of our dishes are prepared fresh using family recipes passed down through generations.
-          We use quality ingredients and authentic spices to bring you the true taste of Mexico.
+          Served with refried beans or black beans and rice (where applicable)
         </p>
         <p class="menu-note">
-          <strong>Note:</strong> Many items can be made vegetarian upon request.
-          Please inform your server of any dietary restrictions or allergies.
+          <strong>Meat Choices:</strong> shredded chicken, diced chicken, ground beef, shredded beef, sweet pork, chile verde
         </p>
       </div>
 
-      {menuSections.map((section) => (
-        <section id={section.title.toLowerCase().replace(/\s+/g, '-')} class="menu-section">
-          <div class="section-header">
-            <h2>{section.title}</h2>
-            <p>{section.description}</p>
-          </div>
-          <div class="menu-items">
-            {section.items.map((item) => (
-              <div class="menu-item">
-                <div class="item-header">
-                  <h3>{item.name}</h3>
-                  <span class="item-dots"></span>
-                  {item.price && <span class="item-price">{item.price}</span>}
-                </div>
-                <p class="item-description">{item.description}</p>
+      <!-- Appetizers -->
+      <section id="appetizers" class="menu-section">
+        <div class="section-header">
+          <h2>Appetizers</h2>
+        </div>
+        <div class="menu-items">
+          {appetizers.map((item) => (
+            <div class="menu-item">
+              <div class="item-header">
+                <h3>{item.name}</h3>
+                <span class="item-dots"></span>
+                <span class="item-price">{item.price}</span>
               </div>
-            ))}
-          </div>
-        </section>
-      ))}
+              <p class="item-description">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- House Favorites -->
+      <section id="house-favorites" class="menu-section">
+        <div class="section-header">
+          <h2>House Favorites</h2>
+          <p>Served with refried beans or black beans and rice</p>
+        </div>
+        <div class="menu-items">
+          {houseFavorites.map((item) => (
+            <div class="menu-item">
+              <div class="item-header">
+                <h3>{item.name}</h3>
+                <span class="item-dots"></span>
+                <span class="item-price">{item.price}</span>
+              </div>
+              <p class="item-description">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Specialty Plates -->
+      <section id="specialty-plates" class="menu-section">
+        <div class="section-header">
+          <h2>Specialty Plates</h2>
+          <p>Meat Choices: shredded chicken, diced chicken, ground beef, shredded beef, sweet pork, chile verde</p>
+        </div>
+        <div class="menu-items">
+          {specialtyPlates.map((item) => (
+            <div class="menu-item">
+              <div class="item-header">
+                <h3>{item.name}</h3>
+                <span class="item-dots"></span>
+                <span class="item-price">{item.price}</span>
+              </div>
+              <p class="item-description">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Combinations -->
+      <section id="combinations" class="menu-section">
+        <div class="section-header">
+          <h2>Combinations</h2>
+          <p>Served with refried beans or black beans and rice (excludes #2 and #7)</p>
+          <p class="combo-note">Add your choice of meat for additional cost (Enchilada $1.30 - Burrito $3.19 - Tostada $2.70)</p>
+        </div>
+        <div class="menu-items combo-items">
+          {combinations.map((item) => (
+            <div class="menu-item combo-item">
+              <div class="item-header">
+                <h3>{item.name}</h3>
+                <span class="item-dots"></span>
+                <span class="item-price">{item.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- A La Carte -->
+      <section id="a-la-carte" class="menu-section">
+        <div class="section-header">
+          <h2>A La Carte</h2>
+        </div>
+        <div class="menu-items">
+          {alaCarte.map((item) => (
+            <div class="menu-item">
+              <div class="item-header">
+                <h3>{item.name}</h3>
+                <span class="item-dots"></span>
+                <span class="item-price">{item.price}</span>
+              </div>
+              {item.description && <p class="item-description">{item.description}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Dessert -->
+      <section id="dessert" class="menu-section">
+        <div class="section-header">
+          <h2>Dessert</h2>
+        </div>
+        <div class="menu-items">
+          {desserts.map((item) => (
+            <div class="menu-item">
+              <div class="item-header">
+                <h3>{item.name}</h3>
+                <span class="item-dots"></span>
+                <span class="item-price">{item.price}</span>
+              </div>
+              <p class="item-description">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Sides -->
+      <section id="sides" class="menu-section">
+        <div class="section-header">
+          <h2>Sides</h2>
+        </div>
+        <div class="menu-items sides-grid">
+          {sides.map((item) => (
+            <div class="menu-item side-item">
+              <div class="item-header">
+                <h3>{item.name}</h3>
+                <span class="item-dots"></span>
+                <span class="item-price">{item.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Drinks -->
+      <section id="drinks" class="menu-section">
+        <div class="section-header">
+          <h2>Drinks</h2>
+        </div>
+        <div class="menu-items sides-grid">
+          {drinks.map((item) => (
+            <div class="menu-item side-item">
+              <div class="item-header">
+                <h3>{item.name}</h3>
+                <span class="item-dots"></span>
+                <span class="item-price">{item.price}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <div class="menu-footer">
         <p>Prices may vary. Ask your server for current pricing.</p>
@@ -263,18 +403,25 @@ const menuSections = [
     text-align: center;
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--color-cream);
+    border-bottom: 2px solid var(--color-primary);
   }
 
   .section-header h2 {
     color: var(--color-primary);
     margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
 
   .section-header p {
     color: var(--color-text-light);
     margin: 0;
     font-style: italic;
+  }
+
+  .combo-note {
+    font-size: 0.9rem !important;
+    margin-top: 0.5rem !important;
   }
 
   /* Menu Items */
@@ -304,16 +451,16 @@ const menuSections = [
   }
 
   .item-header h3 {
-    color: var(--color-brown-dark);
+    color: var(--color-primary);
     font-size: 1.1rem;
     margin: 0;
     flex-shrink: 0;
   }
 
   .item-price {
-    color: var(--color-primary);
+    color: var(--color-brown-dark);
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1rem;
     flex-shrink: 0;
   }
 
@@ -328,6 +475,32 @@ const menuSections = [
     font-size: 0.95rem;
     margin: 0;
     line-height: 1.6;
+  }
+
+  /* Combo Items */
+  .combo-items {
+    gap: var(--spacing-sm);
+  }
+
+  .combo-item {
+    padding: 0.75rem var(--spacing-sm);
+  }
+
+  .combo-item .item-header {
+    margin-bottom: 0;
+  }
+
+  /* Sides Grid */
+  .sides-grid {
+    gap: var(--spacing-sm);
+  }
+
+  .side-item {
+    padding: 0.75rem var(--spacing-sm);
+  }
+
+  .side-item .item-header {
+    margin-bottom: 0;
   }
 
   /* Menu Footer */
@@ -354,6 +527,17 @@ const menuSections = [
   @media (min-width: 768px) {
     .menu-items {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .combo-items,
+    .sides-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .sides-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
