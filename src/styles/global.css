@@ -73,6 +73,17 @@ body {
   min-height: 100vh;
 }
 
+/* Account for fixed header on non-home pages */
+main > section:first-child:not(.hero) {
+  padding-top: 120px;
+}
+
+/* Page headers need to extend behind the fixed header */
+.page-header {
+  margin-top: -120px;
+  padding-top: 160px !important;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
