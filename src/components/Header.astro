@@ -79,49 +79,80 @@ const currentPath = Astro.url.pathname;
 
 <style>
   .header {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
     z-index: 100;
+    transition: top 0.3s ease;
+  }
+
+  .header.scrolled {
+    top: 10px;
   }
 
   .nav-bar {
-    background: #d1615d;
-    box-shadow: var(--shadow-md);
-    padding: 1.5rem 0;
+    background: rgba(209, 97, 93, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 0;
+    margin: 0 auto;
+    max-width: calc(100% - 40px);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+  }
+
+  .header.scrolled .nav-bar {
+    padding: 0.3rem 0;
+    max-width: calc(100% - 60px);
+    background: rgba(209, 97, 93, 0.98);
   }
 
   .nav-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--spacing-md);
     max-width: 1400px;
     position: relative;
   }
 
-  /* Logo - Centered */
+  /* Logo - Centered and overlapping */
   .logo {
     display: block;
     text-decoration: none;
-    margin: 0 2rem;
+    margin: 0 3rem;
     position: relative;
     z-index: 10;
+    transition: transform 0.3s ease;
+  }
+
+  .logo:hover {
+    transform: scale(1.05);
   }
 
   .logo-image {
-    height: 140px;
+    height: 180px;
     width: auto;
     display: block;
-    margin-top: -20px;
-    margin-bottom: -20px;
+    margin-top: -60px;
+    margin-bottom: -60px;
     object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+  }
+
+  .header.scrolled .logo-image {
+    height: 120px;
+    margin-top: -40px;
+    margin-bottom: -40px;
   }
 
   /* Navigation menus */
   .nav-menu {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -137,26 +168,35 @@ const currentPath = Astro.url.pathname;
 
   .nav-link {
     display: block;
-    padding: 0.625rem 1.25rem;
-    color: #000000;
+    padding: 0.75rem 1.5rem;
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 400;
-    font-size: 1rem;
+    font-weight: 500;
+    font-size: 1.15rem;
     text-transform: uppercase;
-    border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
+    letter-spacing: 1px;
+    border-radius: 25px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     white-space: nowrap;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   }
 
   .nav-link:hover {
-    color: var(--color-tertiary, #f2ba65);
-    background-color: rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   .nav-link.active {
     color: var(--color-tertiary, #f2ba65);
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .header.scrolled .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 1.25rem;
   }
 
   /* Mobile menu toggle */
@@ -168,14 +208,14 @@ const currentPath = Astro.url.pathname;
     padding: 0.5rem;
     z-index: 101;
     position: absolute;
-    right: 1rem;
+    right: 1.5rem;
   }
 
   .hamburger {
     display: block;
     width: 28px;
     height: 3px;
-    background: var(--color-cream, #f5f0e6);
+    background: #ffffff;
     border-radius: 2px;
     position: relative;
     transition: all var(--transition-fast);
@@ -188,7 +228,7 @@ const currentPath = Astro.url.pathname;
     left: 0;
     width: 100%;
     height: 3px;
-    background: var(--color-cream, #f5f0e6);
+    background: #ffffff;
     border-radius: 2px;
     transition: all var(--transition-fast);
   }
@@ -227,7 +267,8 @@ const currentPath = Astro.url.pathname;
     align-items: stretch;
     gap: 0;
     padding: 5rem 1.5rem 2rem;
-    background: #d1615d;
+    background: rgba(209, 97, 93, 0.98);
+    backdrop-filter: blur(10px);
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
     transition: right var(--transition-normal);
     overflow-y: auto;
@@ -241,12 +282,30 @@ const currentPath = Astro.url.pathname;
 
   .mobile-menu .nav-link {
     padding: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+  }
+
+  .mobile-menu .nav-link:hover {
+    transform: translateX(10px);
   }
 
   /* Mobile Responsive */
   @media (max-width: 768px) {
+    .header {
+      top: 15px;
+    }
+
+    .header.scrolled {
+      top: 5px;
+    }
+
+    .nav-bar {
+      max-width: calc(100% - 30px);
+      border-radius: 30px;
+    }
+
     .mobile-menu-toggle {
       display: block;
     }
@@ -261,17 +320,39 @@ const currentPath = Astro.url.pathname;
     }
 
     .logo-image {
-      height: 100px;
+      height: 120px;
       width: auto;
-      margin-top: -10px;
-      margin-bottom: -10px;
+      margin-top: -40px;
+      margin-bottom: -40px;
+    }
+
+    .header.scrolled .logo-image {
+      height: 90px;
+      margin-top: -30px;
+      margin-bottom: -30px;
     }
   }
 </style>
 
 <script>
+  const header = document.querySelector('.header');
   const toggle = document.querySelector('.mobile-menu-toggle');
   const menu = document.querySelector('.mobile-menu');
+
+  // Scroll detection for shrinking header
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+
+    lastScroll = currentScroll;
+  });
 
   toggle?.addEventListener('click', () => {
     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
