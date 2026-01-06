@@ -45,17 +45,16 @@ const testimonials = [
     <div class="container">
       <div class="about-grid">
         <div class="about-content">
-          <h2 class="section-title">OUR STORY</h2>
-          <p class="about-text">
+          <h2 class="section-title fade-in-element">OUR STORY</h2>
+          <p class="about-text fade-in-element" style="--delay: 0.1s">
             Founded by longtime restaurateur Fred Osterloh, Su Casa Mexican Restaurant is rooted in a love for bold flavors, homemade recipes, and doing things the right way. Years before opening Su Casa, Fred spent time traveling, tasting, and carefully refining recipes—laying the groundwork for the menu long before the doors ever opened.
           </p>
-          <p class="about-text">
+          <p class="about-text fade-in-element" style="--delay: 0.2s">
             After opening several beloved restaurants, including Frederico's, Fred's Burger Chalet, and his first Mexican restaurant, El Sol, Fred brought everything he learned together when he opened Su Casa in June of 1978.
           </p>
-          <p class="about-text">
+          <p class="about-text fade-in-element" style="--delay: 0.3s">
             After Fred's retirement in 1999, the restaurant was passed down to his youngest son, Michael Osterloh, and today continues under the care of Denice Osterloh, carrying on the same comforting food and welcoming atmosphere Midvale has loved for generations.
           </p>
-          <a href="/menu" class="btn btn-secondary">Explore Our Menu</a>
         </div>
         <div class="about-visual">
           <div class="about-image-container slide-in-image">
@@ -257,23 +256,60 @@ const testimonials = [
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .about-image-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 
   .about-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .about-image-container:hover .about-image {
+    transform: scale(1.08);
   }
 
   .slide-in-image {
     opacity: 0;
     transform: translateX(100px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.4s ease;
   }
 
   .slide-in-image.visible {
     opacity: 1;
     transform: translateX(0);
+  }
+
+  .slide-in-image.visible:hover {
+    transform: scale(1.02);
+  }
+
+  /* Fade-in animations for text elements */
+  .fade-in-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: var(--delay, 0s);
+  }
+
+  .fade-in-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .about-content .section-title.fade-in-element {
+    transform: translateY(30px) scale(0.95);
+  }
+
+  .about-content .section-title.fade-in-element.visible {
+    transform: translateY(0) scale(1);
   }
 
   /* Testimonials */
@@ -400,9 +436,9 @@ const testimonials = [
 </style>
 
 <script>
-  // Scroll-triggered slide-in animation
+  // Scroll-triggered animations
   document.addEventListener('DOMContentLoaded', () => {
-    const slideElements = document.querySelectorAll('.slide-in-image');
+    const animatedElements = document.querySelectorAll('.slide-in-image, .fade-in-element');
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -415,6 +451,28 @@ const testimonials = [
       rootMargin: '0px 0px -50px 0px'
     });
 
-    slideElements.forEach(el => observer.observe(el));
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Add subtle parallax effect on mouse move for the image
+    const aboutSection = document.querySelector('.about');
+    const aboutImage = document.querySelector('.about-image-container');
+
+    if (aboutSection && aboutImage) {
+      aboutSection.addEventListener('mousemove', (e) => {
+        const rect = aboutSection.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        if (aboutImage.classList.contains('visible')) {
+          aboutImage.style.transform = `translateX(${x * 10}px) translateY(${y * 10}px)`;
+        }
+      });
+
+      aboutSection.addEventListener('mouseleave', () => {
+        if (aboutImage.classList.contains('visible')) {
+          aboutImage.style.transform = 'translateX(0) translateY(0)';
+        }
+      });
+    }
   });
 </script>
