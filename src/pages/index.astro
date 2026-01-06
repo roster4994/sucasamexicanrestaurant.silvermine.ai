@@ -103,7 +103,7 @@ const testimonials = [
   /* Hero Section */
   .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 115vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -177,9 +177,17 @@ const testimonials = [
 
   .hero-ctas {
     display: flex;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .hero-ctas .btn {
+    padding: 1.25rem 3rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 12px;
   }
 
   .hero .btn-outline {
@@ -430,7 +438,12 @@ const testimonials = [
 
   @media (max-width: 480px) {
     .hero {
-      min-height: 90vh;
+      min-height: 105vh;
+    }
+
+    .hero-ctas .btn {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
     }
   }
 </style>
