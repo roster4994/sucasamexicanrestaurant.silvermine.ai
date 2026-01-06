@@ -119,12 +119,20 @@ const testimonials = [
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f2ba65;
+    background: transparent;
     overflow: hidden;
+    margin-top: -180px;
+    padding-top: 180px;
   }
 
   .hero-overlay {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
   }
 
   .hero-pattern {
@@ -154,17 +162,19 @@ const testimonials = [
   }
 
   .hero h1 {
-    color: #000000;
+    color: #ffffff;
     font-size: clamp(2.5rem, 6vw, 4rem);
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
     white-space: nowrap;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .hero-tagline {
-    color: #415f84;
+    color: #f2ba65;
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     margin-bottom: var(--spacing-lg);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   }
 
   .hero-ctas {
@@ -175,13 +185,13 @@ const testimonials = [
   }
 
   .hero .btn-outline {
-    color: #000000;
-    border-color: #000000;
+    color: #ffffff;
+    border-color: #ffffff;
   }
 
   .hero .btn-outline:hover {
-    background-color: #000000;
-    color: #f2ba65;
+    background-color: #ffffff;
+    color: #d1615d;
   }
 
   .hero-scroll {
@@ -190,17 +200,18 @@ const testimonials = [
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: #000000;
+    color: #ffffff;
     font-size: 0.85rem;
-    opacity: 0.7;
+    opacity: 0.9;
     animation: bounce 2s infinite;
+    z-index: 1;
   }
 
   .scroll-arrow {
     width: 20px;
     height: 20px;
-    border-right: 2px solid #000000;
-    border-bottom: 2px solid #000000;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
     transform: rotate(45deg);
     margin: 0.5rem auto 0;
   }
