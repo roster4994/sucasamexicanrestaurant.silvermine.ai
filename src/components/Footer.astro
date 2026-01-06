@@ -24,11 +24,7 @@ const hours = [
       <!-- Brand Column -->
       <div class="footer-brand">
         <a href="/" class="footer-logo">
-          <span class="logo-icon">🌮</span>
-          <span class="logo-text">
-            <span class="logo-name">Su Casa</span>
-            <span class="logo-tagline">Mexican Restaurant</span>
-          </span>
+          <img src="https://i.postimg.cc/Nj2jKLLq/logo.png" alt="Su Casa Mexican Restaurant" class="footer-logo-image" />
         </a>
         <p class="brand-description">
           Family owned since 1978. Where comfort food meets vibrant tradition in the heart of Midvale, UT.
@@ -139,32 +135,15 @@ const hours = [
   }
 
   .footer-logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
+    display: inline-block;
     text-decoration: none;
-    color: inherit;
     margin-bottom: var(--spacing-sm);
   }
 
-  .footer-logo .logo-icon {
-    font-size: 2.5rem;
-  }
-
-  .footer-logo .logo-name {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-tertiary);
-    display: block;
-    line-height: 1.1;
-  }
-
-  .footer-logo .logo-tagline {
-    font-size: 0.7rem;
-    color: var(--color-sand);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  .footer-logo-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
   }
 
   .brand-description {
