@@ -305,7 +305,7 @@ const drinks = [
       <div class="menu-footer">
         <div class="menu-ctas">
           <a href="/order" class="btn btn-primary">Order Online</a>
-          <a href="/catering" class="btn btn-secondary">Catering Menu</a>
+          <a href="/catering" class="btn btn-catering-outline">Catering Menu</a>
         </div>
       </div>
     </div>
@@ -577,6 +577,19 @@ const drinks = [
     gap: var(--spacing-sm);
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .btn-catering-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+
+  .btn-catering-outline:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
   @media (min-width: 768px) {
