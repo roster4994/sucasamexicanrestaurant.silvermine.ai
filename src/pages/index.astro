@@ -66,11 +66,8 @@ const testimonials = [
   </section>
 
   <!-- Photo Collage Section -->
-  <section class="photo-collage section">
-    <div class="container">
-      <h2 class="section-title">A TASTE OF SU CASA</h2>
-      <p class="section-subtitle">Moments from our kitchen and dining room</p>
-      <div class="collage-grid">
+  <section class="photo-collage">
+    <div class="collage-grid">
         <div class="collage-item collage-item-1">
           <img src="/collage/Copy of Mexican dinner copy (1).jpg" alt="Mexican Dinner" />
         </div>
@@ -89,7 +86,6 @@ const testimonials = [
         <div class="collage-item collage-item-6">
           <img src="/collage/Copy of tostada supreme copy (1).jpg" alt="Tostada Supreme" />
         </div>
-      </div>
     </div>
   </section>
 
@@ -370,32 +366,17 @@ const testimonials = [
   /* Photo Collage */
   .photo-collage {
     background: #1a1a1a;
-    padding: var(--spacing-xl) 0;
-  }
-
-  .photo-collage .section-title {
-    color: #ffffff;
-  }
-
-  .photo-collage .section-title::after {
-    display: none;
-  }
-
-  .photo-collage .section-subtitle {
-    color: rgba(255, 255, 255, 0.8);
   }
 
   .collage-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 250px);
-    gap: 15px;
-    margin-top: var(--spacing-md);
+    gap: 4px;
   }
 
   .collage-item {
     overflow: hidden;
-    border-radius: var(--radius-md);
     position: relative;
   }
 
