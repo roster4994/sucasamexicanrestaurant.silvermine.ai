@@ -65,6 +65,30 @@ const testimonials = [
     </div>
   </section>
 
+  <!-- Photo Collage Section -->
+  <section class="photo-collage">
+    <div class="collage-grid">
+        <div class="collage-item collage-item-1">
+          <img src="/collage/Copy of Mexican dinner copy (1).jpg" alt="Mexican Dinner" />
+        </div>
+        <div class="collage-item collage-item-2">
+          <img src="https://i.postimg.cc/Zq3PX5wT/chimichanga4-(2).jpg" alt="Chimichanga" />
+        </div>
+        <div class="collage-item collage-item-3">
+          <img src="/collage/Copy of nacho supreme-1167 (1).jpg" alt="Nacho Supreme" />
+        </div>
+        <div class="collage-item collage-item-4">
+          <img src="/collage/Copy of queso dip pic (2).jpg" alt="Queso Dip" />
+        </div>
+        <div class="collage-item collage-item-5">
+          <img src="https://i.postimg.cc/FHk0JK5y/grilled-chicken-salad.jpg" alt="Grilled Chicken Salad" />
+        </div>
+        <div class="collage-item collage-item-6">
+          <img src="https://i.postimg.cc/Y0jvKXt6/Copy-of-baja-dinner-(2).jpg" alt="Baja Dinner" />
+        </div>
+    </div>
+  </section>
+
   <!-- Testimonials Section -->
   <section class="testimonials section">
     <div class="container">
@@ -337,6 +361,65 @@ const testimonials = [
 
   .about-content .section-title.fade-in-element.visible {
     transform: translateY(0) scale(1);
+  }
+
+  /* Photo Collage */
+  .photo-collage {
+    background: #1a1a1a;
+    padding: 4px 0;
+  }
+
+  .collage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 250px);
+    gap: 4px;
+  }
+
+  .collage-item {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .collage-item:hover img {
+    transform: scale(1.08);
+  }
+
+  .collage-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.3));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .collage-item:hover::after {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .collage-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 200px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .collage-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(6, 200px);
+    }
   }
 
   /* Testimonials */
