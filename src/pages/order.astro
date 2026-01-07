@@ -133,7 +133,7 @@ const deliveryPartners = [
   .main-order-btn {
     display: inline-block;
     padding: 1.5rem 4rem;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: var(--color-primary);
     color: white;
     font-size: 1.8rem;
     font-weight: 700;
@@ -142,11 +142,13 @@ const deliveryPartners = [
     box-shadow: var(--shadow-lg);
     transition: all var(--transition-normal);
     letter-spacing: 0.05em;
+    border: 3px solid var(--color-tertiary);
   }
 
   .main-order-btn:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    background: var(--color-primary-dark);
   }
 
   /* Delivery Partners */
@@ -167,28 +169,29 @@ const deliveryPartners = [
     justify-content: center;
     text-align: center;
     padding: var(--spacing-md);
-    background: white;
+    background: var(--partner-color);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     text-decoration: none;
     transition: all var(--transition-normal);
-    border-bottom: 4px solid var(--partner-color);
   }
 
   .partner-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
+    filter: brightness(1.1);
   }
 
   .partner-card h3 {
-    color: var(--color-brown-dark);
+    color: white;
     margin: 0;
     font-size: 1.3rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
 
   /* Pickup Section */
   .pickup-section {
-    background: var(--color-cream);
+    background: var(--color-teal);
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     margin-bottom: var(--spacing-xl);
@@ -202,8 +205,20 @@ const deliveryPartners = [
   }
 
   .pickup-text h2 {
-    color: var(--color-brown-dark);
+    color: white;
     margin-bottom: var(--spacing-sm);
+  }
+
+  .pickup-text .btn-primary {
+    background: white;
+    color: var(--color-teal);
+    border-color: white;
+  }
+
+  .pickup-text .btn-primary:hover {
+    background: var(--color-tertiary);
+    border-color: var(--color-tertiary);
+    color: var(--color-brown-dark);
   }
 
   .pickup-info {
@@ -211,6 +226,7 @@ const deliveryPartners = [
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--color-tertiary);
   }
 
   .pickup-info h3 {
