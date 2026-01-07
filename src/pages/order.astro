@@ -24,6 +24,7 @@ const deliveryPartners = [
   title="Order Online"
   description="Order Su Casa Mexican Restaurant for delivery or pickup through DoorDash, GrubHub, or Uber Eats. Authentic Mexican food delivered to your door in Midvale, UT."
 >
+<div class="order-page-wrapper">
   <!-- Banner -->
   <section class="page-banner">
     <img src="https://i.postimg.cc/D0bJtJwf/lobby4.jpg" alt="Su Casa Mexican Restaurant" class="banner-image" />
@@ -84,14 +85,23 @@ const deliveryPartners = [
       </section>
     </div>
   </div>
+</div>
 </Layout>
 
 <style>
   /* Banner */
   .page-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 350px;
     overflow: hidden;
+    z-index: -1;
+  }
+
+  .order-page-wrapper {
+    padding-top: 350px;
   }
 
   .banner-image {
@@ -256,6 +266,10 @@ const deliveryPartners = [
   @media (max-width: 768px) {
     .page-banner {
       height: 250px;
+    }
+
+    .order-page-wrapper {
+      padding-top: 250px;
     }
 
     .main-order-btn {
