@@ -5,50 +5,33 @@ const cateringOptions = [
   {
     title: "Taco Bar",
     description: "Build-your-own taco station with choice of proteins, fresh toppings, and salsas",
-    includes: ["Choice of 2-3 proteins", "Flour & corn tortillas", "Fresh toppings bar", "Chips & salsa", "Rice & beans"],
-    icon: "🌮"
+    includes: ["Choice of 2-3 proteins", "Flour & corn tortillas", "Fresh toppings bar", "Chips & salsa", "Rice & beans"]
   },
   {
     title: "Burrito Bar",
     description: "Hearty burrito station with all the fixings for a satisfying meal",
-    includes: ["Choice of proteins", "Large flour tortillas", "Rice & beans", "Cheese & sour cream", "Multiple salsas"],
-    icon: "🌯"
+    includes: ["Choice of proteins", "Large flour tortillas", "Rice & beans", "Cheese & sour cream", "Multiple salsas"]
   },
   {
     title: "Enchilada Platter",
     description: "Classic enchiladas served family-style with all the accompaniments",
-    includes: ["Choice of enchilada style", "Red & green sauces", "Mexican rice", "Refried beans", "Sour cream & guacamole"],
-    icon: "🫔"
+    includes: ["Choice of enchilada style", "Red & green sauces", "Mexican rice", "Refried beans", "Sour cream & guacamole"]
   },
   {
     title: "Fajita Fiesta",
     description: "Sizzling fajitas with all the trimmings for an impressive spread",
-    includes: ["Chicken & steak options", "Grilled peppers & onions", "Warm tortillas", "Guacamole & sour cream", "Rice & beans"],
-    icon: "🍳"
+    includes: ["Chicken & steak options", "Grilled peppers & onions", "Warm tortillas", "Guacamole & sour cream", "Rice & beans"]
   },
   {
     title: "Appetizer Package",
     description: "Perfect for cocktail parties and pre-event gatherings",
-    includes: ["Chips & salsa", "Guacamole", "Queso dip", "Mini quesadillas", "Loaded nachos"],
-    icon: "🧀"
+    includes: ["Chips & salsa", "Guacamole", "Queso dip", "Mini quesadillas", "Loaded nachos"]
   },
   {
     title: "Custom Menu",
     description: "Work with us to create the perfect menu for your specific event",
-    includes: ["Personalized consultation", "Custom menu design", "Flexible pricing", "Dietary accommodations", "Full-service options"],
-    icon: "⭐"
+    includes: ["Personalized consultation", "Custom menu design", "Flexible pricing", "Dietary accommodations", "Full-service options"]
   }
-];
-
-const occasions = [
-  "Birthday Parties",
-  "Corporate Events",
-  "Holiday Celebrations",
-  "Wedding Festivities",
-  "Graduation Parties",
-  "Office Lunches",
-  "Family Reunions",
-  "Sports Events"
 ];
 ---
 
@@ -56,47 +39,20 @@ const occasions = [
   title="Catering"
   description="Bring the fiesta to your event! Su Casa Mexican Restaurant offers catering services for parties, corporate events, weddings, and more in the Midvale, UT area."
 >
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <h1>Bring the Fiesta to You</h1>
-      <p>Catering services for every occasion</p>
-    </div>
+<div class="catering-page-wrapper">
+  <!-- Banner -->
+  <section class="page-banner">
+    <img src="https://i.postimg.cc/cJ7LtpDq/Copy-of-queso-dip-pic-(1).jpg" alt="Su Casa Catering" class="banner-image" />
   </section>
 
   <div class="catering-content">
     <div class="container">
-      <!-- Intro Section -->
-      <section class="catering-intro">
-        <div class="intro-text">
-          <h2>Let Us Cater Your Next Event</h2>
-          <p>
-            Enjoy our catering services that deliver the rich flavors of our cuisine to your special events.
-            From intimate gatherings to grand celebrations, let us handle the details while you enjoy the party.
-          </p>
-          <p>
-            Did you know we do catering? Whatever your occasion, however big or small, we have the perfect options to choose from.
-            Cater your birthday party, holiday party, corporate events, wedding festivities and more!
-          </p>
-        </div>
-        <div class="occasions-box">
-          <h3>Perfect For:</h3>
-          <ul class="occasions-list">
-            {occasions.map((occasion) => (
-              <li>{occasion}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       <!-- Catering Options -->
       <section class="catering-options">
         <h2 class="section-title">Catering Packages</h2>
-        <p class="section-subtitle">Choose from our popular packages or create your own custom menu</p>
         <div class="options-grid">
           {cateringOptions.map((option) => (
             <div class="option-card">
-              <span class="option-icon">{option.icon}</span>
               <h3>{option.title}</h3>
               <p class="option-desc">{option.description}</p>
               <ul class="option-includes">
@@ -106,33 +62,6 @@ const occasions = [
               </ul>
             </div>
           ))}
-        </div>
-      </section>
-
-      <!-- Why Choose Us -->
-      <section class="why-us">
-        <h2>Why Choose Su Casa Catering?</h2>
-        <div class="why-grid">
-          <div class="why-item">
-            <span class="why-icon">👨‍🍳</span>
-            <h3>Authentic Recipes</h3>
-            <p>Family recipes perfected over 45+ years</p>
-          </div>
-          <div class="why-item">
-            <span class="why-icon">🥗</span>
-            <h3>Fresh Ingredients</h3>
-            <p>Quality ingredients prepared fresh for your event</p>
-          </div>
-          <div class="why-item">
-            <span class="why-icon">🎯</span>
-            <h3>Flexible Options</h3>
-            <p>From small gatherings to large celebrations</p>
-          </div>
-          <div class="why-item">
-            <span class="why-icon">💼</span>
-            <h3>Professional Service</h3>
-            <p>Reliable delivery and setup available</p>
-          </div>
         </div>
       </section>
 
@@ -199,94 +128,39 @@ const occasions = [
         <div class="cta-content">
           <h2>Prefer to Talk?</h2>
           <p>Give us a call to discuss your catering needs directly with our team</p>
-          <a href="tel:+18012551042" class="btn btn-secondary">📞 Call (801) 255-1042</a>
+          <a href="tel:+18012551042" class="btn btn-secondary">Call (801) 255-1042</a>
         </div>
       </section>
     </div>
   </div>
+</div>
 </Layout>
 
 <style>
-  .page-header {
-    background: linear-gradient(135deg, var(--bg-dark) 0%, #415f84 100%);
-    padding: var(--spacing-xl) 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .page-header::before {
-    content: '';
+  /* Banner */
+  .page-banner {
     position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 20% 80%, rgba(209, 97, 93, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(242, 186, 101, 0.15) 0%, transparent 50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    z-index: -1;
   }
 
-  .page-header h1 {
-    color: var(--color-tertiary);
-    position: relative;
-    margin-bottom: var(--spacing-xs);
+  .catering-page-wrapper {
+    padding-top: 350px;
   }
 
-  .page-header p {
-    color: var(--color-sand);
-    font-size: 1.2rem;
-    position: relative;
-    margin: 0;
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .catering-content {
-    padding: var(--spacing-lg) 0 var(--spacing-xl);
-  }
-
-  /* Intro Section */
-  .catering-intro {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: var(--spacing-lg);
-    align-items: start;
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .intro-text h2 {
-    color: var(--color-brown-dark);
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .intro-text p {
-    color: var(--color-text);
-    font-size: 1.1rem;
-    line-height: 1.8;
-  }
-
-  .occasions-box {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-lg);
-    color: white;
-  }
-
-  .occasions-box h3 {
-    color: var(--color-tertiary);
-    margin: 0 0 var(--spacing-sm);
-  }
-
-  .occasions-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .occasions-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.95rem;
-  }
-
-  .occasions-list li:last-child {
-    border-bottom: none;
+    padding: var(--spacing-xl) 0;
   }
 
   /* Catering Options */
@@ -313,12 +187,6 @@ const occasions = [
   .option-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-  }
-
-  .option-icon {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: var(--spacing-sm);
   }
 
   .option-card h3 {
@@ -350,53 +218,11 @@ const occasions = [
   }
 
   .option-includes li::before {
-    content: '✓';
+    content: '\2713';
     position: absolute;
     left: 0;
     color: var(--color-green);
     font-weight: bold;
-  }
-
-  /* Why Choose Us */
-  .why-us {
-    background: var(--color-cream);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    margin-bottom: var(--spacing-xl);
-    text-align: center;
-  }
-
-  .why-us h2 {
-    color: var(--color-brown-dark);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-md);
-  }
-
-  .why-item {
-    padding: var(--spacing-sm);
-  }
-
-  .why-icon {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .why-item h3 {
-    color: var(--color-brown-dark);
-    font-size: 1.1rem;
-    margin: 0 0 0.25rem;
-  }
-
-  .why-item p {
-    color: var(--color-text-light);
-    margin: 0;
-    font-size: 0.9rem;
   }
 
   /* Inquiry Form */
@@ -459,16 +285,16 @@ const occasions = [
   }
 
   @media (max-width: 768px) {
-    .catering-intro {
-      grid-template-columns: 1fr;
+    .page-banner {
+      height: 250px;
+    }
+
+    .catering-page-wrapper {
+      padding-top: 250px;
     }
 
     .form-row {
       grid-template-columns: 1fr;
-    }
-
-    .occasions-box {
-      order: -1;
     }
   }
 </style>
