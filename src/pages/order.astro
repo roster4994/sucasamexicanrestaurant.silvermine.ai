@@ -4,34 +4,19 @@ import Layout from '../layouts/Layout.astro';
 const deliveryPartners = [
   {
     name: "DoorDash",
-    logo: "🚗",
-    description: "Fast delivery with real-time tracking",
     link: "https://www.doordash.com/store/su-casa-mexican-restaurant-midvale-922561/",
     color: "#d1615d"
   },
   {
     name: "GrubHub",
-    logo: "🍽️",
-    description: "Convenient ordering and delivery",
-    link: "https://www.grubhub.com/restaurant/su-casa-mexican-restaurant-6878-state-st-midvale/1472764",
+    link: "https://www.grubhub.com/restaurant/su-casa-mexican-restaurant-6878-state-st-midvale/1472764?orderMethod=delivery&locationMode=DELIVERY&facetSet=umamiV2&pageSize=20&hideHateos=true&searchMetrics=true&queryText=Su%20Casa%20Mexican%20Restaurant&latitude=40.58205795&longitude=-111.86144257&preciseLocation=true&facet=open_now%3Atrue&sortSetId=umamiv3&sponsoredSize=3&countOmittingTimes=true&whenFor=2020-03-19T17%3A30%3A00.000Z&isFutureOrder=true",
     color: "#66596e"
   },
   {
     name: "Uber Eats",
-    logo: "🚙",
-    description: "Get your favorites delivered to your door",
-    link: "https://www.ubereats.com/store/su-casa-mexican-restaurant/midvale",
+    link: "https://www.ubereats.com/store/su-casa-mexican-restaurant/x48U_gbMSeislBSIokiUXQ",
     color: "#74bab1"
   }
-];
-
-const popularItems = [
-  { name: "Chimichanga", description: "Deep-fried burrito with your choice of filling" },
-  { name: "Fajitas", description: "Sizzling chicken or steak with peppers and onions" },
-  { name: "Super Nachos", description: "Loaded nachos with all the toppings" },
-  { name: "Enchilada Plate", description: "Three enchiladas with rice and beans" },
-  { name: "Chile Verde Dinner", description: "Tender pork in green chile sauce" },
-  { name: "Combo Plate", description: "Mix and match your favorites" }
 ];
 ---
 
@@ -39,34 +24,21 @@ const popularItems = [
   title="Order Online"
   description="Order Su Casa Mexican Restaurant for delivery or pickup through DoorDash, GrubHub, or Uber Eats. Authentic Mexican food delivered to your door in Midvale, UT."
 >
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <h1>Order Online</h1>
-      <p>Get your favorites delivered or ready for pickup</p>
-    </div>
-  </section>
-
   <div class="order-content">
     <div class="container">
-      <!-- Intro -->
-      <section class="order-intro">
-        <p>
-          Can't make it to the restaurant? No problem! Order your favorite Su Casa dishes
-          through our delivery partners. Just click on your preferred service below to get started.
-        </p>
+      <!-- Main Order Button -->
+      <section class="main-order-section">
+        <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" target="_blank" rel="noopener noreferrer" class="main-order-btn">
+          DELIVERY & PICK-UP
+        </a>
       </section>
 
       <!-- Delivery Partners -->
       <section class="delivery-section">
-        <h2>Choose Your Delivery Service</h2>
         <div class="partners-grid">
           {deliveryPartners.map((partner) => (
             <a href={partner.link} target="_blank" rel="noopener noreferrer" class="partner-card" style={`--partner-color: ${partner.color}`}>
-              <span class="partner-logo">{partner.logo}</span>
               <h3>{partner.name}</h3>
-              <p>{partner.description}</p>
-              <span class="order-btn">Order Now →</span>
             </a>
           ))}
         </div>
@@ -76,12 +48,8 @@ const popularItems = [
       <section class="pickup-section">
         <div class="pickup-content">
           <div class="pickup-text">
-            <h2>Prefer to Pick Up?</h2>
-            <p>
-              Call us directly to place your order for pickup. Your food will be ready
-              and waiting for you when you arrive!
-            </p>
-            <a href="tel:+18012551042" class="btn btn-primary">📞 Call (801) 255-1042</a>
+            <h2>Prefer to Call?</h2>
+            <a href="tel:+18012551042" class="btn btn-primary">(801) 255 - 1042</a>
           </div>
           <div class="pickup-info">
             <h3>Pickup Location</h3>
@@ -99,54 +67,9 @@ const popularItems = [
         </div>
       </section>
 
-      <!-- Popular Items -->
-      <section class="popular-section">
-        <h2 class="section-title">Customer Favorites</h2>
-        <p class="section-subtitle">Not sure what to order? Try these popular picks!</p>
-        <div class="popular-grid">
-          {popularItems.map((item) => (
-            <div class="popular-item">
-              <h3>{item.name}</h3>
-              <p>{item.description}</p>
-            </div>
-          ))}
-        </div>
-        <div class="text-center mt-md">
-          <a href="/menu" class="btn btn-secondary">View Full Menu</a>
-        </div>
-      </section>
-
-      <!-- Tips -->
-      <section class="tips-section">
-        <h2>Ordering Tips</h2>
-        <div class="tips-grid">
-          <div class="tip">
-            <span class="tip-icon">⏰</span>
-            <h3>Order Ahead</h3>
-            <p>During peak hours (6-8pm), order 45-60 minutes in advance for best results</p>
-          </div>
-          <div class="tip">
-            <span class="tip-icon">📝</span>
-            <h3>Special Requests</h3>
-            <p>Use the notes section to specify any dietary needs or preferences</p>
-          </div>
-          <div class="tip">
-            <span class="tip-icon">🌶️</span>
-            <h3>Spice Level</h3>
-            <p>Let us know if you prefer mild, medium, or hot - we can adjust!</p>
-          </div>
-          <div class="tip">
-            <span class="tip-icon">🥡</span>
-            <h3>Fresh Is Best</h3>
-            <p>Our food is best enjoyed fresh - eat soon after delivery for optimal taste</p>
-          </div>
-        </div>
-      </section>
-
       <!-- Catering CTA -->
       <section class="catering-cta">
         <div class="cta-content">
-          <span class="cta-icon">🎉</span>
           <div>
             <h2>Feeding a Group?</h2>
             <p>For large orders or catering needs, contact us directly for special pricing and menu options.</p>
@@ -159,51 +82,33 @@ const popularItems = [
 </Layout>
 
 <style>
-  .page-header {
-    background: linear-gradient(135deg, var(--bg-dark) 0%, #415f84 100%);
-    padding: var(--spacing-xl) 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .page-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 20% 80%, rgba(209, 97, 93, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(242, 186, 101, 0.15) 0%, transparent 50%);
-  }
-
-  .page-header h1 {
-    color: var(--color-tertiary);
-    position: relative;
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .page-header p {
-    color: var(--color-sand);
-    font-size: 1.2rem;
-    position: relative;
-    margin: 0;
-  }
-
   .order-content {
-    padding: var(--spacing-lg) 0 var(--spacing-xl);
+    padding: calc(var(--spacing-xl) + 60px) 0 var(--spacing-xl);
   }
 
-  /* Intro */
-  .order-intro {
+  /* Main Order Button */
+  .main-order-section {
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
   }
 
-  .order-intro p {
-    color: var(--color-text);
-    font-size: 1.1rem;
-    line-height: 1.7;
+  .main-order-btn {
+    display: inline-block;
+    padding: 1.5rem 4rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+    letter-spacing: 0.05em;
+  }
+
+  .main-order-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
   }
 
   /* Delivery Partners */
@@ -211,15 +116,9 @@ const popularItems = [
     margin-bottom: var(--spacing-xl);
   }
 
-  .delivery-section h2 {
-    text-align: center;
-    color: var(--color-brown-dark);
-    margin-bottom: var(--spacing-md);
-  }
-
   .partners-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-md);
   }
 
@@ -227,8 +126,9 @@ const popularItems = [
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     background: white;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
@@ -242,35 +142,10 @@ const popularItems = [
     box-shadow: var(--shadow-lg);
   }
 
-  .partner-logo {
-    font-size: 4rem;
-    margin-bottom: var(--spacing-sm);
-  }
-
   .partner-card h3 {
     color: var(--color-brown-dark);
-    margin: 0 0 var(--spacing-xs);
-    font-size: 1.5rem;
-  }
-
-  .partner-card p {
-    color: var(--color-text-light);
-    margin: 0 0 var(--spacing-sm);
-    font-size: 0.95rem;
-  }
-
-  .order-btn {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    background: var(--partner-color);
-    color: white;
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    transition: all var(--transition-fast);
-  }
-
-  .partner-card:hover .order-btn {
-    transform: scale(1.05);
+    margin: 0;
+    font-size: 1.3rem;
   }
 
   /* Pickup Section */
@@ -290,11 +165,6 @@ const popularItems = [
 
   .pickup-text h2 {
     color: var(--color-brown-dark);
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .pickup-text p {
-    color: var(--color-text);
     margin-bottom: var(--spacing-sm);
   }
 
@@ -323,86 +193,9 @@ const popularItems = [
     margin: 0;
   }
 
-  /* Popular Items */
-  .popular-section {
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .popular-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-md);
-  }
-
-  .popular-item {
-    background: white;
-    padding: var(--spacing-sm);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    border-left: 4px solid var(--color-tertiary);
-    transition: all var(--transition-fast);
-  }
-
-  .popular-item:hover {
-    transform: translateX(5px);
-  }
-
-  .popular-item h3 {
-    color: var(--color-brown-dark);
-    font-size: 1.05rem;
-    margin: 0 0 0.25rem;
-  }
-
-  .popular-item p {
-    color: var(--color-text-light);
-    font-size: 0.9rem;
-    margin: 0;
-  }
-
-  /* Tips */
-  .tips-section {
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .tips-section h2 {
-    text-align: center;
-    color: var(--color-brown-dark);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .tips-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--spacing-md);
-  }
-
-  .tip {
-    text-align: center;
-    padding: var(--spacing-sm);
-  }
-
-  .tip-icon {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .tip h3 {
-    color: var(--color-brown-dark);
-    font-size: 1.1rem;
-    margin: 0 0 0.25rem;
-  }
-
-  .tip p {
-    color: var(--color-text-light);
-    font-size: 0.9rem;
-    margin: 0;
-  }
-
   /* Catering CTA */
   .catering-cta {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: var(--color-primary);
     padding: var(--spacing-md);
     border-radius: var(--radius-lg);
   }
@@ -411,11 +204,6 @@ const popularItems = [
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
-  }
-
-  .cta-icon {
-    font-size: 3rem;
-    flex-shrink: 0;
   }
 
   .cta-content h2 {
@@ -447,6 +235,15 @@ const popularItems = [
   }
 
   @media (max-width: 768px) {
+    .order-content {
+      padding-top: calc(var(--spacing-lg) + 80px);
+    }
+
+    .main-order-btn {
+      padding: 1.2rem 2.5rem;
+      font-size: 1.4rem;
+    }
+
     .pickup-content {
       grid-template-columns: 1fr;
     }
