@@ -24,6 +24,9 @@ const deliveryPartners = [
   title="Order Online"
   description="Order Su Casa Mexican Restaurant for delivery or pickup through DoorDash, GrubHub, or Uber Eats. Authentic Mexican food delivered to your door in Midvale, UT."
 >
+  <!-- Top colored bar -->
+  <div class="top-bar"></div>
+
   <div class="order-content">
     <div class="container">
       <!-- Main Delivery Button -->
@@ -82,20 +85,30 @@ const deliveryPartners = [
 </Layout>
 
 <style>
+  /* Top colored bar */
+  .top-bar {
+    background: #415f84;
+    height: 120px;
+    width: 100%;
+  }
+
   .order-content {
+    background: #f2ba65;
     padding: var(--spacing-xl) 0;
+    min-height: 100vh;
   }
 
   /* Main Order Button */
   .main-order-section {
     text-align: center;
-    margin-bottom: var(--spacing-xl);
+    padding-top: 80px;
+    margin-bottom: 100vh;
   }
 
   .main-order-btn {
     display: inline-block;
     padding: 1.5rem 4rem;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: #415f84;
     color: white;
     font-size: 1.75rem;
     font-weight: 700;
@@ -151,7 +164,7 @@ const deliveryPartners = [
 
   /* Pickup Section */
   .pickup-section {
-    background: var(--color-cream);
+    background: #415f84;
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     margin-bottom: var(--spacing-xl);
@@ -165,7 +178,7 @@ const deliveryPartners = [
   }
 
   .pickup-text h2 {
-    color: var(--color-brown-dark);
+    color: white;
     margin-bottom: var(--spacing-sm);
   }
 
@@ -196,7 +209,7 @@ const deliveryPartners = [
 
   /* Catering CTA */
   .catering-cta {
-    background: var(--color-primary);
+    background: #415f84;
     padding: var(--spacing-md);
     border-radius: var(--radius-lg);
   }
@@ -225,13 +238,13 @@ const deliveryPartners = [
 
   .catering-cta .btn-primary {
     background: white;
-    color: var(--color-primary);
+    color: #415f84;
     border-color: white;
   }
 
   .catering-cta .btn-primary:hover {
-    background: var(--color-tertiary);
-    border-color: var(--color-tertiary);
+    background: #f2ba65;
+    border-color: #f2ba65;
     color: var(--color-brown-dark);
   }
 
