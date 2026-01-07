@@ -30,7 +30,7 @@ const testimonials = [
       <h1>WELCOME TO SU CASA</h1>
       <p class="hero-tagline">Family Owned Since 1978</p>
       <div class="hero-ctas">
-        <a href="/order" class="btn btn-primary">Order Online</a>
+        <a href="/order" class="btn btn-primary">ORDER ONLINE</a>
         <a href="/catering" class="btn btn-outline">Inquire for Catering</a>
       </div>
     </div>
@@ -183,11 +183,22 @@ const testimonials = [
   }
 
   .hero-ctas .btn-primary {
-    padding: 1.5rem 4rem;
-    font-size: 1.6rem;
+    padding: 1.75rem 5rem;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     border-radius: 12px;
+    background-color: #f2ba65;
+    border-color: #f2ba65;
+    color: #000000;
+  }
+
+  .hero-ctas .btn-primary:hover {
+    background-color: #e0a850;
+    border-color: #e0a850;
+    color: #000000;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   }
 
   .hero-ctas .btn-outline {
@@ -417,15 +428,15 @@ const testimonials = [
   }
 
   .cta .btn-secondary {
-    background: transparent;
-    color: #ffffff;
+    background: #ffffff;
+    color: var(--color-brown-dark);
     border: 2px solid #ffffff;
   }
 
   .cta .btn-secondary:hover {
-    background: #ffffff;
-    color: var(--color-brown-dark);
-    border-color: #ffffff;
+    background: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
   }
@@ -464,8 +475,8 @@ const testimonials = [
     }
 
     .hero-ctas .btn-primary {
-      padding: 1.25rem 3rem;
-      font-size: 1.3rem;
+      padding: 1.5rem 3.5rem;
+      font-size: 1.5rem;
     }
 
     .hero-ctas .btn-outline {
