@@ -98,8 +98,6 @@ const drinks = [
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <h1>Our Menu</h1>
-      <p>Authentic Mexican cuisine made fresh daily</p>
     </div>
   </section>
 
@@ -122,15 +120,6 @@ const drinks = [
   <!-- Menu Content -->
   <div class="menu-content">
     <div class="container">
-      <div class="menu-intro">
-        <p>
-          Served with refried beans or black beans and rice (where applicable)
-        </p>
-        <p class="menu-note">
-          <strong>Meat Choices:</strong> shredded chicken, diced chicken, ground beef, shredded beef, sweet pork, chile verde
-        </p>
-      </div>
-
       <!-- Appetizers -->
       <section id="appetizers" class="menu-section">
         <div class="section-header">
@@ -155,6 +144,7 @@ const drinks = [
         <div class="section-header">
           <h2>House Favorites</h2>
           <p>Served with refried beans or black beans and rice</p>
+          <p>Meat Choices: shredded chicken, diced chicken, ground beef, shredded beef, sweet pork, chile verde</p>
         </div>
         <div class="menu-items">
           {houseFavorites.map((item) => (
@@ -331,16 +321,17 @@ const drinks = [
     background: white;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     position: sticky;
-    top: 80px;
+    top: 100px;
     z-index: 50;
     box-shadow: var(--shadow-sm);
   }
 
   .menu-nav-list {
     display: flex;
+    justify-content: center;
     gap: 0.5rem;
     overflow-x: auto;
-    padding: var(--spacing-sm) 0;
+    padding: var(--spacing-md) 0;
     list-style: none;
     margin: 0;
     scrollbar-width: none;
@@ -396,7 +387,7 @@ const drinks = [
   /* Menu Sections */
   .menu-section {
     margin-bottom: var(--spacing-xl);
-    scroll-margin-top: 140px;
+    scroll-margin-top: 220px;
   }
 
   .section-header {
@@ -448,6 +439,7 @@ const drinks = [
     align-items: baseline;
     gap: var(--spacing-sm);
     margin-bottom: 0.5rem;
+    flex-wrap: wrap;
   }
 
   .item-header h3 {
@@ -461,7 +453,7 @@ const drinks = [
     color: var(--color-brown-dark);
     font-weight: 700;
     font-size: 1rem;
-    flex-shrink: 0;
+    text-align: right;
   }
 
   .item-dots {
@@ -543,11 +535,11 @@ const drinks = [
 
   @media (max-width: 600px) {
     .menu-nav {
-      top: 70px;
+      top: 90px;
     }
 
     .menu-section {
-      scroll-margin-top: 140px;
+      scroll-margin-top: 220px;
     }
 
     .item-header {
