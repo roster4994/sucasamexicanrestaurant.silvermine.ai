@@ -98,8 +98,6 @@ const drinks = [
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <h1>Our Menu</h1>
-      <p>Authentic Mexican cuisine made fresh daily</p>
     </div>
   </section>
 
@@ -122,15 +120,6 @@ const drinks = [
   <!-- Menu Content -->
   <div class="menu-content">
     <div class="container">
-      <div class="menu-intro">
-        <p>
-          Served with refried beans or black beans and rice (where applicable)
-        </p>
-        <p class="menu-note">
-          <strong>Meat Choices:</strong> shredded chicken, diced chicken, ground beef, shredded beef, sweet pork, chile verde
-        </p>
-      </div>
-
       <!-- Appetizers -->
       <section id="appetizers" class="menu-section">
         <div class="section-header">
@@ -155,6 +144,7 @@ const drinks = [
         <div class="section-header">
           <h2>House Favorites</h2>
           <p>Served with refried beans or black beans and rice</p>
+          <p>Meat Choices: shredded chicken, diced chicken, ground beef, shredded beef, sweet pork, chile verde</p>
         </div>
         <div class="menu-items">
           {houseFavorites.map((item) => (
@@ -338,6 +328,7 @@ const drinks = [
 
   .menu-nav-list {
     display: flex;
+    justify-content: center;
     gap: 0.5rem;
     overflow-x: auto;
     padding: var(--spacing-sm) 0;
