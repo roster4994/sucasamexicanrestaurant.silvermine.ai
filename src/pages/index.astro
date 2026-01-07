@@ -65,6 +65,34 @@ const testimonials = [
     </div>
   </section>
 
+  <!-- Photo Collage Section -->
+  <section class="photo-collage section">
+    <div class="container">
+      <h2 class="section-title">A TASTE OF SU CASA</h2>
+      <p class="section-subtitle">Moments from our kitchen and dining room</p>
+      <div class="collage-grid">
+        <div class="collage-item collage-item-1">
+          <img src="/collage/photo-1.jpg" alt="Su Casa Restaurant" />
+        </div>
+        <div class="collage-item collage-item-2">
+          <img src="/collage/photo-2.jpg" alt="Su Casa Restaurant" />
+        </div>
+        <div class="collage-item collage-item-3">
+          <img src="/collage/photo-3.jpg" alt="Su Casa Restaurant" />
+        </div>
+        <div class="collage-item collage-item-4">
+          <img src="/collage/photo-4.jpg" alt="Su Casa Restaurant" />
+        </div>
+        <div class="collage-item collage-item-5">
+          <img src="/collage/photo-5.jpg" alt="Su Casa Restaurant" />
+        </div>
+        <div class="collage-item collage-item-6">
+          <img src="/collage/photo-6.jpg" alt="Su Casa Restaurant" />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Testimonials Section -->
   <section class="testimonials section">
     <div class="container">
@@ -337,6 +365,79 @@ const testimonials = [
 
   .about-content .section-title.fade-in-element.visible {
     transform: translateY(0) scale(1);
+  }
+
+  /* Photo Collage */
+  .photo-collage {
+    background: #1a1a1a;
+    padding: var(--spacing-xl) 0;
+  }
+
+  .photo-collage .section-title {
+    color: #ffffff;
+  }
+
+  .photo-collage .section-title::after {
+    display: none;
+  }
+
+  .photo-collage .section-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .collage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 250px);
+    gap: 15px;
+    margin-top: var(--spacing-md);
+  }
+
+  .collage-item {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    position: relative;
+  }
+
+  .collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .collage-item:hover img {
+    transform: scale(1.08);
+  }
+
+  .collage-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.3));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .collage-item:hover::after {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .collage-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 200px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .collage-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(6, 200px);
+    }
   }
 
   /* Testimonials */
