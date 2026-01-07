@@ -177,15 +177,23 @@ const testimonials = [
 
   .hero-ctas {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: var(--spacing-md);
-    justify-content: center;
-    flex-wrap: wrap;
   }
 
-  .hero-ctas .btn {
-    padding: 1.25rem 3rem;
-    font-size: 1.3rem;
+  .hero-ctas .btn-primary {
+    padding: 1.5rem 4rem;
+    font-size: 1.6rem;
     font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 12px;
+  }
+
+  .hero-ctas .btn-outline {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     letter-spacing: 1px;
     border-radius: 12px;
   }
@@ -408,6 +416,20 @@ const testimonials = [
     color: var(--color-brown-dark);
   }
 
+  .cta .btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  }
+
+  .cta .btn-secondary:hover {
+    background: #ffffff;
+    color: var(--color-brown-dark);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
   /* Responsive */
   @media (max-width: 900px) {
     .about-grid {
@@ -441,9 +463,14 @@ const testimonials = [
       min-height: 105vh;
     }
 
-    .hero-ctas .btn {
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
+    .hero-ctas .btn-primary {
+      padding: 1.25rem 3rem;
+      font-size: 1.3rem;
+    }
+
+    .hero-ctas .btn-outline {
+      padding: 0.875rem 2rem;
+      font-size: 1rem;
     }
   }
 </style>
