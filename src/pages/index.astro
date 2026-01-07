@@ -30,7 +30,7 @@ const testimonials = [
       <h1>WELCOME TO SU CASA</h1>
       <p class="hero-tagline">Family Owned Since 1978</p>
       <div class="hero-ctas">
-        <a href="/order" class="btn btn-primary">Order Online</a>
+        <a href="/order" class="btn btn-primary">ORDER ONLINE</a>
         <a href="/catering" class="btn btn-outline">Inquire for Catering</a>
       </div>
     </div>
@@ -177,15 +177,34 @@ const testimonials = [
 
   .hero-ctas {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: var(--spacing-md);
-    justify-content: center;
-    flex-wrap: wrap;
   }
 
-  .hero-ctas .btn {
-    padding: 1.25rem 3rem;
-    font-size: 1.3rem;
+  .hero-ctas .btn-primary {
+    padding: 1.25rem 3.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 12px;
+    background-color: #74bab1;
+    border-color: #74bab1;
+    color: #ffffff;
+  }
+
+  .hero-ctas .btn-primary:hover {
+    background-color: #5fa89f;
+    border-color: #5fa89f;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-ctas .btn-outline {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     letter-spacing: 1px;
     border-radius: 12px;
   }
@@ -408,6 +427,20 @@ const testimonials = [
     color: var(--color-brown-dark);
   }
 
+  .cta .btn-secondary {
+    background: #ffffff;
+    color: var(--color-brown-dark);
+    border: 2px solid #ffffff;
+  }
+
+  .cta .btn-secondary:hover {
+    background: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
   /* Responsive */
   @media (max-width: 900px) {
     .about-grid {
@@ -441,9 +474,14 @@ const testimonials = [
       min-height: 105vh;
     }
 
-    .hero-ctas .btn {
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
+    .hero-ctas .btn-primary {
+      padding: 1rem 2.5rem;
+      font-size: 1.25rem;
+    }
+
+    .hero-ctas .btn-outline {
+      padding: 0.875rem 2rem;
+      font-size: 1rem;
     }
   }
 </style>
