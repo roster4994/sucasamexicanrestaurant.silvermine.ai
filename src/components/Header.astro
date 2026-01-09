@@ -298,22 +298,20 @@ const currentPath = Astro.url.pathname;
   /* Order Online link highlight in mobile menu */
   .mobile-menu .order-online-link {
     border-bottom: none;
-    animation: text-pop 0.5s ease-out 0.3s both;
+    animation: text-pop 1.5s ease-in-out infinite;
   }
 
   .mobile-menu .order-online-link:hover {
+    animation: none;
     transform: translateX(10px);
   }
 
   @keyframes text-pop {
-    0% {
+    0%, 100% {
       transform: scale(1);
     }
     50% {
-      transform: scale(1.15);
-    }
-    100% {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
   }
 
