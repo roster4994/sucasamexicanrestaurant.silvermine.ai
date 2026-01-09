@@ -262,14 +262,14 @@ const currentPath = Astro.url.pathname;
   .mobile-menu {
     display: none;
     position: fixed;
-    top: 0;
+    top: 100px;
     right: -100%;
     width: 280px;
-    height: 100vh;
+    height: auto;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 5rem 1.5rem 2rem;
+    padding: 2rem 1.5rem;
     background: rgba(209, 97, 93, 0.98);
     backdrop-filter: blur(10px);
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
@@ -277,12 +277,11 @@ const currentPath = Astro.url.pathname;
     overflow-y: auto;
     list-style: none;
     margin: 0;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    border-radius: 30px;
   }
 
   .mobile-menu.open {
-    right: 0;
+    right: 20px;
   }
 
   .mobile-menu .nav-link {
@@ -298,25 +297,23 @@ const currentPath = Astro.url.pathname;
 
   /* Order Online link highlight in mobile menu */
   .mobile-menu .order-online-link {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 15px;
-    margin-top: 0.5rem;
     border-bottom: none;
-    animation: pulse-highlight 2s ease-in-out infinite;
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    animation: text-pop 0.5s ease-out 0.3s both;
   }
 
   .mobile-menu .order-online-link:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateX(10px) scale(1.02);
+    transform: translateX(10px);
   }
 
-  @keyframes pulse-highlight {
-    0%, 100% {
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  @keyframes text-pop {
+    0% {
+      transform: scale(1);
     }
     50% {
-      box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.3);
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1.05);
     }
   }
 
