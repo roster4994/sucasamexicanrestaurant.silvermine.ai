@@ -5,17 +5,20 @@ const deliveryPartners = [
   {
     name: "DoorDash",
     link: "https://www.doordash.com/store/su-casa-mexican-restaurant-midvale-922561/",
-    color: "#f2ba65"
-  },
-  {
-    name: "GrubHub",
-    link: "https://www.grubhub.com/restaurant/su-casa-mexican-restaurant-6878-state-st-midvale/1472764?orderMethod=delivery&locationMode=DELIVERY&facetSet=umamiV2&pageSize=20&hideHateos=true&searchMetrics=true&queryText=Su%20Casa%20Mexican%20Restaurant&latitude=40.58205795&longitude=-111.86144257&preciseLocation=true&facet=open_now%3Atrue&sortSetId=umamiv3&sponsoredSize=3&countOmittingTimes=true&whenFor=2020-03-19T17%3A30%3A00.000Z&isFutureOrder=true",
-    color: "#66596e"
+    color: "#FF3008",
+    logo: "/doordash-logo.svg"
   },
   {
     name: "Uber Eats",
     link: "https://www.ubereats.com/store/su-casa-mexican-restaurant/x48U_gbMSeislBSIokiUXQ",
-    color: "#74bab1"
+    color: "#06C167",
+    logo: "/ubereats-logo.svg"
+  },
+  {
+    name: "GrubHub",
+    link: "https://www.grubhub.com/restaurant/su-casa-mexican-restaurant-6878-state-st-midvale/1472764?orderMethod=delivery&locationMode=DELIVERY&facetSet=umamiV2&pageSize=20&hideHateos=true&searchMetrics=true&queryText=Su%20Casa%20Mexican%20Restaurant&latitude=40.58205795&longitude=-111.86144257&preciseLocation=true&facet=open_now%3Atrue&sortSetId=umamiv3&sponsoredSize=3&countOmittingTimes=true&whenFor=2020-03-19T17%3A30%3A00.000Z&isFutureOrder=true",
+    color: "#F63440",
+    logo: "/grubhub-logo.svg"
   }
 ];
 ---
@@ -45,7 +48,7 @@ const deliveryPartners = [
         <div class="partners-grid">
           {deliveryPartners.map((partner) => (
             <a href={partner.link} target="_blank" rel="noopener noreferrer" class="partner-card" style={`--partner-color: ${partner.color}`}>
-              <h3>{partner.name}</h3>
+              <img src={partner.logo} alt={partner.name} class="partner-logo" />
             </a>
           ))}
         </div>
@@ -168,29 +171,32 @@ const deliveryPartners = [
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: var(--spacing-md);
-    background: transparent;
+    padding: var(--spacing-lg);
+    background: white;
     border: 3px solid var(--partner-color);
     border-radius: var(--radius-lg);
     text-decoration: none;
     transition: all var(--transition-normal);
+    min-height: 100px;
   }
 
   .partner-card:hover {
     transform: translateY(-8px);
-    background: var(--partner-color);
     box-shadow: var(--shadow-lg);
+    border-color: var(--partner-color);
+    background: rgba(255, 255, 255, 0.95);
   }
 
-  .partner-card h3 {
-    color: var(--partner-color);
-    margin: 0;
-    font-size: 1.3rem;
-    transition: color var(--transition-normal);
+  .partner-logo {
+    max-width: 160px;
+    height: auto;
+    max-height: 50px;
+    object-fit: contain;
+    transition: transform var(--transition-normal);
   }
 
-  .partner-card:hover h3 {
-    color: white;
+  .partner-card:hover .partner-logo {
+    transform: scale(1.05);
   }
 
   /* Pickup Section */
