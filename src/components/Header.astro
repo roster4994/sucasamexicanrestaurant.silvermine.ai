@@ -65,7 +65,7 @@ const currentPath = Astro.url.pathname;
           <li role="none">
             <a
               href={item.href}
-              class:list={['nav-link', { active: currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }]}
+              class:list={['nav-link', { active: currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)), 'order-online-link': item.href === '/order' }]}
               role="menuitem"
             >
               {item.label}
@@ -262,14 +262,14 @@ const currentPath = Astro.url.pathname;
   .mobile-menu {
     display: none;
     position: fixed;
-    top: 0;
+    top: 100px;
     right: -100%;
     width: 280px;
-    height: 100vh;
+    height: auto;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 5rem 1.5rem 2rem;
+    padding: 2rem 1.5rem;
     background: rgba(209, 97, 93, 0.98);
     backdrop-filter: blur(10px);
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
@@ -277,10 +277,11 @@ const currentPath = Astro.url.pathname;
     overflow-y: auto;
     list-style: none;
     margin: 0;
+    border-radius: 30px;
   }
 
   .mobile-menu.open {
-    right: 0;
+    right: 20px;
   }
 
   .mobile-menu .nav-link {
@@ -292,6 +293,26 @@ const currentPath = Astro.url.pathname;
 
   .mobile-menu .nav-link:hover {
     transform: translateX(10px);
+  }
+
+  /* Order Online link highlight in mobile menu */
+  .mobile-menu .order-online-link {
+    border-bottom: none;
+    animation: text-pop 1.5s ease-in-out infinite;
+  }
+
+  .mobile-menu .order-online-link:hover {
+    animation: none;
+    transform: translateX(10px);
+  }
+
+  @keyframes text-pop {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.08);
+    }
   }
 
   /* Mobile Responsive */
