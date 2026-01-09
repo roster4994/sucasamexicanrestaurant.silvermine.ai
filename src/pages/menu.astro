@@ -103,16 +103,19 @@ const drinks = [
 
   <!-- Menu Navigation -->
   <nav class="menu-nav" aria-label="Menu sections">
-    <div class="container">
+    <div class="menu-nav-inner">
+      <a href="/" class="menu-nav-logo" aria-label="Su Casa Mexican Restaurant - Home">
+        <img src="https://i.postimg.cc/Nj2jKLLq/logo.png" alt="Su Casa" />
+      </a>
       <ul class="menu-nav-list">
-        <li><a href="#appetizers">Appetizers</a></li>
-        <li><a href="#house-favorites">House Favorites</a></li>
-        <li><a href="#specialty-plates">Specialty Plates</a></li>
-        <li><a href="#combinations">Combinations</a></li>
-        <li><a href="#a-la-carte">A La Carte</a></li>
-        <li><a href="#dessert">Dessert</a></li>
-        <li><a href="#sides">Sides</a></li>
-        <li><a href="#drinks">Drinks</a></li>
+        <li><a href="#appetizers" data-section="appetizers">Appetizers</a></li>
+        <li><a href="#house-favorites" data-section="house-favorites">House Favorites</a></li>
+        <li><a href="#specialty-plates" data-section="specialty-plates">Specialty Plates</a></li>
+        <li><a href="#combinations" data-section="combinations">Combinations</a></li>
+        <li><a href="#a-la-carte" data-section="a-la-carte">A La Carte</a></li>
+        <li><a href="#dessert" data-section="dessert">Dessert</a></li>
+        <li><a href="#sides" data-section="sides">Sides</a></li>
+        <li><a href="#drinks" data-section="drinks">Drinks</a></li>
       </ul>
     </div>
   </nav>
@@ -344,6 +347,28 @@ const drinks = [
     top: 100px;
     z-index: 50;
     box-shadow: var(--shadow-sm);
+    transition: top 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .menu-nav-inner {
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+  }
+
+  .menu-nav-logo {
+    display: none;
+    flex-shrink: 0;
+    margin-right: var(--spacing-sm);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .menu-nav-logo img {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   }
 
   .menu-nav-list {
@@ -356,6 +381,8 @@ const drinks = [
     margin: 0;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    flex: 1;
   }
 
   .menu-nav-list::-webkit-scrollbar {
@@ -377,6 +404,11 @@ const drinks = [
   .menu-nav-list a:hover {
     background: var(--color-cream);
     color: var(--color-primary);
+  }
+
+  .menu-nav-list a.active {
+    background: var(--color-primary);
+    color: white;
   }
 
   /* Menu Content */
@@ -656,4 +688,192 @@ const drinks = [
       padding: var(--spacing-sm);
     }
   }
+
+  /* Mobile menu nav docked mode - replaces header when scrolled past banner */
+  @media (max-width: 768px) {
+    .menu-nav.docked {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      border-radius: 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      padding: 0.25rem 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+    }
+
+    .menu-nav.docked .menu-nav-logo {
+      display: block;
+    }
+
+    .menu-nav.docked .menu-nav-logo img {
+      height: 40px;
+    }
+
+    .menu-nav.docked .menu-nav-list {
+      justify-content: flex-start;
+      padding: 0.5rem 0;
+    }
+
+    .menu-nav.docked .menu-nav-list a {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .menu-section {
+      scroll-margin-top: 70px;
+    }
+
+    .menu-nav.docked ~ .menu-content .menu-section {
+      scroll-margin-top: 70px;
+    }
+  }
+
+  /* Spacer for when menu-nav is docked (fixed) */
+  .menu-nav-spacer {
+    display: none;
+    height: 60px;
+  }
+
+  @media (max-width: 768px) {
+    .menu-nav-spacer.visible {
+      display: block;
+    }
+  }
 </style>
+
+<script>
+  // Smart mobile menu navigation
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuNav = document.querySelector('.menu-nav');
+    const menuNavList = document.querySelector('.menu-nav-list');
+    const header = document.querySelector('.header');
+    const banner = document.querySelector('.page-banner');
+    const sections = document.querySelectorAll('.menu-section');
+    const navLinks = document.querySelectorAll('.menu-nav-list a');
+
+    // Create spacer element for when nav is docked
+    const spacer = document.createElement('div');
+    spacer.className = 'menu-nav-spacer';
+    menuNav?.parentNode?.insertBefore(spacer, menuNav.nextSibling);
+
+    // Check if we're on mobile
+    const isMobile = () => window.innerWidth <= 768;
+
+    // Get banner bottom position
+    const getBannerBottom = () => {
+      if (!banner) return 250;
+      const rect = banner.getBoundingClientRect();
+      return rect.bottom + window.scrollY;
+    };
+
+    // Handle scroll for docking/undocking menu nav
+    const handleScroll = () => {
+      if (!isMobile() || !menuNav || !header) return;
+
+      const scrollY = window.scrollY;
+      const bannerBottom = getBannerBottom();
+
+      // Dock the menu nav when scrolled past the banner
+      if (scrollY > bannerBottom - 60) {
+        menuNav.classList.add('docked');
+        spacer.classList.add('visible');
+        header.style.transform = 'translateY(-150%)';
+        header.style.opacity = '0';
+        header.style.pointerEvents = 'none';
+      } else {
+        menuNav.classList.remove('docked');
+        spacer.classList.remove('visible');
+        header.style.transform = '';
+        header.style.opacity = '';
+        header.style.pointerEvents = '';
+      }
+    };
+
+    // Intersection Observer for tracking active section
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    let activeSection = null;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeSection = entry.target.id;
+          updateActiveNav(activeSection);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all menu sections
+    sections.forEach(section => observer.observe(section));
+
+    // Update active nav link and scroll it into view
+    const updateActiveNav = (sectionId) => {
+      navLinks.forEach(link => {
+        const linkSection = link.getAttribute('data-section');
+        if (linkSection === sectionId) {
+          link.classList.add('active');
+          // Scroll the active link into view in the nav bar
+          if (menuNavList && isMobile()) {
+            const linkRect = link.getBoundingClientRect();
+            const listRect = menuNavList.getBoundingClientRect();
+            const scrollLeft = link.offsetLeft - (listRect.width / 2) + (linkRect.width / 2);
+            menuNavList.scrollTo({
+              left: Math.max(0, scrollLeft),
+              behavior: 'smooth'
+            });
+          }
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    };
+
+    // Smooth scroll handling for nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const offset = isMobile() && menuNav?.classList.contains('docked') ? 70 : 220;
+          const top = section.offsetTop - offset;
+          window.scrollTo({
+            top: top,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Add scroll listener
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      handleScroll();
+    });
+
+    // Initial check
+    handleScroll();
+
+    // Set initial active section
+    if (sections.length > 0) {
+      updateActiveNav(sections[0].id);
+    }
+  });
+</script>
