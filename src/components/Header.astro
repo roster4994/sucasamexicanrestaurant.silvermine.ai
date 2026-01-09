@@ -65,7 +65,7 @@ const currentPath = Astro.url.pathname;
           <li role="none">
             <a
               href={item.href}
-              class:list={['nav-link', { active: currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }]}
+              class:list={['nav-link', { active: currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)), 'order-online-link': item.href === '/order' }]}
               role="menuitem"
             >
               {item.label}
@@ -277,6 +277,8 @@ const currentPath = Astro.url.pathname;
     overflow-y: auto;
     list-style: none;
     margin: 0;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
   }
 
   .mobile-menu.open {
@@ -292,6 +294,30 @@ const currentPath = Astro.url.pathname;
 
   .mobile-menu .nav-link:hover {
     transform: translateX(10px);
+  }
+
+  /* Order Online link highlight in mobile menu */
+  .mobile-menu .order-online-link {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    margin-top: 0.5rem;
+    border-bottom: none;
+    animation: pulse-highlight 2s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+
+  .mobile-menu .order-online-link:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateX(10px) scale(1.02);
+  }
+
+  @keyframes pulse-highlight {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.3);
+    }
   }
 
   /* Mobile Responsive */
