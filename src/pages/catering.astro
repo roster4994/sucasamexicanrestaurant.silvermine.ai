@@ -1,38 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const cateringOptions = [
-  {
-    title: "Taco Bar",
-    description: "Build-your-own taco station with choice of proteins, fresh toppings, and salsas",
-    includes: ["Choice of 2-3 proteins", "Flour & corn tortillas", "Fresh toppings bar", "Chips & salsa", "Rice & beans"]
-  },
-  {
-    title: "Burrito Bar",
-    description: "Hearty burrito station with all the fixings for a satisfying meal",
-    includes: ["Choice of proteins", "Large flour tortillas", "Rice & beans", "Cheese & sour cream", "Multiple salsas"]
-  },
-  {
-    title: "Enchilada Platter",
-    description: "Classic enchiladas served family-style with all the accompaniments",
-    includes: ["Choice of enchilada style", "Red & green sauces", "Mexican rice", "Refried beans", "Sour cream & guacamole"]
-  },
-  {
-    title: "Fajita Fiesta",
-    description: "Sizzling fajitas with all the trimmings for an impressive spread",
-    includes: ["Chicken & steak options", "Grilled peppers & onions", "Warm tortillas", "Guacamole & sour cream", "Rice & beans"]
-  },
-  {
-    title: "Appetizer Package",
-    description: "Perfect for cocktail parties and pre-event gatherings",
-    includes: ["Chips & salsa", "Guacamole", "Queso dip", "Mini quesadillas", "Loaded nachos"]
-  },
-  {
-    title: "Custom Menu",
-    description: "Work with us to create the perfect menu for your specific event",
-    includes: ["Personalized consultation", "Custom menu design", "Flexible pricing", "Dietary accommodations", "Full-service options"]
-  }
-];
 ---
 
 <Layout
@@ -47,30 +14,20 @@ const cateringOptions = [
 
   <div class="catering-content">
     <div class="container">
-      <!-- Catering Options -->
-      <section class="catering-options">
-        <h2 class="section-title">Catering Packages</h2>
-        <div class="options-grid">
-          {cateringOptions.map((option) => (
-            <div class="option-card">
-              <h3>{option.title}</h3>
-              <p class="option-desc">{option.description}</p>
-              <ul class="option-includes">
-                {option.includes.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+      <!-- Taco Bar Promo -->
+      <div class="taco-bar-promo">
+        <img src="https://i.postimg.cc/0N2Q9NX8/Copy-of-8.jpg" alt="Su Casa Taco Bar" class="taco-bar-image" />
+        <div class="taco-bar-content">
+          <p>Planning a party or family gathering? Our popular <strong>Taco Bar</strong> is just <strong>$8.59 per person</strong> and includes tacos, rice, beans, chips, and salsa!</p>
+          <a href="tel:+18012551042" class="taco-bar-phone">Call (801) 255 - 1042</a>
         </div>
-      </section>
+      </div>
 
       <!-- Inquiry Form -->
       <section class="inquiry-section" id="inquiry-form">
         <div class="form-container">
           <div class="form-header">
-            <h2>Request a Catering Quote</h2>
-            <p>Fill out the form below and we'll get back to you within 24 hours</p>
+            <p>Please fill out the form below and we'll do our best to accommodate your desired date and any requests you may have to make your party or celebration memorable.</p>
           </div>
           <form class="catering-form" action="#" method="POST">
             <div class="form-row">
@@ -95,12 +52,18 @@ const cateringOptions = [
             </div>
             <div class="form-row">
               <div class="form-group">
+                <label for="time" class="form-label">Event Time *</label>
+                <input type="time" id="time" name="time" class="form-input" required>
+              </div>
+              <div class="form-group">
                 <label for="guests" class="form-label">Number of Guests *</label>
                 <input type="number" id="guests" name="guests" class="form-input" min="1" required>
               </div>
+            </div>
+            <div class="form-row">
               <div class="form-group">
-                <label for="event-type" class="form-label">Event Type</label>
-                <select id="event-type" name="event-type" class="form-select">
+                <label for="event-type" class="form-label">Event Type *</label>
+                <select id="event-type" name="event-type" class="form-select" required>
                   <option value="">Select event type</option>
                   <option value="birthday">Birthday Party</option>
                   <option value="corporate">Corporate Event</option>
@@ -110,6 +73,17 @@ const cateringOptions = [
                   <option value="other">Other</option>
                 </select>
               </div>
+              <div class="form-group">
+                <label for="budget" class="form-label">Budget per Person</label>
+                <div class="input-with-prefix">
+                  <span class="input-prefix">$</span>
+                  <input type="number" id="budget" name="budget" class="form-input form-input-prefixed" min="0" step="0.01" placeholder="0.00">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="referral" class="form-label">How did you hear about us?</label>
+              <input type="text" id="referral" name="referral" class="form-input" placeholder="e.g., Google, friend, social media...">
             </div>
             <div class="form-group">
               <label for="message" class="form-label">Additional Details</label>
@@ -128,7 +102,7 @@ const cateringOptions = [
         <div class="cta-content">
           <h2>Prefer to Talk?</h2>
           <p>Give us a call to discuss your catering needs directly with our team</p>
-          <a href="tel:+18012551042" class="btn btn-secondary">Call (801) 255-1042</a>
+          <a href="tel:+18012551042" class="btn btn-secondary">Call (801) 255 - 1042</a>
         </div>
       </section>
     </div>
@@ -161,11 +135,6 @@ const cateringOptions = [
 
   .catering-content {
     padding: var(--spacing-xl) 0;
-  }
-
-  /* Catering Options */
-  .catering-options {
-    margin-bottom: var(--spacing-xl);
   }
 
   .options-grid {
@@ -227,26 +196,85 @@ const cateringOptions = [
 
   /* Inquiry Form */
   .inquiry-section {
-    background: white;
+    background: linear-gradient(135deg, #fff 0%, #fef9f3 100%);
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     margin-bottom: var(--spacing-lg);
+    border-top: 5px solid var(--color-primary);
+    border-bottom: 3px solid var(--color-tertiary);
+  }
+
+  .taco-bar-promo {
+    background: linear-gradient(135deg, var(--color-tertiary) 0%, #f5a623 100%);
+    color: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .taco-bar-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+  }
+
+  .taco-bar-content {
+    flex: 1;
+  }
+
+  .taco-bar-promo p {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: 1rem;
+  }
+
+  .taco-bar-promo strong {
+    color: white;
+  }
+
+  .taco-bar-phone {
+    display: inline-block;
+    background: white;
+    color: var(--color-brown-dark);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-top: var(--spacing-xs);
+    transition: all var(--transition-normal);
+  }
+
+  .taco-bar-phone:hover {
+    background: var(--color-cream);
+    transform: translateY(-2px);
   }
 
   .form-header {
     text-align: center;
     margin-bottom: var(--spacing-md);
-  }
-
-  .form-header h2 {
-    color: var(--color-brown-dark);
-    margin-bottom: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background: linear-gradient(90deg, var(--color-primary), var(--color-tertiary));
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 
   .form-header p {
-    color: var(--color-text-light);
+    color: var(--color-text);
     margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .form-label {
+    color: var(--color-brown-dark);
+    font-weight: 600;
   }
 
   .form-row {
@@ -266,22 +294,55 @@ const cateringOptions = [
     margin-top: var(--spacing-sm);
   }
 
+  /* Input with prefix */
+  .input-with-prefix {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .input-prefix {
+    position: absolute;
+    left: 12px;
+    color: var(--color-text);
+    font-weight: 500;
+    z-index: 1;
+  }
+
+  .form-input-prefixed {
+    padding-left: 28px;
+  }
+
   /* Contact CTA */
   .contact-cta {
     text-align: center;
-    padding: var(--spacing-md);
-    background: linear-gradient(135deg, var(--color-cream) 0%, #fefefe 100%);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-tertiary) 0%, #f5a623 100%);
     border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
   }
 
   .contact-cta h2 {
-    color: var(--color-brown-dark);
+    color: white;
     margin-bottom: var(--spacing-xs);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   }
 
   .contact-cta p {
-    color: var(--color-text);
+    color: white;
     margin-bottom: var(--spacing-sm);
+  }
+
+  .contact-cta .btn-secondary {
+    background: white;
+    color: var(--color-brown-dark);
+    border: none;
+    font-weight: 600;
+  }
+
+  .contact-cta .btn-secondary:hover {
+    background: var(--color-cream);
+    transform: translateY(-2px);
   }
 
   @media (max-width: 768px) {
@@ -291,6 +352,16 @@ const cateringOptions = [
 
     .catering-page-wrapper {
       padding-top: 250px;
+    }
+
+    .taco-bar-promo {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .taco-bar-image {
+      width: 100px;
+      height: 100px;
     }
 
     .form-row {
