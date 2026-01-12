@@ -18,6 +18,7 @@ import Layout from '../layouts/Layout.astro';
       <section class="inquiry-section" id="inquiry-form">
         <div class="form-container">
           <div class="taco-bar-promo">
+            <img src="https://i.postimg.cc/0N2Q9NX8/Copy-of-8.jpg" alt="Su Casa Taco Bar" class="taco-bar-image" />
             <p>Planning a party or family gathering? Our popular <strong>Taco Bar</strong> is just <strong>$8.59 per person</strong> and includes tacos, rice, beans, chips, and salsa!</p>
           </div>
           <div class="form-header">
@@ -206,6 +207,15 @@ import Layout from '../layouts/Layout.astro';
     border-radius: var(--radius-md);
     text-align: center;
     margin-bottom: var(--spacing-md);
+  }
+
+  .taco-bar-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 
   .taco-bar-promo p {
