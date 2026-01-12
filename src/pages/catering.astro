@@ -23,7 +23,6 @@ import Layout from '../layouts/Layout.astro';
       <section class="inquiry-section" id="inquiry-form">
         <div class="form-container">
           <div class="form-header">
-            <h2>Request a Catering Quote</h2>
             <p>Please fill out the form below and we'll do our best to accommodate your desired date and any requests you may have to make your party or celebration memorable.</p>
           </div>
           <form class="catering-form" action="#" method="POST">
@@ -136,7 +135,28 @@ import Layout from '../layouts/Layout.astro';
 
   /* Catering Options */
   .catering-options {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+  }
+
+  .catering-options .section-title {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .catering-options::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-tertiary));
+    margin: var(--spacing-sm) auto 0;
+    border-radius: 2px;
   }
 
   .options-grid {
@@ -198,26 +218,33 @@ import Layout from '../layouts/Layout.astro';
 
   /* Inquiry Form */
   .inquiry-section {
-    background: white;
+    background: linear-gradient(135deg, #fff 0%, #fef9f3 100%);
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     margin-bottom: var(--spacing-lg);
+    border-top: 5px solid var(--color-primary);
+    border-bottom: 3px solid var(--color-tertiary);
   }
 
   .form-header {
     text-align: center;
     margin-bottom: var(--spacing-md);
-  }
-
-  .form-header h2 {
-    color: var(--color-brown-dark);
-    margin-bottom: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background: linear-gradient(90deg, var(--color-primary), var(--color-tertiary));
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 
   .form-header p {
-    color: var(--color-text-light);
+    color: var(--color-text);
     margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .form-label {
+    color: var(--color-brown-dark);
+    font-weight: 600;
   }
 
   .form-row {
@@ -259,19 +286,33 @@ import Layout from '../layouts/Layout.astro';
   /* Contact CTA */
   .contact-cta {
     text-align: center;
-    padding: var(--spacing-md);
-    background: linear-gradient(135deg, var(--color-cream) 0%, #fefefe 100%);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-tertiary) 0%, #f5a623 100%);
     border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
   }
 
   .contact-cta h2 {
-    color: var(--color-brown-dark);
+    color: white;
     margin-bottom: var(--spacing-xs);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   }
 
   .contact-cta p {
-    color: var(--color-text);
+    color: white;
     margin-bottom: var(--spacing-sm);
+  }
+
+  .contact-cta .btn-secondary {
+    background: white;
+    color: var(--color-brown-dark);
+    border: none;
+    font-weight: 600;
+  }
+
+  .contact-cta .btn-secondary:hover {
+    background: var(--color-cream);
+    transform: translateY(-2px);
   }
 
   @media (max-width: 768px) {
