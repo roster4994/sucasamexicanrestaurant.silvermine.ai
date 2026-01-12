@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const appetizers = [
   { name: "Cheese Crisp", description: "A deep-fried flour tortilla topped with melted cheese", price: "$5.39" },
   { name: "Nachos", description: "A heaping plate of tortilla chips smothered with melted cheese", price: "$7.89" },
-  { name: "Queso Dip", description: "Melted cream cheese, diced Anaheim Chiles, and roasted corn served in a skillet with tortilla chips", price: "Small $4.99 | Large $8.79", image: "/menu/photos/queso-dip-2.jpg" },
+  { name: "Queso Dip", description: "Melted cream cheese, diced Anaheim Chiles, and roasted corn served in a skillet with tortilla chips", price: "Small $4.99 | Large $8.79", image: "https://i.postimg.cc/mZKMp9ZB/Copy-of-queso-dip-pic.jpg" },
   { name: "Quesadilla App", description: "A flour tortilla covered with melted cheese, tomatoes, olives, lettuce, sour cream, and guacamole | add your choice of meat for $3.29", price: "$8.99" },
   { name: "Guacamole and Chips", description: "Fresh guacamole topped with pico de gallo and crispy tortilla chips", price: "$9.99" },
   { name: "House Salad", description: "Chilled lettuce, tomatoes and shredded cheese served with your choice of dressing", price: "$6.19" },
@@ -20,31 +20,31 @@ const houseFavorites = [
   { name: "Large Soft Shelled Taco", description: "A huge soft shell taco filled with your choice of meat. Enchilada style for just $1.99 extra", price: "$9.99" },
   { name: "Quesadillas", description: "A large tortilla covered with melted cheese. Tomatoes, olives, onions, lettuce, sour cream, and guacamole are served on the side for you to garnish. Add meat for just $3.70 extra", price: "$10.59" },
   { name: "Chile Verde Dinner", description: "A generous serving of our homemade chile verde served with hot flour tortillas", price: "$13.69", image: "/menu/photos/chile-verde-dinner.jpg" },
-  { name: "Chimichanga", description: "A deep-fried burrito filled with your choice of meat topped with sour cream and cheese.", price: "$12.99", image: "/menu/photos/chimichanga.jpg" },
+  { name: "Chimichanga", description: "A deep-fried burrito filled with your choice of meat topped with sour cream and cheese.", price: "$12.99", image: "https://i.postimg.cc/nhFL3VDy/Copy-of-Chimichanga-copy.jpg" },
   { name: "Veggie Burrito Grande", description: "A huge burrito stuffed with beans, rice, lettuce, tomatoes, olives, cheese, sour cream, guacamole & hot sauce. (Served enchilada style for just $1.99 extra)", price: "$10.99" },
 ];
 
 const specialtyPlates = [
-  { name: "Mexican Pizza", description: "A layer of beans and your choice of meat between two crisp flour tortillas, covered with enchilada sauce, cheese, olives, tomatoes, guacamole, and sour cream", price: "Medium $10.99 | Large $12.99", image: "/menu/photos/mexican-pizza.jpg" },
-  { name: "Nachos Supreme", description: "Tortilla chips covered with melted cheese, refried beans, olives, tomatoes, guacamole, sour cream, and your choice of meat", price: "Medium Plate $11.19 | Large Plate $14.49", image: "/menu/photos/nachos-supreme-2.jpg" },
+  { name: "Mexican Pizza", description: "A layer of beans and your choice of meat between two crisp flour tortillas, covered with enchilada sauce, cheese, olives, tomatoes, guacamole, and sour cream", price: "Medium $10.99 | Large $12.99", image: "https://i.postimg.cc/3wyYqkx7/Copy-of-mexican-pizza.jpg" },
+  { name: "Nachos Supreme", description: "Tortilla chips covered with melted cheese, refried beans, olives, tomatoes, guacamole, sour cream, and your choice of meat", price: "Medium Plate $11.19 | Large Plate $14.49", image: "https://i.postimg.cc/FzhthzNh/Copy-of-nacho-supreme-1167.jpg" },
   { name: "Taco Salad", description: "A large flour tortilla, fried crisp and filled with lettuce, beans, cheese, tomatoes, olives, sour cream, and guacamole. Served with your choice of meat", price: "$13.99" },
-  { name: "Tostada Supreme", description: "A crisp tortilla covered with beans, lettuce, cheese, tomatoes, olives, sour cream, guacamole, and your choice of meat", price: "$14.79", image: "/menu/photos/tostada-supreme-2.jpg" },
+  { name: "Tostada Supreme", description: "A crisp tortilla covered with beans, lettuce, cheese, tomatoes, olives, sour cream, guacamole, and your choice of meat", price: "$14.79", image: "https://i.postimg.cc/qRXYDrn9/Copy-of-tostada-supreme-copy.jpg" },
   { name: "Gordita", description: "Grilled Chicken served on Mexican fry bread and topped with chipotle cheese sauce, tortilla strips, shredded jack", price: "$10.49" },
-  { name: "Grilled Chicken Salad", description: "Grilled fajita chicken served atop a healthy portion of romaine lettuce, homemade salsa, Monterey Jack cheese, and tortilla strips", price: "$11.99", image: "/menu/photos/grilled-chicken-salad.jpg" },
-  { name: "Fajitas", description: "Marinated strips of steak or chicken, bell peppers, and onions served sizzling on a cast iron skillet with cheese, black beans, sour cream, guacamole, and hot tortillas", price: "Veggie $13.89 | Chicken $17.29 | Steak $18.99", image: "/menu/photos/fajitas.jpg" },
+  { name: "Grilled Chicken Salad", description: "Grilled fajita chicken served atop a healthy portion of romaine lettuce, homemade salsa, Monterey Jack cheese, and tortilla strips", price: "$11.99" },
+  { name: "Fajitas", description: "Marinated strips of steak or chicken, bell peppers, and onions served sizzling on a cast iron skillet with cheese, black beans, sour cream, guacamole, and hot tortillas", price: "Veggie $13.89 | Chicken $17.29 | Steak $18.99" },
   { name: "Enchilada Plate", description: "Add your choice of meat for $1.30 for each enchilada", price: "Two Enchilada Plate $8.49 | Three Enchilada Plate $11.09" },
   { name: "Lunch Special", description: "A bean and cheese burrito served enchilada style with a bean tostada. Add meat for $3.29", price: "$7.89 | $9.49 (after 5pm)" },
   { name: "Dinner Special", description: "A burrito with your choice of meat served with refried or black beans and rice. Served with a cheese enchilada.", price: "$12.39" },
 ];
 
 const combinations = [
-  { name: "#1 Cheese enchilada, taco", price: "$11.19", image: "/menu/photos/cheese-enchilada-taco.jpg" },
-  { name: "#2 Two cheese enchiladas, taco, bean tostada", price: "$14.59" },
+  { name: "#1 Cheese enchilada, taco", price: "$11.19", image: "https://i.postimg.cc/qqqLcHGY/Copy-of-1-copy.jpg" },
+  { name: "#2 Two cheese enchiladas, taco, bean tostada", price: "$14.59", image: "https://i.postimg.cc/Tw7j3HXn/Copy-of-2.jpg" },
   { name: "#3 Two cheese enchiladas", price: "$10.99" },
   { name: "#4 Bean tostada, cheese enchilada", price: "$11.49" },
   { name: "#5 Beef enchilada, cheese enchilada, taco", price: "$14.59" },
   { name: "#6 Burrito verde", price: "$11.99" },
-  { name: "#7 Burrito verde, bean tostada & cheese enchilada", price: "$14.19" },
+  { name: "#7 Burrito verde, bean tostada & cheese enchilada", price: "$14.19", image: "https://i.postimg.cc/RVwKn077/Copy-of-7-copy.jpg" },
   { name: "#8 Taco", price: "$7.89", image: "/menu/photos/taco.jpg" },
   { name: "#9 Cheese enchilada", price: "$7.29" },
   { name: "#10 Bean tostada", price: "$7.89" },
@@ -689,45 +689,39 @@ const drinks = [
     }
   }
 
-  /* Mobile menu nav docked mode - replaces header when scrolled past banner */
-  @media (max-width: 768px) {
-    .menu-nav.docked {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      border-radius: 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-      padding: 0.25rem 0;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-    }
+  /* Menu nav docked mode - replaces header when scrolled past banner */
+  .menu-nav.docked {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    padding: 0.25rem 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+  }
 
-    .menu-nav.docked .menu-nav-logo {
-      display: block;
-    }
+  .menu-nav.docked .menu-nav-logo {
+    display: block;
+  }
 
-    .menu-nav.docked .menu-nav-logo img {
-      height: 40px;
-    }
+  .menu-nav.docked .menu-nav-logo img {
+    height: 40px;
+  }
 
-    .menu-nav.docked .menu-nav-list {
-      justify-content: flex-start;
-      padding: 0.5rem 0;
-    }
+  .menu-nav.docked .menu-nav-list {
+    justify-content: flex-start;
+    padding: 0.5rem 0;
+  }
 
-    .menu-nav.docked .menu-nav-list a {
-      padding: 0.4rem 0.75rem;
-      font-size: 0.85rem;
-    }
+  .menu-nav.docked .menu-nav-list a {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
 
-    .menu-section {
-      scroll-margin-top: 70px;
-    }
-
-    .menu-nav.docked ~ .menu-content .menu-section {
-      scroll-margin-top: 70px;
-    }
+  .menu-nav.docked ~ .menu-content .menu-section {
+    scroll-margin-top: 70px;
   }
 
   /* Spacer for when menu-nav is docked (fixed) */
@@ -736,15 +730,25 @@ const drinks = [
     height: 60px;
   }
 
-  @media (max-width: 768px) {
-    .menu-nav-spacer.visible {
-      display: block;
+  .menu-nav-spacer.visible {
+    display: block;
+  }
+
+  /* Desktop docked adjustments */
+  @media (min-width: 769px) {
+    .menu-nav.docked .menu-nav-logo img {
+      height: 50px;
+    }
+
+    .menu-nav.docked .menu-nav-list a {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
     }
   }
 </style>
 
 <script>
-  // Smart mobile menu navigation
+  // Smart menu navigation - works on both mobile and desktop
   document.addEventListener('DOMContentLoaded', () => {
     const menuNav = document.querySelector('.menu-nav');
     const menuNavList = document.querySelector('.menu-nav-list');
@@ -770,7 +774,7 @@ const drinks = [
 
     // Handle scroll for docking/undocking menu nav
     const handleScroll = () => {
-      if (!isMobile() || !menuNav || !header) return;
+      if (!menuNav || !header) return;
 
       const scrollY = window.scrollY;
       const bannerBottom = getBannerBottom();
