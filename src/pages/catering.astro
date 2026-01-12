@@ -14,11 +14,6 @@ import Layout from '../layouts/Layout.astro';
 
   <div class="catering-content">
     <div class="container">
-      <!-- Catering Section -->
-      <section class="catering-options">
-        <h2 class="section-title">Catering</h2>
-      </section>
-
       <!-- Inquiry Form -->
       <section class="inquiry-section" id="inquiry-form">
         <div class="form-container">
@@ -131,32 +126,6 @@ import Layout from '../layouts/Layout.astro';
 
   .catering-content {
     padding: var(--spacing-xl) 0;
-  }
-
-  /* Catering Options */
-  .catering-options {
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
-  }
-
-  .catering-options .section-title {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .catering-options::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-tertiary));
-    margin: var(--spacing-sm) auto 0;
-    border-radius: 2px;
   }
 
   .options-grid {
