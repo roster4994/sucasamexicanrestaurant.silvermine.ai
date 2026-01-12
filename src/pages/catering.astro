@@ -1,38 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const cateringOptions = [
-  {
-    title: "Taco Bar",
-    description: "Build-your-own taco station with choice of proteins, fresh toppings, and salsas",
-    includes: ["Choice of 2-3 proteins", "Flour & corn tortillas", "Fresh toppings bar", "Chips & salsa", "Rice & beans"]
-  },
-  {
-    title: "Burrito Bar",
-    description: "Hearty burrito station with all the fixings for a satisfying meal",
-    includes: ["Choice of proteins", "Large flour tortillas", "Rice & beans", "Cheese & sour cream", "Multiple salsas"]
-  },
-  {
-    title: "Enchilada Platter",
-    description: "Classic enchiladas served family-style with all the accompaniments",
-    includes: ["Choice of enchilada style", "Red & green sauces", "Mexican rice", "Refried beans", "Sour cream & guacamole"]
-  },
-  {
-    title: "Fajita Fiesta",
-    description: "Sizzling fajitas with all the trimmings for an impressive spread",
-    includes: ["Chicken & steak options", "Grilled peppers & onions", "Warm tortillas", "Guacamole & sour cream", "Rice & beans"]
-  },
-  {
-    title: "Appetizer Package",
-    description: "Perfect for cocktail parties and pre-event gatherings",
-    includes: ["Chips & salsa", "Guacamole", "Queso dip", "Mini quesadillas", "Loaded nachos"]
-  },
-  {
-    title: "Custom Menu",
-    description: "Work with us to create the perfect menu for your specific event",
-    includes: ["Personalized consultation", "Custom menu design", "Flexible pricing", "Dietary accommodations", "Full-service options"]
-  }
-];
 ---
 
 <Layout
@@ -47,22 +14,9 @@ const cateringOptions = [
 
   <div class="catering-content">
     <div class="container">
-      <!-- Catering Options -->
+      <!-- Catering Section -->
       <section class="catering-options">
-        <h2 class="section-title">Catering Packages</h2>
-        <div class="options-grid">
-          {cateringOptions.map((option) => (
-            <div class="option-card">
-              <h3>{option.title}</h3>
-              <p class="option-desc">{option.description}</p>
-              <ul class="option-includes">
-                {option.includes.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <h2 class="section-title">Catering</h2>
       </section>
 
       <!-- Inquiry Form -->
@@ -70,7 +24,7 @@ const cateringOptions = [
         <div class="form-container">
           <div class="form-header">
             <h2>Request a Catering Quote</h2>
-            <p>Fill out the form below and we'll get back to you within 24 hours</p>
+            <p>Please fill out the form below and we'll do our best to accommodate your desired date and any requests you may have to make your party or celebration memorable.</p>
           </div>
           <form class="catering-form" action="#" method="POST">
             <div class="form-row">
@@ -95,12 +49,18 @@ const cateringOptions = [
             </div>
             <div class="form-row">
               <div class="form-group">
+                <label for="time" class="form-label">Event Time *</label>
+                <input type="time" id="time" name="time" class="form-input" required>
+              </div>
+              <div class="form-group">
                 <label for="guests" class="form-label">Number of Guests *</label>
                 <input type="number" id="guests" name="guests" class="form-input" min="1" required>
               </div>
+            </div>
+            <div class="form-row">
               <div class="form-group">
-                <label for="event-type" class="form-label">Event Type</label>
-                <select id="event-type" name="event-type" class="form-select">
+                <label for="event-type" class="form-label">Event Type *</label>
+                <select id="event-type" name="event-type" class="form-select" required>
                   <option value="">Select event type</option>
                   <option value="birthday">Birthday Party</option>
                   <option value="corporate">Corporate Event</option>
@@ -110,6 +70,17 @@ const cateringOptions = [
                   <option value="other">Other</option>
                 </select>
               </div>
+              <div class="form-group">
+                <label for="budget" class="form-label">Budget per Person</label>
+                <div class="input-with-prefix">
+                  <span class="input-prefix">$</span>
+                  <input type="number" id="budget" name="budget" class="form-input form-input-prefixed" min="0" step="0.01" placeholder="0.00">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="referral" class="form-label">How did you hear about us?</label>
+              <input type="text" id="referral" name="referral" class="form-input" placeholder="e.g., Google, friend, social media...">
             </div>
             <div class="form-group">
               <label for="message" class="form-label">Additional Details</label>
@@ -264,6 +235,25 @@ const cateringOptions = [
     color: var(--color-text-light);
     font-size: 0.85rem;
     margin-top: var(--spacing-sm);
+  }
+
+  /* Input with prefix */
+  .input-with-prefix {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .input-prefix {
+    position: absolute;
+    left: 12px;
+    color: var(--color-text);
+    font-weight: 500;
+    z-index: 1;
+  }
+
+  .form-input-prefixed {
+    padding-left: 28px;
   }
 
   /* Contact CTA */
