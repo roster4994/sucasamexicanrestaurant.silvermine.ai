@@ -17,6 +17,9 @@ import Layout from '../layouts/Layout.astro';
       <!-- Inquiry Form -->
       <section class="inquiry-section" id="inquiry-form">
         <div class="form-container">
+          <div class="taco-bar-promo">
+            <p>Planning a party or family gathering? Our popular <strong>Taco Bar</strong> is just <strong>$8.59 per person</strong> and includes tacos, rice, beans, chips, and salsa!</p>
+          </div>
           <div class="form-header">
             <p>Please fill out the form below and we'll do our best to accommodate your desired date and any requests you may have to make your party or celebration memorable.</p>
           </div>
@@ -93,7 +96,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="cta-content">
           <h2>Prefer to Talk?</h2>
           <p>Give us a call to discuss your catering needs directly with our team</p>
-          <a href="tel:+18012551042" class="btn btn-secondary">Call (801) 255-1042</a>
+          <a href="tel:+18012551042" class="btn btn-secondary">Call (801) 255 - 1042</a>
         </div>
       </section>
     </div>
@@ -194,6 +197,24 @@ import Layout from '../layouts/Layout.astro';
     margin-bottom: var(--spacing-lg);
     border-top: 5px solid var(--color-primary);
     border-bottom: 3px solid var(--color-tertiary);
+  }
+
+  .taco-bar-promo {
+    background: linear-gradient(135deg, var(--color-tertiary) 0%, #f5a623 100%);
+    color: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .taco-bar-promo p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .taco-bar-promo strong {
+    color: white;
   }
 
   .form-header {
