@@ -70,30 +70,66 @@ const testimonials = [
     <div class="collage-grid">
         <div class="collage-item collage-item-1">
           <img src="/collage/Copy of Mexican dinner copy (1).jpg" alt="Mexican Dinner" />
+          <div class="collage-overlay">
+            <span class="dish-name">Mexican Dinner</span>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+          </div>
         </div>
         <div class="collage-item collage-item-2">
           <img src="https://i.postimg.cc/fyGxtdST/Copy-of-special-burrito-copy.jpg" alt="Special Burrito" />
+          <div class="collage-overlay">
+            <span class="dish-name">Special Burrito</span>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+          </div>
         </div>
         <div class="collage-item collage-item-3">
           <img src="/collage/Copy of nacho supreme-1167 (1).jpg" alt="Nacho Supreme" />
+          <div class="collage-overlay">
+            <span class="dish-name">Nacho Supreme</span>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+          </div>
         </div>
         <div class="collage-item collage-item-4">
           <img src="/collage/Copy of queso dip pic (2).jpg" alt="Queso Dip" />
+          <div class="collage-overlay">
+            <span class="dish-name">Queso Dip</span>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+          </div>
         </div>
         <div class="collage-item collage-item-5">
-          <img src="https://i.postimg.cc/RVwKn077/Copy-of-7-copy.jpg" alt="Mexican Dish" />
+          <img src="https://i.postimg.cc/RVwKn077/Copy-of-7-copy.jpg" alt="#7 Burrito verde, bean tostada & cheese enchilada" />
+          <div class="collage-overlay">
+            <span class="dish-name">#7 Burrito verde, bean tostada & cheese enchilada</span>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+          </div>
         </div>
         <div class="collage-item collage-item-6">
-          <img src="https://i.postimg.cc/Y0jvKXt6/Copy-of-baja-dinner-(2).jpg" alt="Baja Dinner" />
+          <img src="https://i.postimg.cc/Y0jvKXt6/Copy-of-baja-dinner-(2).jpg" alt="Baja Fish Tacos" />
+          <div class="collage-overlay">
+            <span class="dish-name">Baja Fish Tacos</span>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+          </div>
         </div>
         <div class="collage-item collage-item-7">
-          <img src="/media/combo-plate-10.jpg" alt="Combo Plate" />
+          <img src="/media/combo-plate-10.jpg" alt="#10 Bean Tostada" />
+          <div class="collage-overlay">
+            <span class="dish-name">#10 Bean Tostada</span>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+          </div>
         </div>
         <div class="collage-item collage-item-8">
           <img src="/media/chili-relleno.jpg" alt="Chili Relleno" />
+          <div class="collage-overlay">
+            <span class="dish-name">Chili Relleno</span>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+          </div>
         </div>
         <div class="collage-item collage-item-9">
-          <img src="/media/beans.jpg" alt="Refried Beans" />
+          <img src="/media/beans.jpg" alt="Side of Beans and Rice" />
+          <div class="collage-overlay">
+            <span class="dish-name">Side of Beans and Rice</span>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+          </div>
         </div>
     </div>
   </section>
@@ -420,10 +456,75 @@ const testimonials = [
     opacity: 1;
   }
 
+  /* Collage Overlay Styles */
+  .collage-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+
+  .collage-item:hover .collage-overlay,
+  .collage-item.active .collage-overlay {
+    opacity: 1;
+  }
+
+  .dish-name {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    line-height: 1.3;
+  }
+
+  .order-btn {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    background-color: #74bab1;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .order-btn:hover {
+    background-color: #8eccc4;
+    transform: scale(1.05);
+  }
+
   @media (max-width: 768px) {
     .collage-grid {
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 180px);
+    }
+
+    .dish-name {
+      font-size: 0.85rem;
+    }
+
+    .order-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+    }
+
+    .collage-overlay {
+      padding: 1rem 0.5rem;
     }
   }
 
@@ -431,6 +532,19 @@ const testimonials = [
     .collage-grid {
       grid-template-columns: 1fr;
       grid-template-rows: repeat(9, 200px);
+    }
+
+    .dish-name {
+      font-size: 1rem;
+    }
+
+    .order-btn {
+      padding: 0.6rem 1.25rem;
+      font-size: 0.85rem;
+    }
+
+    .collage-overlay {
+      padding: 1.25rem 1rem;
     }
   }
 
@@ -635,5 +749,40 @@ const testimonials = [
         }
       });
     }
+
+    // Mobile tap interactions for collage items
+    const collageItems = document.querySelectorAll('.collage-item');
+
+    collageItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        // Check if the click was on the order button - if so, let it proceed normally
+        if (e.target.classList.contains('order-btn')) {
+          return;
+        }
+
+        // Check if we're on a touch device or small screen
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const isSmallScreen = window.innerWidth <= 768;
+
+        if (isTouchDevice || isSmallScreen) {
+          // If already active, close it
+          if (item.classList.contains('active')) {
+            item.classList.remove('active');
+          } else {
+            // Close all other active items
+            collageItems.forEach(other => other.classList.remove('active'));
+            // Open this one
+            item.classList.add('active');
+          }
+        }
+      });
+    });
+
+    // Close active collage item when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.collage-item')) {
+        collageItems.forEach(item => item.classList.remove('active'));
+      }
+    });
   });
 </script>
