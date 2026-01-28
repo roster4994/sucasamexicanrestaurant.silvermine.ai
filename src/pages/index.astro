@@ -156,12 +156,41 @@ const testimonials = [
   <!-- CTA Section -->
   <section class="cta section">
     <div class="container">
-      <div class="cta-content">
-        <h2>READY TO EXPERIENCE SU CASA?</h2>
-        <p>Visit us today or order online for pickup and delivery</p>
-        <div class="cta-buttons">
-          <a href="/contact" class="btn btn-primary find-location">Find Our Location</a>
-          <a href="/order" class="btn btn-secondary">Order Online</a>
+      <div class="cta-grid">
+        <div class="cta-map-container">
+          <a href="https://www.google.com/maps/place/Su+Casa+Mexican+Restaurant/@40.6264145,-111.8904448,17z/data=!3m1!4b1!4m6!3m5!1s0x875289b066322b6f:0x1b428f9fb0f21030!8m2!3d40.6264145!4d-111.8904448!16s%2Fg%2F1tffvdvd?entry=ttu" target="_blank" rel="noopener" class="map-link">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.5!2d-111.8926335!3d40.6264145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x875289b066322b6f%3A0x1b428f9fb0f21030!2sSu%20Casa%20Mexican%20Restaurant!5e0!3m2!1sen!2sus!4v1706489600000!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Su Casa Mexican Restaurant location on Google Maps">
+            </iframe>
+            <div class="map-overlay">
+              <span class="directions-text">Get Directions</span>
+            </div>
+          </a>
+          <a href="https://share.google/5fDBzyKZfgpYTgiUf" target="_blank" rel="noopener" class="gbp-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.3 132.3" width="20" height="28" class="maps-icon">
+              <path fill="#1a73e8" d="M60.2 2.2C55.8.8 51 0 46.1 0 32 0 19.3 6.4 10.8 16.5l21.8 18.3L60.2 2.2z"/>
+              <path fill="#ea4335" d="M10.8 16.5C4.1 24.5 0 34.9 0 46.1c0 8.7 1.7 15.7 4.6 22l28-33.3-21.8-18.3z"/>
+              <path fill="#4285f4" d="M46.2 28.5c9.8 0 17.7 7.9 17.7 17.7 0 4.3-1.6 8.3-4.2 11.4 0 0 13.9-16.6 27.5-32.7-5.6-10.8-15.3-19-27-22.7L32.6 34.8c3.3-3.8 8.1-6.3 13.6-6.3z"/>
+              <path fill="#fbbc04" d="M46.2 63.8c-9.8 0-17.7-7.9-17.7-17.7 0-4.3 1.5-8.3 4.1-11.3l-28 33.3c4.8 10.6 12.8 19.2 21 29.9l34.1-40.5c-3.3 3.9-8.1 6.3-13.5 6.3z"/>
+              <path fill="#34a853" d="M59.1 109.2c15.4-24.1 33.3-35 33.3-63 0-7.7-1.9-14.9-5.2-21.3L25.6 98c2.6 3.4 5.3 7.3 7.9 11.3 9.4 14.5 6.8 23.1 12.8 23.1s3.4-8.7 12.8-23.2z"/>
+            </svg>
+            <span>Review us on Google</span>
+          </a>
+        </div>
+        <div class="cta-content">
+          <h2>READY TO EXPERIENCE SU CASA?</h2>
+          <p>Visit us today or order online for pickup and delivery</p>
+          <div class="cta-buttons">
+            <a href="/contact" class="btn btn-primary find-location">Find Our Location</a>
+            <a href="/order" class="btn btn-secondary">Order Online</a>
+          </div>
         </div>
       </div>
     </div>
@@ -603,6 +632,97 @@ const testimonials = [
   /* CTA Section */
   .cta {
     background: #f2ba65;
+  }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  .cta-map-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .map-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 280px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .map-link iframe {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .map-link:hover .map-overlay,
+  .map-link.active .map-overlay {
+    opacity: 1;
+  }
+
+  .directions-text {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    border-radius: var(--radius-md);
+    transition: transform 0.3s ease;
+  }
+
+  .map-link:hover .directions-text {
+    transform: scale(1.05);
+  }
+
+  .gbp-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .gbp-link:hover {
+    background: #f5f5f5;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .maps-icon {
+    flex-shrink: 0;
+  }
+
+  .cta-content {
     text-align: center;
   }
 
@@ -685,6 +805,23 @@ const testimonials = [
 
     .about-content {
       text-align: center;
+    }
+
+    .cta-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .cta-map-container {
+      order: 1;
+    }
+
+    .cta-content {
+      order: 0;
+    }
+
+    .map-link {
+      height: 250px;
     }
   }
 
@@ -784,5 +921,30 @@ const testimonials = [
         collageItems.forEach(item => item.classList.remove('active'));
       }
     });
+
+    // Mobile tap for map "Get Directions" overlay
+    const mapLink = document.querySelector('.map-link');
+    if (mapLink) {
+      mapLink.addEventListener('click', (e) => {
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const isSmallScreen = window.innerWidth <= 768;
+
+        if (isTouchDevice || isSmallScreen) {
+          // If not already showing overlay, show it first
+          if (!mapLink.classList.contains('active')) {
+            e.preventDefault();
+            mapLink.classList.add('active');
+          }
+          // If already active, let the click proceed to the link
+        }
+      });
+
+      // Close map overlay when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.map-link')) {
+          mapLink.classList.remove('active');
+        }
+      });
+    }
   });
 </script>

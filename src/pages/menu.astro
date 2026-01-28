@@ -504,30 +504,34 @@ const drinks = [
 
   .menu-item:hover {
     box-shadow: var(--shadow-md);
-    transform: translateX(5px);
   }
 
-  /* Order Now Button */
+  /* Order Now Button - slides from right */
   .order-now-btn {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    top: 0;
     right: 0;
+    bottom: 0;
+    width: 100px;
     background: var(--color-primary);
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 0.75rem;
+    padding: 0.5rem;
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 0.9rem;
-    transform: translateY(100%);
+    font-size: 0.8rem;
+    transform: translateX(100%);
     transition: transform 0.3s ease;
+    writing-mode: horizontal-tb;
   }
 
   .menu-item:hover .order-now-btn {
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   .order-now-btn:hover {
@@ -536,7 +540,22 @@ const drinks = [
 
   /* Mobile: show on tap */
   .menu-item.show-order .order-now-btn {
-    transform: translateY(0);
+    transform: translateX(0);
+  }
+
+  /* Shift content left when Order Now is visible */
+  .menu-item .item-content {
+    transition: transform 0.3s ease, padding 0.3s ease;
+  }
+
+  .menu-item:hover .item-content,
+  .menu-item.show-order .item-content {
+    transform: translateX(-100px);
+  }
+
+  .menu-item.has-image:hover .item-content,
+  .menu-item.has-image.show-order .item-content {
+    transform: translateX(-100px);
   }
 
   .item-header {
@@ -551,7 +570,10 @@ const drinks = [
     color: var(--color-primary);
     font-size: 1.1rem;
     margin: 0;
-    flex-shrink: 0;
+    flex-shrink: 1;
+    min-width: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .item-price {
@@ -583,7 +605,7 @@ const drinks = [
   }
 
   .menu-item.has-image:hover {
-    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
   }
 
   .item-image {
