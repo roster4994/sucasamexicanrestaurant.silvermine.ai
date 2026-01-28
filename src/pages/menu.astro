@@ -144,6 +144,7 @@ const drinks = [
                 </div>
                 <p class="item-description">{item.description}</p>
               </div>
+              <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-now-btn" target="_blank" rel="noopener noreferrer">Order Now</a>
             </div>
           ))}
         </div>
@@ -172,6 +173,7 @@ const drinks = [
                 </div>
                 <p class="item-description">{item.description}</p>
               </div>
+              <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-now-btn" target="_blank" rel="noopener noreferrer">Order Now</a>
             </div>
           ))}
         </div>
@@ -199,6 +201,7 @@ const drinks = [
                 </div>
                 <p class="item-description">{item.description}</p>
               </div>
+              <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-now-btn" target="_blank" rel="noopener noreferrer">Order Now</a>
             </div>
           ))}
         </div>
@@ -226,6 +229,7 @@ const drinks = [
                   <span class="item-price">{item.price}</span>
                 </div>
               </div>
+              <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-now-btn" target="_blank" rel="noopener noreferrer">Order Now</a>
             </div>
           ))}
         </div>
@@ -239,12 +243,15 @@ const drinks = [
         <div class="menu-items">
           {alaCarte.map((item) => (
             <div class="menu-item">
-              <div class="item-header">
-                <h3>{item.name}</h3>
-                <span class="item-dots"></span>
-                <span class="item-price">{item.price}</span>
+              <div class="item-content">
+                <div class="item-header">
+                  <h3>{item.name}</h3>
+                  <span class="item-dots"></span>
+                  <span class="item-price">{item.price}</span>
+                </div>
+                {item.description && <p class="item-description">{item.description}</p>}
               </div>
-              {item.description && <p class="item-description">{item.description}</p>}
+              <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-now-btn" target="_blank" rel="noopener noreferrer">Order Now</a>
             </div>
           ))}
         </div>
@@ -258,12 +265,15 @@ const drinks = [
         <div class="menu-items">
           {desserts.map((item) => (
             <div class="menu-item">
-              <div class="item-header">
-                <h3>{item.name}</h3>
-                <span class="item-dots"></span>
-                <span class="item-price">{item.price}</span>
+              <div class="item-content">
+                <div class="item-header">
+                  <h3>{item.name}</h3>
+                  <span class="item-dots"></span>
+                  <span class="item-price">{item.price}</span>
+                </div>
+                <p class="item-description">{item.description}</p>
               </div>
-              <p class="item-description">{item.description}</p>
+              <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-now-btn" target="_blank" rel="noopener noreferrer">Order Now</a>
             </div>
           ))}
         </div>
@@ -277,11 +287,14 @@ const drinks = [
         <div class="menu-items sides-grid">
           {sides.map((item) => (
             <div class="menu-item side-item">
-              <div class="item-header">
-                <h3>{item.name}</h3>
-                <span class="item-dots"></span>
-                <span class="item-price">{item.price}</span>
+              <div class="item-content">
+                <div class="item-header">
+                  <h3>{item.name}</h3>
+                  <span class="item-dots"></span>
+                  <span class="item-price">{item.price}</span>
+                </div>
               </div>
+              <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-now-btn" target="_blank" rel="noopener noreferrer">Order Now</a>
             </div>
           ))}
         </div>
@@ -295,11 +308,14 @@ const drinks = [
         <div class="menu-items sides-grid">
           {drinks.map((item) => (
             <div class="menu-item side-item">
-              <div class="item-header">
-                <h3>{item.name}</h3>
-                <span class="item-dots"></span>
-                <span class="item-price">{item.price}</span>
+              <div class="item-content">
+                <div class="item-header">
+                  <h3>{item.name}</h3>
+                  <span class="item-dots"></span>
+                  <span class="item-price">{item.price}</span>
+                </div>
               </div>
+              <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-now-btn" target="_blank" rel="noopener noreferrer">Order Now</a>
             </div>
           ))}
         </div>
@@ -481,9 +497,46 @@ const drinks = [
     transition: all var(--transition-fast);
   }
 
+  .menu-item {
+    position: relative;
+    overflow: hidden;
+  }
+
   .menu-item:hover {
     box-shadow: var(--shadow-md);
     transform: translateX(5px);
+  }
+
+  /* Order Now Button */
+  .order-now-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-primary);
+    color: white;
+    text-align: center;
+    padding: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .menu-item:hover .order-now-btn {
+    transform: translateY(0);
+  }
+
+  .order-now-btn:hover {
+    background: var(--color-primary-dark, #8b1a1a);
+  }
+
+  /* Mobile: show on tap */
+  .menu-item.show-order .order-now-btn {
+    transform: translateY(0);
   }
 
   .item-header {
@@ -879,5 +932,39 @@ const drinks = [
     if (sections.length > 0) {
       updateActiveNav(sections[0].id);
     }
+
+    // Mobile tap to show Order Now button
+    const menuItems = document.querySelectorAll('.menu-item');
+    let activeMenuItem: Element | null = null;
+
+    menuItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        // Only apply tap behavior on mobile/touch devices
+        if (window.innerWidth <= 768) {
+          const target = e.target as HTMLElement;
+          // If clicking the order button itself, let it proceed
+          if (target.classList.contains('order-now-btn')) {
+            return;
+          }
+
+          // Toggle the show-order class
+          if (activeMenuItem && activeMenuItem !== item) {
+            activeMenuItem.classList.remove('show-order');
+          }
+
+          item.classList.toggle('show-order');
+          activeMenuItem = item.classList.contains('show-order') ? item : null;
+        }
+      });
+    });
+
+    // Close order button when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.menu-item') && activeMenuItem) {
+        activeMenuItem.classList.remove('show-order');
+        activeMenuItem = null;
+      }
+    });
   });
 </script>
