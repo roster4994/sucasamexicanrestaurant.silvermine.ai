@@ -181,7 +181,7 @@ const testimonials = [
               <path fill="#fbbc04" d="M46.2 63.8c-9.8 0-17.7-7.9-17.7-17.7 0-4.3 1.5-8.3 4.1-11.3l-28 33.3c4.8 10.6 12.8 19.2 21 29.9l34.1-40.5c-3.3 3.9-8.1 6.3-13.5 6.3z"/>
               <path fill="#34a853" d="M59.1 109.2c15.4-24.1 33.3-35 33.3-63 0-7.7-1.9-14.9-5.2-21.3L25.6 98c2.6 3.4 5.3 7.3 7.9 11.3 9.4 14.5 6.8 23.1 12.8 23.1s3.4-8.7 12.8-23.2z"/>
             </svg>
-            <span>Review us on Google</span>
+            <span>Find us on Google</span>
           </a>
         </div>
         <div class="cta-content">
@@ -192,6 +192,28 @@ const testimonials = [
             <a href="/order" class="btn btn-secondary">Order Online</a>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup Section -->
+  <section class="newsletter section">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Stay Updated!</h2>
+        <p>Sign up for our newsletter & get exclusive offers and invites!</p>
+        <form class="newsletter-form" action="#" method="POST">
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+              class="newsletter-input"
+            />
+            <button type="submit" class="btn newsletter-btn">Submit</button>
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -778,6 +800,82 @@ const testimonials = [
     border-color: var(--color-primary);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+  }
+
+  /* Newsletter Section */
+  .newsletter {
+    background: #74bab1;
+    padding: var(--spacing-lg) 0;
+  }
+
+  .newsletter-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .newsletter-content h2 {
+    color: #000000;
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.75rem;
+  }
+
+  .newsletter-content p {
+    color: #000000;
+    font-size: 1.05rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .newsletter-form {
+    width: 100%;
+  }
+
+  .newsletter-form .form-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .newsletter-input {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid #ffffff;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    background: #ffffff;
+    color: var(--color-text);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .newsletter-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.2);
+  }
+
+  .newsletter-input::placeholder {
+    color: #999;
+  }
+
+  .newsletter-btn {
+    padding: 0.875rem 2rem;
+    background: var(--color-primary);
+    color: #ffffff;
+    border: 2px solid var(--color-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .newsletter-btn:hover {
+    background: #ffffff;
+    color: var(--color-primary);
+    transform: translateY(-2px);
   }
 
   /* Responsive */

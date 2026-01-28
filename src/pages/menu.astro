@@ -506,14 +506,14 @@ const drinks = [
     box-shadow: var(--shadow-md);
   }
 
-  /* Order Now Button - slides from right */
+  /* Order Now Button - appears on right with transparent background */
   .order-now-btn {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     width: 100px;
-    background: var(--color-primary);
+    background: rgba(139, 26, 26, 0.9);
     color: white;
     display: flex;
     align-items: center;
@@ -525,37 +525,18 @@ const drinks = [
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.8rem;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
+    opacity: 0;
+    transition: opacity 0.3s ease;
     writing-mode: horizontal-tb;
   }
 
-  .menu-item:hover .order-now-btn {
-    transform: translateX(0);
+  .menu-item:hover .order-now-btn,
+  .menu-item.show-order .order-now-btn {
+    opacity: 1;
   }
 
   .order-now-btn:hover {
-    background: var(--color-primary-dark, #8b1a1a);
-  }
-
-  /* Mobile: show on tap */
-  .menu-item.show-order .order-now-btn {
-    transform: translateX(0);
-  }
-
-  /* Shift content left when Order Now is visible */
-  .menu-item .item-content {
-    transition: transform 0.3s ease, padding 0.3s ease;
-  }
-
-  .menu-item:hover .item-content,
-  .menu-item.show-order .item-content {
-    transform: translateX(-100px);
-  }
-
-  .menu-item.has-image:hover .item-content,
-  .menu-item.has-image.show-order .item-content {
-    transform: translateX(-100px);
+    background: rgba(139, 26, 26, 1);
   }
 
   .item-header {
