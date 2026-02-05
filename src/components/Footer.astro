@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/logo.png';
+
 const currentYear = new Date().getFullYear();
 
 const quickLinks = [
@@ -21,7 +24,7 @@ const hours = [
       <!-- Brand Column -->
       <div class="footer-brand">
         <a href="/" class="footer-logo">
-          <img src="https://i.postimg.cc/Nj2jKLLq/logo.png" alt="Su Casa Mexican Restaurant" class="footer-logo-image" />
+          <Image src={logoImg} alt="Su Casa Mexican Restaurant" class="footer-logo-image" height={240} />
         </a>
         <p class="brand-description">
           Family owned since 1978. Where comfort food meets vibrant tradition in the heart of Midvale, UT.

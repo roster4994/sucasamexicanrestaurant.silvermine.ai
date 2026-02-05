@@ -68,12 +68,47 @@ const drinkSections = [
     ]
   }
 ];
+
+const siteUrl = 'https://sucasamexicanrestaurant.com';
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/drinks`,
+  "name": "Drinks | Su Casa Mexican Restaurant",
+  "description": "Explore our drink menu featuring signature horchata, refreshing margaritas, cold beers, and soft drinks at Su Casa Mexican Restaurant.",
+  "url": `${siteUrl}/drinks`,
+  "isPartOf": { "@id": `${siteUrl}/#website` }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Drinks",
+      "item": `${siteUrl}/drinks`
+    }
+  ]
+};
 ---
 
 <Layout
   title="Drinks"
   description="Explore our drink menu featuring signature horchata, refreshing margaritas, cold beers, and soft drinks at Su Casa Mexican Restaurant."
 >
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</Fragment>
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">

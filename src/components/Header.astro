@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/images/logo.png';
+
 const leftNavItems = [
   { href: '/menu', label: 'Menu' },
   { href: '/catering', label: 'Catering' },
@@ -31,7 +34,7 @@ const currentPath = Astro.url.pathname;
 
       <!-- Centered Logo -->
       <a href="/" class="logo" aria-label="Su Casa Mexican Restaurant - Home">
-        <img src="https://i.postimg.cc/Nj2jKLLq/logo.png" alt="Su Casa Mexican Restaurant" class="logo-image" />
+        <Image src={logoImg} alt="Su Casa Mexican Restaurant" class="logo-image" height={280} />
       </a>
 
       <!-- Right nav items -->

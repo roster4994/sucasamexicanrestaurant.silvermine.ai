@@ -1,5 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import collageMexicanDinner from '../assets/images/collage/mexican-dinner.jpg';
+import collageNachoSupreme from '../assets/images/collage/nacho-supreme.jpg';
+import collageQuesoDip from '../assets/images/collage/queso-dip.jpg';
+import mediaComboPlate from '../assets/images/media/combo-plate-10.jpg';
+import mediaChileRelleno from '../assets/images/media/chili-relleno.jpg';
+import mediaChileVerde from '../assets/images/media/chile-verde-dinner.jpg';
 
 const testimonials = [
   {
@@ -16,9 +23,108 @@ const testimonials = [
   }
 ];
 
+
+
+const siteUrl = 'https://sucasamexicanrestaurant.com';
+
+const restaurantSchema = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "@id": `${siteUrl}/#restaurant`,
+  "name": "Su Casa Mexican Restaurant",
+  "description": "Family owned since 1978, Su Casa Mexican Restaurant in Midvale, UT offers authentic Mexican cuisine in a cozy, festive atmosphere.",
+  "url": siteUrl,
+  "telephone": "+1-801-255-1042",
+  "image": "https://i.postimg.cc/Qd38H8mx/IMG-5925.avif",
+  "logo": "https://i.postimg.cc/Nj2jKLLq/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "6878 State Street",
+    "addressLocality": "Midvale",
+    "addressRegion": "UT",
+    "postalCode": "84047",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.6264145,
+    "longitude": -111.8904448
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "11:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Friday", "Saturday"],
+      "opens": "11:00",
+      "closes": "21:00"
+    }
+  ],
+  "servesCuisine": "Mexican",
+  "priceRange": "$$",
+  "foundingDate": "1978-06",
+  "sameAs": [
+    "https://facebook.com/sucasamexicanrestaurant",
+    "https://instagram.com/sucasamexicanrestaurant",
+    "https://google.com/maps/place/Su+Casa+Mexican+Restaurant"
+  ],
+  "hasMenu": {
+    "@type": "Menu",
+    "url": `${siteUrl}/menu`,
+    "name": "Su Casa Mexican Restaurant Menu"
+  },
+  "potentialAction": {
+    "@type": "OrderAction",
+    "target": "https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655",
+    "deliveryMethod": ["http://purl.org/goodrelations/v1#DeliveryModePickUp"]
+  }
+};
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  "name": "Su Casa Mexican Restaurant",
+  "url": siteUrl,
+  "publisher": { "@id": `${siteUrl}/#restaurant` }
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/`,
+  "name": "Su Casa Mexican Restaurant | Authentic Mexican Food in Midvale, UT",
+  "description": "Family owned since 1978, Su Casa Mexican Restaurant in Midvale, UT offers authentic Mexican cuisine in a cozy, festive atmosphere.",
+  "url": siteUrl,
+  "isPartOf": { "@id": `${siteUrl}/#website` },
+  "about": { "@id": `${siteUrl}/#restaurant` }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    }
+  ]
+};
 ---
 
 <Layout title="Home">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
   <!-- Hero Section -->
   <section class="hero">
     <video class="hero-video" autoplay muted loop playsinline>
@@ -58,7 +164,7 @@ const testimonials = [
         </div>
         <div class="about-visual">
           <div class="about-image-container slide-in-image">
-            <img src="https://i.postimg.cc/Qd38H8mx/IMG-5925.avif" alt="Su Casa Mexican Restaurant" class="about-image" />
+            <img src="https://i.postimg.cc/Qd38H8mx/IMG-5925.avif" alt="Su Casa Mexican Restaurant" class="about-image" width="1200" height="900" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -69,63 +175,63 @@ const testimonials = [
   <section class="photo-collage">
     <div class="collage-grid">
         <div class="collage-item collage-item-1">
-          <img src="/collage/Copy of Mexican dinner copy (1).jpg" alt="Mexican Dinner" />
+          <Image src={collageMexicanDinner} alt="Mexican Dinner" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Mexican Dinner</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-2">
-          <img src="https://i.postimg.cc/fyGxtdST/Copy-of-special-burrito-copy.jpg" alt="Special Burrito" />
+          <img src="https://i.postimg.cc/fyGxtdST/Copy-of-special-burrito-copy.jpg" alt="Special Burrito" width="800" height="534" loading="lazy" decoding="async" />
           <div class="collage-overlay">
             <span class="dish-name">Special Burrito</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-3">
-          <img src="/collage/Copy of nacho supreme-1167 (1).jpg" alt="Nacho Supreme" />
+          <Image src={collageNachoSupreme} alt="Nacho Supreme" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Nacho Supreme</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-4">
-          <img src="/collage/Copy of queso dip pic (2).jpg" alt="Queso Dip" />
+          <Image src={collageQuesoDip} alt="Queso Dip" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Queso Dip</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-5">
-          <img src="https://i.postimg.cc/RVwKn077/Copy-of-7-copy.jpg" alt="#7 Burrito verde, bean tostada & cheese enchilada" />
+          <img src="https://i.postimg.cc/RVwKn077/Copy-of-7-copy.jpg" alt="#7 Burrito verde, bean tostada & cheese enchilada" width="800" height="534" loading="lazy" decoding="async" />
           <div class="collage-overlay">
             <span class="dish-name">#7 Burrito verde, bean tostada & cheese enchilada</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-6">
-          <img src="https://i.postimg.cc/Y0jvKXt6/Copy-of-baja-dinner-(2).jpg" alt="Baja Fish Tacos" />
+          <img src="https://i.postimg.cc/Y0jvKXt6/Copy-of-baja-dinner-(2).jpg" alt="Baja Fish Tacos" width="800" height="534" loading="lazy" decoding="async" />
           <div class="collage-overlay">
             <span class="dish-name">Baja Fish Tacos</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-7">
-          <img src="/media/combo-plate-10.jpg" alt="#10 Bean Tostada" />
+          <Image src={mediaComboPlate} alt="#10 Bean Tostada" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">#10 Bean Tostada</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-8">
-          <img src="/media/chili-relleno.jpg" alt="Chile Relleno" />
+          <Image src={mediaChileRelleno} alt="Chile Relleno" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Chile Relleno</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-9">
-          <img src="/media/Copy of chili verde dinner.jpg" alt="Chile Verde Dinner" />
+          <Image src={mediaChileVerde} alt="Chile Verde Dinner" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Chile Verde Dinner</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
@@ -202,7 +308,12 @@ const testimonials = [
       <div class="newsletter-content">
         <h2>STAY UPDATED!</h2>
         <p>Sign up for our newsletter & get exclusive offers and invites</p>
-        <form class="newsletter-form" action="#" method="POST">
+        <form class="newsletter-form" action="https://formsubmit.co/scscmo@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Newsletter Signup - Su Casa Mexican Restaurant">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://sucasamexicanrestaurant.com/?subscribed=true">
+          <input type="text" name="_honey" style="display:none">
+          <input type="hidden" name="_template" value="table">
           <div class="form-group">
             <input
               type="email"

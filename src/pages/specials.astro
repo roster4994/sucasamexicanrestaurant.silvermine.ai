@@ -70,12 +70,47 @@ const happyHourItems = [
   "Chips and salsa",
   "Loaded nachos"
 ];
+
+const siteUrl = 'https://sucasamexicanrestaurant.com';
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/specials`,
+  "name": "Specials | Su Casa Mexican Restaurant",
+  "description": "Check out our daily specials, lunch combos, and happy hour deals at Su Casa Mexican Restaurant in Midvale, UT.",
+  "url": `${siteUrl}/specials`,
+  "isPartOf": { "@id": `${siteUrl}/#website` }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Specials",
+      "item": `${siteUrl}/specials`
+    }
+  ]
+};
 ---
 
 <Layout
   title="Specials"
   description="Check out our daily specials, lunch combos, and happy hour deals at Su Casa Mexican Restaurant in Midvale, UT."
 >
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</Fragment>
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">

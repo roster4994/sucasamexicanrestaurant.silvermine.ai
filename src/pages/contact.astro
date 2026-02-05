@@ -16,12 +16,47 @@ const socialLinks = [
   { name: "Instagram", url: "https://instagram.com/sucasamexicanrestaurant", icon: "instagram" },
   { name: "Google", url: "https://google.com/maps/place/Su+Casa+Mexican+Restaurant", icon: "google" }
 ];
+
+const siteUrl = 'https://sucasamexicanrestaurant.com';
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${siteUrl}/contact`,
+  "name": "Contact | Su Casa Mexican Restaurant",
+  "description": "Visit Su Casa Mexican Restaurant at 6878 State Street, Midvale, UT 84047. Call us at (801) 255-1042. Family owned since 1978.",
+  "url": `${siteUrl}/contact`,
+  "isPartOf": { "@id": `${siteUrl}/#website` }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact",
+      "item": `${siteUrl}/contact`
+    }
+  ]
+};
 ---
 
 <Layout
   title="Contact"
   description="Visit Su Casa Mexican Restaurant at 6878 State Street, Midvale, UT 84047. Call us at (801) 255-1042. Family owned since 1978."
 >
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</Fragment>
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
