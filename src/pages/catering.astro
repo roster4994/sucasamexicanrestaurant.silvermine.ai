@@ -1,11 +1,46 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const siteUrl = 'https://sucasamexicanrestaurant.com';
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/catering`,
+  "name": "Catering | Su Casa Mexican Restaurant",
+  "description": "Bring the fiesta to your event! Su Casa Mexican Restaurant offers catering services for parties, corporate events, weddings, and more in the Midvale, UT area.",
+  "url": `${siteUrl}/catering`,
+  "isPartOf": { "@id": `${siteUrl}/#website` }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Catering",
+      "item": `${siteUrl}/catering`
+    }
+  ]
+};
 ---
 
 <Layout
   title="Catering"
   description="Bring the fiesta to your event! Su Casa Mexican Restaurant offers catering services for parties, corporate events, weddings, and more in the Midvale, UT area."
 >
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</Fragment>
 <div class="catering-page-wrapper">
   <!-- Banner -->
   <section class="page-banner">

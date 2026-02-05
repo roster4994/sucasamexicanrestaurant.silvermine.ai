@@ -89,12 +89,47 @@ const drinks = [
   { name: "Soft Drink", price: "$2.99" },
   { name: "Horchata", price: "$2.99" },
 ];
+
+const siteUrl = 'https://sucasamexicanrestaurant.com';
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/menu`,
+  "name": "Menu | Su Casa Mexican Restaurant",
+  "description": "Explore our full menu of authentic Mexican dishes including enchiladas, burritos, tacos, fajitas, and more at Su Casa Mexican Restaurant in Midvale, UT.",
+  "url": `${siteUrl}/menu`,
+  "isPartOf": { "@id": `${siteUrl}/#website` }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Menu",
+      "item": `${siteUrl}/menu`
+    }
+  ]
+};
 ---
 
 <Layout
   title="Menu"
   description="Explore our full menu of authentic Mexican dishes including enchiladas, burritos, tacos, fajitas, and more at Su Casa Mexican Restaurant in Midvale, UT."
 >
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</Fragment>
 <div class="menu-page-wrapper">
   <!-- Banner -->
   <section class="page-banner">
