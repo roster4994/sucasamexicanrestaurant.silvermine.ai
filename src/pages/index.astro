@@ -307,24 +307,7 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="newsletter-content">
         <h2>STAY UPDATED!</h2>
-        <p>Sign up for our newsletter & get exclusive offers and invites</p>
-        <form class="newsletter-form" action="https://formsubmit.co/scscmo@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New Newsletter Signup - Su Casa Mexican Restaurant">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://sucasamexicanrestaurant.com/?subscribed=true">
-          <input type="text" name="_honey" style="display:none">
-          <input type="hidden" name="_template" value="table">
-          <div class="form-group">
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email address"
-              required
-              class="newsletter-input"
-            />
-            <button type="submit" class="btn newsletter-btn">Submit</button>
-          </div>
-        </form>
+        <a href="https://l.spoton.com/mmAbKB" target="_blank" rel="noopener noreferrer" class="btn newsletter-btn">Sign up for our newsletter & get exclusive offers and invites</a>
       </div>
     </div>
   </section>
@@ -921,7 +904,6 @@ const breadcrumbSchema = {
 
   .newsletter-content {
     text-align: center;
-    max-width: 600px;
     margin: 0 auto;
   }
 
@@ -930,47 +912,8 @@ const breadcrumbSchema = {
     margin-bottom: var(--spacing-xs);
   }
 
-  .newsletter-content p {
-    color: #000000;
-    font-size: 1.05rem;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .newsletter-form {
-    width: 100%;
-  }
-
-  .newsletter-form .form-group {
-    display: flex;
-    gap: var(--spacing-sm);
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .newsletter-input {
-    flex: 1;
-    min-width: 250px;
-    max-width: 350px;
-    padding: 0.875rem 1.25rem;
-    border: 2px solid #ffffff;
-    border-radius: var(--radius-md);
-    font-size: 1rem;
-    background: #ffffff;
-    color: var(--color-text);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .newsletter-input:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(139, 26, 26, 0.2);
-  }
-
-  .newsletter-input::placeholder {
-    color: #999;
-  }
-
   .newsletter-btn {
+    display: inline-block;
     padding: 0.875rem 2rem;
     background: var(--color-primary);
     color: #ffffff;
@@ -980,6 +923,9 @@ const breadcrumbSchema = {
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 1.05rem;
+    border-radius: var(--radius-md);
   }
 
   .newsletter-btn:hover {
