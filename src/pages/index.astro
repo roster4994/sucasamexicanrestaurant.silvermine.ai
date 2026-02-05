@@ -1,5 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import collageMexicanDinner from '../assets/images/collage/mexican-dinner.jpg';
+import collageNachoSupreme from '../assets/images/collage/nacho-supreme.jpg';
+import collageQuesoDip from '../assets/images/collage/queso-dip.jpg';
+import mediaComboPlate from '../assets/images/media/combo-plate-10.jpg';
+import mediaChileRelleno from '../assets/images/media/chili-relleno.jpg';
+import mediaChileVerde from '../assets/images/media/chile-verde-dinner.jpg';
 
 const testimonials = [
   {
@@ -157,7 +164,7 @@ const breadcrumbSchema = {
         </div>
         <div class="about-visual">
           <div class="about-image-container slide-in-image">
-            <img src="https://i.postimg.cc/Qd38H8mx/IMG-5925.avif" alt="Su Casa Mexican Restaurant" class="about-image" />
+            <img src="https://i.postimg.cc/Qd38H8mx/IMG-5925.avif" alt="Su Casa Mexican Restaurant" class="about-image" width="1200" height="900" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
@@ -168,63 +175,63 @@ const breadcrumbSchema = {
   <section class="photo-collage">
     <div class="collage-grid">
         <div class="collage-item collage-item-1">
-          <img src="/collage/Copy of Mexican dinner copy (1).jpg" alt="Mexican Dinner" />
+          <Image src={collageMexicanDinner} alt="Mexican Dinner" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Mexican Dinner</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-2">
-          <img src="https://i.postimg.cc/fyGxtdST/Copy-of-special-burrito-copy.jpg" alt="Special Burrito" />
+          <img src="https://i.postimg.cc/fyGxtdST/Copy-of-special-burrito-copy.jpg" alt="Special Burrito" width="800" height="534" loading="lazy" decoding="async" />
           <div class="collage-overlay">
             <span class="dish-name">Special Burrito</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-3">
-          <img src="/collage/Copy of nacho supreme-1167 (1).jpg" alt="Nacho Supreme" />
+          <Image src={collageNachoSupreme} alt="Nacho Supreme" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Nacho Supreme</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-4">
-          <img src="/collage/Copy of queso dip pic (2).jpg" alt="Queso Dip" />
+          <Image src={collageQuesoDip} alt="Queso Dip" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Queso Dip</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-5">
-          <img src="https://i.postimg.cc/RVwKn077/Copy-of-7-copy.jpg" alt="#7 Burrito verde, bean tostada & cheese enchilada" />
+          <img src="https://i.postimg.cc/RVwKn077/Copy-of-7-copy.jpg" alt="#7 Burrito verde, bean tostada & cheese enchilada" width="800" height="534" loading="lazy" decoding="async" />
           <div class="collage-overlay">
             <span class="dish-name">#7 Burrito verde, bean tostada & cheese enchilada</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-6">
-          <img src="https://i.postimg.cc/Y0jvKXt6/Copy-of-baja-dinner-(2).jpg" alt="Baja Fish Tacos" />
+          <img src="https://i.postimg.cc/Y0jvKXt6/Copy-of-baja-dinner-(2).jpg" alt="Baja Fish Tacos" width="800" height="534" loading="lazy" decoding="async" />
           <div class="collage-overlay">
             <span class="dish-name">Baja Fish Tacos</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-7">
-          <img src="/media/combo-plate-10.jpg" alt="#10 Bean Tostada" />
+          <Image src={mediaComboPlate} alt="#10 Bean Tostada" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">#10 Bean Tostada</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-8">
-          <img src="/media/chili-relleno.jpg" alt="Chile Relleno" />
+          <Image src={mediaChileRelleno} alt="Chile Relleno" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Chile Relleno</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-9">
-          <img src="/media/Copy of chili verde dinner.jpg" alt="Chile Verde Dinner" />
+          <Image src={mediaChileVerde} alt="Chile Verde Dinner" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Chile Verde Dinner</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
