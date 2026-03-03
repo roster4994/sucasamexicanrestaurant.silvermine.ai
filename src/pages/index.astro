@@ -119,6 +119,88 @@ const breadcrumbSchema = {
     }
   ]
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are Su Casa's hours of operation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We're open Monday through Thursday from 11 AM to 8 PM, and Friday through Saturday from 11 AM to 9 PM. We're closed on Sundays."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Su Casa offer catering?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! We cater events of all sizes across Salt Lake County — from birthday parties and corporate lunches to wedding receptions. Call (801) 255-1042 to discuss your event."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I order Su Casa food for delivery?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Order directly through our website for pickup, or get delivery through DoorDash, GrubHub, and Uber Eats."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Su Casa located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "6878 S State Street, Midvale, UT 84047 — on the State Street corridor in the heart of Midvale, serving the greater Salt Lake Valley."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long has Su Casa been open?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Su Casa Mexican Restaurant has been family-owned and operated since 1978 — over 45 years of serving authentic Mexican food to the Midvale community."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Su Casa take reservations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We operate on a first-come, first-served basis. For large parties or private events, contact us at (801) 255-1042."
+      }
+    }
+  ]
+};
+
+const faqs = [
+  {
+    question: "What are Su Casa's hours of operation?",
+    answer: "We're open Monday through Thursday from 11 AM to 8 PM, and Friday through Saturday from 11 AM to 9 PM. We're closed on Sundays."
+  },
+  {
+    question: "Does Su Casa offer catering?",
+    answer: 'Yes! We cater events of all sizes across Salt Lake County — from birthday parties and corporate lunches to wedding receptions. Visit our <a href="/catering">catering page</a> or call us at <a href="tel:+18012551042">(801) 255-1042</a> to discuss your event.'
+  },
+  {
+    question: "Can I order Su Casa food for delivery?",
+    answer: 'Absolutely. You can <a href="/order">order directly</a> through our website for pickup, or get delivery through DoorDash, GrubHub, and Uber Eats.'
+  },
+  {
+    question: "Where is Su Casa located?",
+    answer: 'We\'re at 6878 S State Street, Midvale, UT 84047 — right on the State Street corridor in the heart of Midvale, serving the greater Salt Lake Valley. <a href="https://www.google.com/maps/place/Su+Casa+Mexican+Restaurant/@40.6264145,-111.8904448,17z/" target="_blank" rel="noopener noreferrer">Get directions</a>.'
+  },
+  {
+    question: "How long has Su Casa been open?",
+    answer: "Su Casa Mexican Restaurant has been family-owned and operated since 1978 — over 45 years of serving authentic Mexican food to the Midvale community."
+  },
+  {
+    question: "Does Su Casa take reservations?",
+    answer: 'We operate on a first-come, first-served basis and don\'t take reservations. For large parties or private events, please contact us at <a href="tel:+18012551042">(801) 255-1042</a> or visit our <a href="/catering">catering page</a>.'
+  }
+];
 ---
 
 <Layout title="Authentic Mexican Restaurant in Midvale, UT | Su Casa — Since 1978" description="Family-owned since 1978, Su Casa serves authentic Mexican food in Midvale, UT. Enjoy enchiladas, fajitas, chile verde & more. Dine in, order online, or cater your next event.">
@@ -127,6 +209,7 @@ const breadcrumbSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   </Fragment>
   <!-- Hero Section -->
   <section class="hero">
@@ -181,28 +264,28 @@ const breadcrumbSchema = {
           <Image src={collageMexicanDinner} alt="Authentic Mexican dinner plate with rice, beans, and enchiladas at Su Casa Restaurant in Midvale, UT" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Mexican Dinner</span>
-            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Enchiladas Online</a>
           </div>
         </div>
         <div class="collage-item collage-item-2">
           <img src="https://i.postimg.cc/fyGxtdST/Copy-of-special-burrito-copy.jpg" alt="Su Casa's special burrito with homemade salsa and fresh guacamole" width="800" height="534" loading="lazy" decoding="async" />
           <div class="collage-overlay">
             <span class="dish-name">Special Burrito</span>
-            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Burritos Online</a>
           </div>
         </div>
         <div class="collage-item collage-item-3">
           <Image src={collageNachoSupreme} alt="Loaded nachos with beans, cheese, jalapeños, and sour cream at Su Casa" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Nacho Supreme</span>
-            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Nachos Online</a>
           </div>
         </div>
         <div class="collage-item collage-item-4">
           <Image src={collageQuesoDip} alt="Fresh queso dip appetizer at Su Casa Mexican Restaurant Midvale UT" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Queso Dip</span>
-            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Queso Dip</a>
           </div>
         </div>
         <div class="collage-item collage-item-5">
@@ -216,21 +299,21 @@ const breadcrumbSchema = {
           <img src="https://i.postimg.cc/Y0jvKXt6/Copy-of-baja-dinner-(2).jpg" alt="Baja fish tacos with cabbage slaw and secret Baja sauce — Su Casa Midvale" width="800" height="534" loading="lazy" decoding="async" />
           <div class="collage-overlay">
             <span class="dish-name">Baja Fish Tacos</span>
-            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Baja Fish Tacos</a>
           </div>
         </div>
         <div class="collage-item collage-item-7">
           <Image src={mediaComboPlate} alt="Bean tostada combo plate with rice and beans at Su Casa Midvale" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">#10 Bean Tostada</span>
-            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Mexican Food Online</a>
           </div>
         </div>
         <div class="collage-item collage-item-8">
           <Image src={mediaChileRelleno} alt="Homemade chile relleno stuffed with cheese at Su Casa Mexican Restaurant" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Chile Relleno</span>
-            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
+            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Chile Relleno</a>
           </div>
         </div>
         <div class="collage-item collage-item-9">
@@ -243,6 +326,24 @@ const breadcrumbSchema = {
     </div>
     <div class="collage-cta">
       <a href="/menu" class="collage-menu-link">View Full Menu &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Menu Highlights / Keyword Content Section -->
+  <section class="menu-highlights section">
+    <div class="container">
+      <h2 class="section-title">Authentic Mexican Favorites Made Fresh Daily in Midvale</h2>
+      <div class="highlights-content">
+        <p>
+          For over 45 years, Su Casa has been the heart of Mexican dining on State Street in Midvale, Utah. As the South Valley's most beloved family-owned Mexican restaurant since 1978, we take pride in preparing every dish from scratch using authentic recipes perfected over decades. From our signature chile verde — slow-simmered with tender pork and roasted green chiles — to sizzling fajitas loaded with peppers and onions, every plate that leaves our kitchen carries the flavors of tradition.
+        </p>
+        <p>
+          Our menu features the authentic Mexican food that Salt Lake County has come to love: hand-rolled enchiladas smothered in our homemade red or green sauce, oversized burritos stuffed with seasoned meats and fresh toppings, crispy Baja fish tacos with cabbage slaw and our secret Baja sauce, and golden chile rellenos filled with melting cheese. Start your meal with our famous queso dip or a plate of loaded nachos topped with beans, jalape&ntilde;os, and sour cream — perfect for sharing with family and friends.
+        </p>
+        <p>
+          Whether you're joining us for a weekday lunch on State Street, ordering delivery across Midvale and the greater Salt Lake Valley, or letting us cater your next celebration, you'll taste the difference that nearly five decades of family tradition makes at Su Casa Mexican Restaurant. <a href="/menu">Explore our full menu</a> and discover why generations of families keep coming back.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -305,6 +406,26 @@ const breadcrumbSchema = {
             <a href="/contact" class="btn btn-secondary">Contact Us</a>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq section">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="faq-answer" set:html={faq.answer} />
+          </details>
+        ))}
       </div>
     </div>
   </section>
@@ -938,6 +1059,113 @@ const breadcrumbSchema = {
     border-color: var(--color-primary);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+  }
+
+  /* Menu Highlights Section */
+  .menu-highlights {
+    background: #ffffff;
+  }
+
+  .menu-highlights .section-title {
+    color: var(--color-brown-dark);
+  }
+
+  .highlights-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .highlights-content p {
+    font-size: 1.05rem;
+    color: var(--color-text);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .highlights-content a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .highlights-content a:hover {
+    text-decoration: underline;
+  }
+
+  /* FAQ Section */
+  .faq {
+    background: var(--color-cream, #fefefe);
+  }
+
+  .faq .section-title {
+    color: var(--color-brown-dark);
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .faq-item[open] {
+    box-shadow: var(--shadow-md);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--color-brown-dark);
+    list-style: none;
+    transition: color 0.2s ease;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question:hover {
+    color: var(--color-primary);
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    color: var(--color-primary);
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--color-text);
+    line-height: 1.7;
+    font-size: 0.98rem;
+  }
+
+  .faq-answer a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .faq-answer a:hover {
+    text-decoration: underline;
   }
 
   /* Newsletter Section */
