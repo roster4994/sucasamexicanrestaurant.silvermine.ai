@@ -30,16 +30,13 @@ const siteUrl = 'https://sucasamexicanrestaurant.com';
 const restaurantSchema = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
-  "@id": `${siteUrl}/#restaurant`,
   "name": "Su Casa Mexican Restaurant",
-  "description": "Family owned since 1978, Su Casa Mexican Restaurant in Midvale, UT offers authentic Mexican cuisine in a cozy, festive atmosphere.",
-  "url": siteUrl,
+  "image": "https://sucasamexicanrestaurant.com/_astro/logo.ChkLogVw_XKnHR.webp",
+  "url": "https://sucasamexicanrestaurant.com",
   "telephone": "+1-801-255-1042",
-  "image": "https://i.postimg.cc/Qd38H8mx/IMG-5925.avif",
-  "logo": "https://i.postimg.cc/Nj2jKLLq/logo.png",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "6878 State Street",
+    "streetAddress": "6878 S State Street",
     "addressLocality": "Midvale",
     "addressRegion": "UT",
     "postalCode": "84047",
@@ -50,36 +47,42 @@ const restaurantSchema = {
     "latitude": 40.6264145,
     "longitude": -111.8904448
   },
+  "servesCuisine": ["Mexican", "Tex-Mex", "Latin American"],
+  "priceRange": "$$",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
       "opens": "11:00",
       "closes": "20:00"
     },
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Friday", "Saturday"],
+      "dayOfWeek": ["Friday","Saturday"],
       "opens": "11:00",
       "closes": "21:00"
     }
   ],
-  "servesCuisine": "Mexican",
-  "priceRange": "$$",
-  "foundingDate": "1978-06",
-  "sameAs": [
-    "https://facebook.com/sucasamexicanrestaurant",
-    "https://instagram.com/sucasamexicanrestaurant",
-    "https://google.com/maps/place/Su+Casa+Mexican+Restaurant"
-  ],
+  "menu": "https://sucasamexicanrestaurant.com/menu",
   "hasMenu": {
     "@type": "Menu",
-    "url": `${siteUrl}/menu`,
-    "name": "Su Casa Mexican Restaurant Menu"
+    "url": "https://sucasamexicanrestaurant.com/menu"
   },
+  "acceptsReservations": "No",
+  "foundingDate": "1978",
+  "description": "Family-owned since 1978, Su Casa serves authentic Mexican food in Midvale, UT. Dine in, order online, or cater your next event.",
+  "sameAs": [
+    "https://www.instagram.com/sucasamidvale/",
+    "https://www.yelp.com/biz/su-casa-mexican-restaurant-midvale",
+    "https://www.doordash.com/store/su-casa-mexican-restaurant-midvale-922561/",
+    "https://www.grubhub.com/restaurant/su-casa-mexican-restaurant-6878-state-st-midvale/1472764"
+  ],
   "potentialAction": {
     "@type": "OrderAction",
-    "target": "https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/"
+    },
     "deliveryMethod": ["http://purl.org/goodrelations/v1#DeliveryModePickUp"]
   }
 };

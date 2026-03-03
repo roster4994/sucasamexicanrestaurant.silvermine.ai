@@ -10,6 +10,10 @@ interface Props {
 
 const { title, description = "Family owned since 1978, Su Casa Mexican Restaurant in Midvale, UT offers authentic Mexican cuisine in a cozy, festive atmosphere." } = Astro.props;
 const fullTitle = title === 'Home' ? 'Su Casa Mexican Restaurant | Authentic Mexican Food in Midvale, UT' : `${title} | Su Casa Mexican Restaurant`;
+
+const productionDomain = 'sucasamexicanrestaurant.com';
+const canonicalURL = new URL(Astro.url.pathname, `https://${productionDomain}`);
+const isProduction = Astro.url.hostname === productionDomain;
 ---
 
 <!doctype html>
@@ -25,6 +29,10 @@ const fullTitle = title === 'Home' ? 'Su Casa Mexican Restaurant | Authentic Mex
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Su Casa Mexican Restaurant" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL.href} />
+    {!isProduction && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon/su-casa-logo.png" />
