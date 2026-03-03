@@ -12,6 +12,6 @@ export default defineConfig({
     '/midvale-su-casa-events': '/',
     '/midvale-su-casa-party': '/catering',
     '/midvale-su-casa-happy-hours-specials': '/menu',
-    '/accessibility-page-01': '/',
+    '/accessibility-page-01': '/accessibility',
   },
 });
