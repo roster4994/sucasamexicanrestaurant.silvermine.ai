@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 
 const dailySpecials = [
   {
@@ -118,6 +119,7 @@ const breadcrumbSchema = {
       <p>Great food at great prices, every day of the week</p>
     </div>
   </section>
+  <Breadcrumb current="Specials" />
 
   <div class="specials-content">
     <div class="container">

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 import { Image } from 'astro:assets';
 import logoImg from '../assets/images/logo.png';
 import menuSpecialBurrito from '../assets/images/menu/special-burrito.jpg';
@@ -145,6 +146,7 @@ const breadcrumbSchema = {
   </section>
 
   <h1 class="sr-only">Su Casa Mexican Food Menu — Midvale, UT</h1>
+  <Breadcrumb current="Menu" />
 
   <!-- Menu Navigation -->
   <nav class="menu-nav" aria-label="Menu sections">
@@ -379,6 +381,7 @@ const breadcrumbSchema = {
       </section>
 
       <div class="menu-footer">
+        <p class="menu-footer-text">Planning an event? <a href="/catering">Check out our catering options &rarr;</a></p>
         <div class="menu-ctas">
           <a href="/order" class="btn btn-primary">Order Online</a>
           <a href="/catering" class="btn btn-catering-outline">Catering Menu</a>
@@ -715,6 +718,22 @@ const breadcrumbSchema = {
     padding-top: var(--spacing-lg);
     border-top: 2px solid var(--color-cream);
     margin-top: var(--spacing-lg);
+  }
+
+  .menu-footer-text {
+    color: var(--color-text);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .menu-footer-text a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .menu-footer-text a:hover {
+    text-decoration: underline;
   }
 
   .menu-ctas {

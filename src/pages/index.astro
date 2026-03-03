@@ -163,6 +163,7 @@ const breadcrumbSchema = {
           <p class="about-text fade-in-element" style="--delay: 0.3s">
             After Fred's retirement in 1999, the restaurant was passed down to his youngest son, Michael Osterloh, and today continues under the care of Denice Osterloh, carrying on the same comforting food and welcoming atmosphere Midvale has loved for generations.
           </p>
+          <a href="/about" class="about-link fade-in-element" style="--delay: 0.4s">Learn more about our history &rarr;</a>
         </div>
         <div class="about-visual">
           <div class="about-image-container slide-in-image">
@@ -240,6 +241,9 @@ const breadcrumbSchema = {
           </div>
         </div>
     </div>
+    <div class="collage-cta">
+      <a href="/menu" class="collage-menu-link">View Full Menu &rarr;</a>
+    </div>
   </section>
 
   <!-- Testimonials Section -->
@@ -297,6 +301,8 @@ const breadcrumbSchema = {
           <p>Visit us today or order online for pickup and delivery</p>
           <div class="cta-buttons">
             <a href="/order" class="btn btn-secondary">Order Online</a>
+            <a href="/catering" class="btn btn-secondary">Catering</a>
+            <a href="/contact" class="btn btn-secondary">Contact Us</a>
           </div>
         </div>
       </div>
@@ -557,10 +563,47 @@ const breadcrumbSchema = {
     transform: translateY(0) scale(1);
   }
 
+  .about-link {
+    display: inline-block;
+    color: #000000;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    margin-top: var(--spacing-xs);
+  }
+
+  .about-link:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
   /* Photo Collage */
   .photo-collage {
     background: #1a1a1a;
     padding: 4px 0;
+  }
+
+  .collage-cta {
+    text-align: center;
+    padding: var(--spacing-md) 0;
+  }
+
+  .collage-menu-link {
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.15rem;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-tertiary);
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .collage-menu-link:hover {
+    color: var(--color-tertiary);
   }
 
   .collage-grid {

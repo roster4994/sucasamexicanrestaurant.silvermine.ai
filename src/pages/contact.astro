@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 
 const hours = [
   { days: "Monday", time: "11:00 AM - 8:00 PM" },
@@ -11,20 +12,14 @@ const hours = [
   { days: "Sunday", time: "Closed" }
 ];
 
-const socialLinks = [
-  { name: "Facebook", url: "https://facebook.com/sucasamexicanrestaurant", icon: "facebook" },
-  { name: "Instagram", url: "https://instagram.com/sucasamexicanrestaurant", icon: "instagram" },
-  { name: "Google", url: "https://google.com/maps/place/Su+Casa+Mexican+Restaurant", icon: "google" }
-];
-
 const siteUrl = 'https://sucasamexicanrestaurant.com';
 
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "@id": `${siteUrl}/contact`,
-  "name": "Contact | Su Casa Mexican Restaurant",
-  "description": "Visit Su Casa Mexican Restaurant at 6878 State Street, Midvale, UT 84047. Call us at (801) 255-1042. Family owned since 1978.",
+  "name": "Contact Su Casa Mexican Restaurant | Midvale, UT | (801) 255-1042",
+  "description": "Contact Su Casa Mexican Restaurant in Midvale, UT. Call (801) 255-1042, visit us at 6878 S State Street, or order online. Mon–Thu 11–8, Fri–Sat 11–9.",
   "url": `${siteUrl}/contact`,
   "isPartOf": { "@id": `${siteUrl}/#website` }
 };
@@ -50,8 +45,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="Contact & Location | Su Casa Mexican Restaurant Midvale, UT"
-  description="Visit Su Casa Mexican Restaurant at 6878 State Street, Midvale, UT 84047. Call us at (801) 255-1042. Family owned since 1978."
+  title="Contact Su Casa Mexican Restaurant | Midvale, UT | (801) 255-1042"
+  description="Contact Su Casa Mexican Restaurant in Midvale, UT. Call (801) 255-1042, visit us at 6878 S State Street, or order online. Mon–Thu 11–8, Fri–Sat 11–9."
 >
 <Fragment slot="head">
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
@@ -60,10 +55,11 @@ const breadcrumbSchema = {
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <h1>Contact & Location</h1>
-      <p>Come visit us - we'd love to see you!</p>
+      <h1>Contact Su Casa Mexican Restaurant in Midvale, UT</h1>
+      <p>We'd love to hear from you — stop by, call, or order online!</p>
     </div>
   </section>
+  <Breadcrumb current="Contact" />
 
   <div class="contact-content">
     <div class="container">
@@ -81,7 +77,7 @@ const breadcrumbSchema = {
                 </svg>
                 <div>
                   <strong>Address</strong>
-                  <p>6878 State Street<br>Midvale, UT 84047</p>
+                  <p>6878 S State Street<br>Midvale, UT 84047</p>
                 </div>
               </div>
               <div class="info-item">
@@ -91,6 +87,16 @@ const breadcrumbSchema = {
                 <div>
                   <strong>Phone</strong>
                   <p><a href="tel:+18012551042">(801) 255-1042</a></p>
+                </div>
+              </div>
+              <div class="info-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+                <div>
+                  <strong>Email</strong>
+                  <p><a href="mailto:scscmo@gmail.com">scscmo@gmail.com</a></p>
                 </div>
               </div>
             </address>
@@ -118,13 +124,19 @@ const breadcrumbSchema = {
                 </svg>
                 Facebook
               </a>
-              <a href="https://instagram.com/sucasamexicanrestaurant" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-btn instagram">
+              <a href="https://www.instagram.com/sucasamidvale/" target="_blank" rel="noopener noreferrer" aria-label="Follow Su Casa on Instagram" class="social-btn instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                 </svg>
                 Instagram
+              </a>
+              <a href="https://www.yelp.com/biz/su-casa-mexican-restaurant-midvale" target="_blank" rel="noopener noreferrer" aria-label="Su Casa on Yelp" class="social-btn yelp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+                Yelp
               </a>
               <a href="https://google.com/maps/place/Su+Casa+Mexican+Restaurant" target="_blank" rel="noopener noreferrer" aria-label="Google" class="social-btn google">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -140,18 +152,17 @@ const breadcrumbSchema = {
         <div class="map-section">
           <div class="map-container">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.123456789!2d-111.8926!3d40.6116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDM2JzQxLjgiTiAxMTHCsDUzJzMzLjQiVw!5e0!3m2!1sen!2sus!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.5!2d-111.8926335!3d40.6264145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x875289b066322b6f%3A0x1b428f9fb0f21030!2sSu%20Casa%20Mexican%20Restaurant!5e0!3m2!1sen!2sus!4v1706489600000!5m2!1sen!2sus"
               width="100%"
               height="100%"
               style="border:0;"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              title="Su Casa Mexican Restaurant Location"
+              title="Su Casa Mexican Restaurant location in Midvale, UT"
             ></iframe>
             <div class="map-overlay">
-              <p>📍 Click the map to open in Google Maps</p>
-              <a href="https://www.google.com/maps/place/6878+State+St,+Midvale,+UT+84047" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <a href="https://www.google.com/maps/place/Su+Casa+Mexican+Restaurant/@40.6264145,-111.8904448,17z/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                 Get Directions
               </a>
             </div>
@@ -167,65 +178,27 @@ const breadcrumbSchema = {
         </div>
       </div>
 
-      <!-- Contact Form -->
-      <section class="contact-form-section">
-        <div class="form-container">
-          <h2>Send Us a Message</h2>
-          <p>Have a question or feedback? We'd love to hear from you!</p>
-          <form class="contact-form" action="#" method="POST">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name" class="form-label">Your Name *</label>
-                <input type="text" id="name" name="name" class="form-input" required>
-              </div>
-              <div class="form-group">
-                <label for="email" class="form-label">Email Address *</label>
-                <input type="email" id="email" name="email" class="form-input" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="subject" class="form-label">Subject</label>
-              <select id="subject" name="subject" class="form-select">
-                <option value="">Select a subject</option>
-                <option value="general">General Inquiry</option>
-                <option value="feedback">Feedback</option>
-                <option value="catering">Catering Question</option>
-                <option value="reservation">Large Party / Reservation</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message" class="form-label">Message *</label>
-              <textarea id="message" name="message" class="form-textarea" required placeholder="How can we help you?"></textarea>
-            </div>
-            <div class="form-submit">
-              <button type="submit" class="btn btn-primary">Send Message</button>
-            </div>
-          </form>
-        </div>
-      </section>
-
       <!-- Quick Actions -->
       <section class="quick-actions">
         <h2>Quick Links</h2>
         <div class="actions-grid">
           <a href="/menu" class="action-card">
-            <span class="action-icon">📋</span>
+            <span class="action-icon">&#x1F4CB;</span>
             <h3>View Menu</h3>
             <p>Explore our full menu</p>
           </a>
           <a href="/order" class="action-card">
-            <span class="action-icon">🚗</span>
+            <span class="action-icon">&#x1F697;</span>
             <h3>Order Online</h3>
             <p>Delivery or pickup</p>
           </a>
           <a href="/catering" class="action-card">
-            <span class="action-icon">🎉</span>
+            <span class="action-icon">&#x1F389;</span>
             <h3>Catering</h3>
             <p>For your events</p>
           </a>
           <a href="/specials" class="action-card">
-            <span class="action-icon">⭐</span>
+            <span class="action-icon">&#x2B50;</span>
             <h3>Specials</h3>
             <p>Daily deals</p>
           </a>
@@ -405,6 +378,10 @@ const breadcrumbSchema = {
     background: linear-gradient(45deg, #d1615d, #66596e, #415f84);
   }
 
+  .social-btn.yelp {
+    background: #d32323;
+  }
+
   .social-btn.google {
     background: #74bab1;
   }
@@ -445,14 +422,7 @@ const breadcrumbSchema = {
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-sm);
-  }
-
-  .map-overlay p {
-    color: white;
-    margin: 0;
-    font-size: 0.9rem;
+    justify-content: center;
   }
 
   .directions-info {
@@ -482,43 +452,6 @@ const breadcrumbSchema = {
 
   .directions-info li:last-child {
     border-bottom: none;
-  }
-
-  /* Contact Form */
-  .contact-form-section {
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .form-container {
-    background: white;
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .form-container h2 {
-    color: var(--color-brown-dark);
-    text-align: center;
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .form-container > p {
-    color: var(--color-text-light);
-    text-align: center;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-sm);
-  }
-
-  .form-submit {
-    text-align: center;
-    margin-top: var(--spacing-md);
   }
 
   /* Quick Actions */
@@ -577,17 +510,6 @@ const breadcrumbSchema = {
 
     .map-container {
       height: 300px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .form-row {
-      grid-template-columns: 1fr;
-    }
-
-    .map-overlay {
-      flex-direction: column;
-      text-align: center;
     }
   }
 </style>
