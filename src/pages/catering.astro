@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
 
@@ -48,6 +49,7 @@ const breadcrumbSchema = {
   </section>
 
   <h1 class="sr-only">Mexican Catering & Party Platters — Su Casa Midvale, UT</h1>
+  <Breadcrumb current="Catering" />
 
   <div class="catering-content">
     <div class="container">
@@ -71,6 +73,11 @@ const breadcrumbSchema = {
         <p class="contact-note">Please include your event date, guest count, and location when emailing.</p>
         <p class="contact-closing">Our team is happy to help you plan the perfect event!</p>
       </section>
+
+      <div class="catering-links">
+        <a href="/contact" class="catering-link">Contact us to plan your event &rarr;</a>
+        <a href="/menu" class="catering-link">View our full menu &rarr;</a>
+      </div>
     </div>
   </div>
 </div>
@@ -276,6 +283,29 @@ const breadcrumbSchema = {
   }
 
 
+
+  .catering-links {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .catering-link {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .catering-link:hover {
+    color: var(--color-brown-dark);
+    border-color: var(--color-brown-dark);
+  }
 
   @media (max-width: 768px) {
     .page-banner {

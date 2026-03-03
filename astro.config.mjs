@@ -8,7 +8,7 @@ export default defineConfig({
     '/midvale-su-casa-food-menu': '/menu',
     '/midvale-su-casa-drink-menu': '/menu',
     '/midvale-su-casa-catering': '/catering',
-    '/midvale-su-casa-about': '/',
+    '/midvale-su-casa-about': '/about',
     '/midvale-su-casa-events': '/',
     '/midvale-su-casa-party': '/catering',
     '/midvale-su-casa-happy-hours-specials': '/menu',

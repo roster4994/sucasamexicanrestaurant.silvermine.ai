@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const siteUrl = 'https://sucasamexicanrestaurant.com';
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/about`,
+  "name": "About Su Casa | Family-Owned Mexican Restaurant Since 1978 | Midvale, UT",
+  "description": "Learn about Su Casa Mexican Restaurant's story — family-owned and serving authentic Mexican food in Midvale, Utah since 1978. Meet the Osterloh family.",
+  "url": `${siteUrl}/about`,
+  "isPartOf": { "@id": `${siteUrl}/#website` }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "About",
+      "item": `${siteUrl}/about`
+    }
+  ]
+};
+---
+
+<Layout
+  title="About Su Casa | Family-Owned Mexican Restaurant Since 1978 | Midvale, UT"
+  description="Learn about Su Casa Mexican Restaurant's story — family-owned and serving authentic Mexican food in Midvale, Utah since 1978. Meet the Osterloh family."
+>
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</Fragment>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>About Su Casa Mexican Restaurant — Midvale's Family-Owned Favorite Since 1978</h1>
+    </div>
+  </section>
+  <Breadcrumb current="About" />
+
+  <div class="about-content">
+    <div class="container">
+      <!-- Our Story -->
+      <div class="content-card">
+        <h2>Our Story</h2>
+        <p>
+          Su Casa Mexican Restaurant has been a beloved fixture of Midvale, Utah since 1978. For over 45 years, our family-owned restaurant at 6878 S State Street has served the community with authentic Mexican food made from scratch using recipes perfected over decades. What started as one man's passion for bold, homemade flavors has grown into a multigenerational tradition that thousands of families across the Salt Lake Valley call their favorite.
+        </p>
+        <p>
+          Our founder, Fred Osterloh, was a lifelong restaurateur with a deep love for Mexican cuisine. Before opening Su Casa, Fred spent years traveling across Mexico and the American Southwest, tasting, learning, and carefully refining recipes that would eventually become the backbone of our menu. He brought that experience to several successful restaurants — including Frederico's, Fred's Burger Chalet, and his first Mexican restaurant, El Sol — before channeling everything he'd learned into Su Casa in June of 1978.
+        </p>
+
+        <h2>The Osterloh Family Legacy</h2>
+        <p>
+          From the very beginning, Su Casa was a family affair. Fred's commitment to quality — homemade salsas, hand-rolled enchiladas, slow-simmered chile verde — set the standard that the Osterloh family continues to uphold today. When Fred retired in 1999, the restaurant was passed down to his youngest son, Michael Osterloh, who carried on the tradition with the same care and dedication. Today, Su Casa operates under the stewardship of Denice Osterloh, who ensures that every plate leaving the kitchen lives up to the recipes and values Fred established nearly five decades ago.
+        </p>
+        <p>
+          The family's dedication extends beyond the food. Walking into Su Casa, you'll find a warm, welcoming atmosphere that feels like home. Our staff treats every guest like family, whether you're a first-time visitor or one of the regulars who've been dining with us for 30 years. It's that combination of authentic flavors and genuine hospitality that keeps Midvale — and the entire Salt Lake County area — coming back generation after generation.
+        </p>
+
+        <h2>Rooted in Midvale, Serving the Community</h2>
+        <p>
+          Located in the heart of Midvale at 6878 S State Street, Su Casa is more than just a restaurant — we're part of the community. Over the decades, we've catered countless birthday parties, graduation celebrations, office lunches, and family reunions. Our taco bar catering remains one of the most popular options for events across the valley. Whether you're dining in our festive restaurant, ordering online for pickup, or having us cater your next gathering, you'll taste the difference that 45+ years of family tradition makes.
+        </p>
+        <p>
+          We're proud to be Midvale's longest-running family-owned Mexican restaurant, and we look forward to serving you and your family for many more years to come.
+        </p>
+      </div>
+
+      <!-- Visit Us CTA -->
+      <div class="cta-section">
+        <h2>Visit Us Today</h2>
+        <p>Come taste the tradition that Midvale has loved since 1978. We're open Monday through Saturday — stop by for lunch or dinner, or order online for pickup and delivery.</p>
+        <div class="cta-buttons">
+          <a href="/order" class="btn btn-primary">Order Online</a>
+          <a href="/contact" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #415f84 100%);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(209, 97, 93, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(242, 186, 101, 0.15) 0%, transparent 50%);
+  }
+
+  .page-header h1 {
+    color: var(--color-tertiary);
+    position: relative;
+    margin-bottom: 0;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .about-content {
+    padding: var(--spacing-lg) 0 var(--spacing-xl);
+  }
+
+  .content-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    max-width: 800px;
+    margin: 0 auto var(--spacing-lg);
+  }
+
+  .content-card h2 {
+    color: var(--color-brown-dark);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .content-card h2:first-child {
+    margin-top: 0;
+  }
+
+  .content-card p {
+    color: var(--color-text);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.05rem;
+  }
+
+  .cta-section {
+    background: var(--color-green);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    color: #000000;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .cta-section p {
+    color: #000000;
+    font-size: 1.05rem;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-buttons .btn-primary {
+    background: var(--color-primary);
+    color: #ffffff;
+    border: 2px solid var(--color-primary);
+  }
+
+  .cta-buttons .btn-primary:hover {
+    background: #ffffff;
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .cta-buttons .btn-outline {
+    background: transparent;
+    color: #000000;
+    border: 2px solid #000000;
+  }
+
+  .cta-buttons .btn-outline:hover {
+    background: #000000;
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+</style>

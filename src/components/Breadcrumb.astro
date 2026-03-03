@@ -1,0 +1,57 @@
+---
+interface Props {
+  current: string;
+}
+
+const { current } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item" aria-current="page">{current}</li>
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .breadcrumb {
+    background: var(--color-cream, #fefefe);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb-item a {
+    color: var(--color-primary, #d1615d);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-item a:hover {
+    color: var(--color-brown-dark, #415f84);
+    text-decoration: underline;
+  }
+
+  .breadcrumb-item:last-child {
+    color: var(--color-text-light, #888);
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: '>';
+    margin-right: 0.5rem;
+    color: var(--color-text-light, #888);
+    font-weight: 300;
+  }
+</style>

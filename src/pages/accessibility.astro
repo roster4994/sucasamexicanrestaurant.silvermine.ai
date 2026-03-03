@@ -1,39 +1,84 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const siteUrl = 'https://sucasamexicanrestaurant.com';
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/accessibility`,
+  "name": "Accessibility Statement | Su Casa Mexican Restaurant",
+  "description": "Su Casa Mexican Restaurant's accessibility commitment. We strive to make our website accessible to all visitors in accordance with WCAG 2.1 guidelines.",
+  "url": `${siteUrl}/accessibility`,
+  "isPartOf": { "@id": `${siteUrl}/#website` }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Accessibility",
+      "item": `${siteUrl}/accessibility`
+    }
+  ]
+};
 ---
 
 <Layout
-  title="Accessibility | Su Casa Mexican Restaurant"
-  description="Su Casa Mexican Restaurant is committed to digital accessibility. Learn about our efforts to make our website usable for everyone."
+  title="Accessibility Statement | Su Casa Mexican Restaurant"
+  description="Su Casa Mexican Restaurant's accessibility commitment. We strive to make our website accessible to all visitors in accordance with WCAG 2.1 guidelines."
 >
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+</Fragment>
   <section class="page-header">
     <div class="container">
       <h1>Accessibility Statement</h1>
-      <p>Our commitment to an inclusive experience</p>
+      <p>Our commitment to an inclusive experience for all visitors</p>
     </div>
   </section>
+  <Breadcrumb current="Accessibility" />
 
   <div class="accessibility-content">
     <div class="container">
       <div class="content-card">
         <h2>Our Commitment</h2>
-        <p>Su Casa Mexican Restaurant is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.</p>
+        <p>Su Casa Mexican Restaurant is committed to ensuring digital accessibility for people with disabilities. We strive to continually improve the user experience for everyone who visits our website and apply the relevant accessibility standards to make our site inclusive and welcoming for all.</p>
+
+        <h2>Conformance Status</h2>
+        <p>We aim to conform to the <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong>. These guidelines explain how to make web content more accessible for people with a wide array of disabilities, including visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities.</p>
 
         <h2>Measures Taken</h2>
+        <p>Su Casa Mexican Restaurant takes the following measures to ensure accessibility of our website:</p>
         <ul>
-          <li>Semantic HTML for screen reader compatibility</li>
-          <li>Keyboard navigation support throughout the site</li>
-          <li>Skip-to-content link for easy navigation</li>
-          <li>Descriptive alt text on all images</li>
-          <li>Sufficient color contrast ratios</li>
-          <li>Responsive design for all devices and zoom levels</li>
+          <li>Semantic HTML markup for proper screen reader compatibility and document structure</li>
+          <li>Full keyboard navigation support throughout all pages and interactive elements</li>
+          <li>Skip-to-main-content link for efficient navigation</li>
+          <li>Descriptive alternative text on all meaningful images</li>
+          <li>Sufficient color contrast ratios meeting WCAG 2.1 AA requirements</li>
+          <li>Responsive design that supports all devices, zoom levels, and text resizing up to 200%</li>
+          <li>ARIA labels and roles on navigation, buttons, and interactive components</li>
         </ul>
 
-        <h2>Contact Us</h2>
-        <p>If you encounter any accessibility barriers on our website, please let us know. We welcome your feedback and will do our best to address any issues promptly.</p>
+        <h2>Feedback</h2>
+        <p>We welcome your feedback on the accessibility of our website. If you encounter any accessibility barriers, have difficulty accessing any content, or have suggestions for improvement, please contact us. We take accessibility concerns seriously and will do our best to address any issues promptly.</p>
+
+        <h2>Contact Information</h2>
         <p><strong>Phone:</strong> <a href="tel:+18012551042">(801) 255-1042</a></p>
         <p><strong>Email:</strong> <a href="mailto:scscmo@gmail.com">scscmo@gmail.com</a></p>
         <p><strong>Address:</strong> 6878 S State Street, Midvale, UT 84047</p>
+        <p>We aim to respond to accessibility feedback within 5 business days.</p>
       </div>
     </div>
   </div>
