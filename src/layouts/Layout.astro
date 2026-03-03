@@ -9,7 +9,11 @@ interface Props {
 }
 
 const { title, description = "Family owned since 1978, Su Casa Mexican Restaurant in Midvale, UT offers authentic Mexican cuisine in a cozy, festive atmosphere." } = Astro.props;
-const fullTitle = title === 'Home' ? 'Su Casa Mexican Restaurant | Authentic Mexican Food in Midvale, UT' : `${title} | Su Casa Mexican Restaurant`;
+
+const productionDomain = 'sucasamexicanrestaurant.com';
+const canonicalURL = new URL(Astro.url.pathname, `https://${productionDomain}`);
+const isProduction = Astro.url.hostname === productionDomain;
+const ogImage = `https://${productionDomain}/_astro/logo.ChkLogVw_XKnHR.webp`;
 ---
 
 <!doctype html>
@@ -21,10 +25,32 @@ const fullTitle = title === 'Home' ? 'Su Casa Mexican Restaurant | Authentic Mex
     <meta name="keywords" content="Mexican restaurant, Midvale, Utah, authentic Mexican food, tacos, burritos, enchiladas, catering, family restaurant" />
 
     <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:type" content="restaurant" />
     <meta property="og:site_name" content="Su Casa Mexican Restaurant" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Geo Meta Tags -->
+    <meta name="geo.region" content="US-UT" />
+    <meta name="geo.placename" content="Midvale" />
+    <meta name="geo.position" content="40.6264145;-111.8904448" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL.href} />
+    {!isProduction && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Preconnect to ordering platform -->
+    <link rel="dns-prefetch" href="https://order.spoton.com" />
+    <link rel="preconnect" href="https://order.spoton.com" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon/su-casa-logo.png" />
@@ -36,7 +62,7 @@ const fullTitle = title === 'Home' ? 'Su Casa Mexican Restaurant | Authentic Mex
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <title>{fullTitle}</title>
+    <title>{title}</title>
     <slot name="head" />
   </head>
   <body>

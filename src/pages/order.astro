@@ -55,8 +55,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="Order Online"
-  description="Order Su Casa Mexican Restaurant for delivery or pickup through DoorDash, GrubHub, or Uber Eats. Authentic Mexican food delivered to your door in Midvale, UT."
+  title="Order Online | Su Casa Mexican Restaurant Midvale, UT"
+  description="Order Su Casa's authentic Mexican food for pickup or delivery in Midvale, UT. Order direct or through DoorDash, GrubHub & Uber Eats. (801) 255-1042."
 >
 <Fragment slot="head">
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
@@ -65,11 +65,13 @@ const breadcrumbSchema = {
 <div class="order-page-wrapper">
   <!-- Banner -->
   <section class="page-banner">
-    <img src="https://i.postimg.cc/N0K0mJhL/Copy-of-chili-verde-dinner.jpg" alt="Su Casa Mexican Restaurant" class="banner-image" width="1600" height="900" decoding="async" />
+    <img src="https://i.postimg.cc/N0K0mJhL/Copy-of-chili-verde-dinner.jpg" alt="Chile verde dinner plate — order online from Su Casa Mexican Restaurant Midvale" class="banner-image" width="1600" height="900" decoding="async" />
   </section>
 
   <div class="order-content">
     <div class="container">
+      <h1>Order Mexican Food Online — Su Casa Midvale, UT</h1>
+
       <!-- Main Order Button -->
       <section class="main-order-section">
         <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" target="_blank" rel="noopener noreferrer" class="main-order-btn">
@@ -149,6 +151,12 @@ const breadcrumbSchema = {
 
   .order-content {
     padding: var(--spacing-xl) 0;
+  }
+
+  .order-content h1 {
+    text-align: center;
+    color: var(--color-brown-dark);
+    margin-bottom: var(--spacing-md);
   }
 
   /* Main Order Button */
