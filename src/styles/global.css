@@ -75,13 +75,12 @@ body {
 
 /* Account for fixed header on non-home pages */
 main > section:first-child:not(.hero) {
-  padding-top: 180px;
+  padding-top: 200px;
 }
 
-/* Page headers need to extend behind the fixed header */
+/* Page headers extend behind the fixed header naturally; padding clears text below navbar */
 .page-header {
-  margin-top: -180px;
-  padding-top: 220px !important;
+  padding-top: 200px !important;
 }
 
 /* Typography */
