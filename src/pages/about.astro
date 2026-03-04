@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+import headerImg from '../assets/images/media/combo-plate-10.jpg';
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
 
@@ -45,6 +47,7 @@ const breadcrumbSchema = {
 
   <!-- Page Header -->
   <section class="page-header">
+    <Image src={headerImg} alt="" class="page-header-bg" loading="eager" />
     <div class="container">
       <h1>About Su Casa Mexican Restaurant — Midvale's Family-Owned Favorite Since 1978</h1>
     </div>
@@ -95,27 +98,43 @@ const breadcrumbSchema = {
 
 <style>
   .page-header {
-    background: linear-gradient(135deg, var(--bg-dark) 0%, #415f84 100%);
+    background: var(--bg-dark);
     padding: 18rem 0 var(--spacing-xl);
     text-align: center;
     position: relative;
     overflow: hidden;
   }
 
+  .page-header-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.35;
+  }
+
   .page-header::before {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(circle at 20% 80%, rgba(209, 97, 93, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(242, 186, 101, 0.15) 0%, transparent 50%);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    z-index: 1;
   }
 
   .page-header h1 {
     color: var(--color-tertiary);
     position: relative;
+    z-index: 2;
     margin-bottom: 0;
     font-size: clamp(1.5rem, 3vw, 2.25rem);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   }
 
   .about-content {
