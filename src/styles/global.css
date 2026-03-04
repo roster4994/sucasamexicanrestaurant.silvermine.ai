@@ -73,16 +73,6 @@ body {
   min-height: 100vh;
 }
 
-/* Account for fixed header on non-home pages */
-main > section:first-child:not(.hero) {
-  padding-top: 200px;
-}
-
-/* Page headers extend behind the fixed header naturally; padding clears text below navbar */
-.page-header {
-  padding-top: 200px !important;
-}
-
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
