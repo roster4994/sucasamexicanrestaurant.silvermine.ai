@@ -12,7 +12,7 @@ const { title, description = "Family owned since 1978, Su Casa Mexican Restauran
 
 const productionDomain = 'sucasamexicanrestaurant.com';
 const canonicalURL = new URL(Astro.url.pathname, `https://${productionDomain}`);
-const isProduction = Astro.url.hostname === productionDomain;
+const isProduction = import.meta.env.PROD;
 const ogImage = `https://${productionDomain}/_astro/logo.ChkLogVw_XKnHR.webp`;
 ---
 
