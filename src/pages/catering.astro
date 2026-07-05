@@ -7,10 +7,10 @@ const siteUrl = 'https://sucasamexicanrestaurant.com';
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${siteUrl}/catering`,
+  "@id": `${siteUrl}/catering/`,
   "name": "Catering | Su Casa Mexican Restaurant",
   "description": "Bring the fiesta to your event! Su Casa Mexican Restaurant offers catering services for parties, corporate events, weddings, and more in the Midvale, UT area.",
-  "url": `${siteUrl}/catering`,
+  "url": `${siteUrl}/catering/`,
   "isPartOf": { "@id": `${siteUrl}/#website` }
 };
 
@@ -28,14 +28,14 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "Catering",
-      "item": `${siteUrl}/catering`
+      "item": `${siteUrl}/catering/`
     }
   ]
 };
 ---
 
 <Layout
-  title="Mexican Catering & Party Platters in Midvale, UT | Su Casa Restaurant"
+  title="Mexican Catering & Party Platters | Su Casa Midvale, Utah"
   description="Cater your next event with Su Casa's authentic Mexican food. Serving Midvale & Salt Lake County since 1978. Custom menus for parties, corporate events & more."
 >
 <Fragment slot="head">
@@ -62,6 +62,22 @@ const breadcrumbSchema = {
         </div>
       </div>
 
+      <!-- Catering Info -->
+      <section class="catering-info">
+        <h2>Authentic Mexican Catering for Any Occasion</h2>
+        <p>
+          From birthday parties and family reunions to corporate lunches, holiday events, and wedding
+          receptions, Su Casa brings the same homemade Mexican food we've served in Midvale since 1978
+          straight to your event. We cater gatherings of all sizes across Midvale, Sandy, Murray, West
+          Jordan, and the greater Salt Lake Valley.
+        </p>
+        <p>
+          Build your own spread with guest favorites like enchiladas, chile verde, fajitas, rice, beans,
+          and fresh chips and salsa — or keep it simple with our popular taco bar. We'll work with your
+          headcount, budget, and venue to make your event easy and delicious.
+        </p>
+      </section>
+
       <!-- Catering Contact Section -->
       <section class="catering-contact" id="catering-quote">
         <h2>Get a Catering Quote</h2>
@@ -75,8 +91,8 @@ const breadcrumbSchema = {
       </section>
 
       <div class="catering-links">
-        <a href="/contact" class="catering-link">Contact us to plan your event &rarr;</a>
-        <a href="/menu" class="catering-link">View our full menu &rarr;</a>
+        <a href="/contact/" class="catering-link">Contact us to plan your event &rarr;</a>
+        <a href="/menu/" class="catering-link">View our full menu &rarr;</a>
       </div>
     </div>
   </div>
@@ -168,6 +184,23 @@ const breadcrumbSchema = {
   }
 
   /* Catering Contact Section */
+  .catering-info {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-lg);
+    text-align: center;
+  }
+
+  .catering-info h2 {
+    color: var(--color-brown-dark);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .catering-info p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-sm);
+  }
+
   .catering-contact {
     background: linear-gradient(135deg, #fff 0%, #fef9f3 100%);
     padding: var(--spacing-lg);

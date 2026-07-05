@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import logoImg from '../assets/images/logo.png';
 import '../styles/global.css';
 
 interface Props {
@@ -11,15 +12,18 @@ interface Props {
 const { title, description = "Family owned since 1978, Su Casa Mexican Restaurant in Midvale, Utah offers authentic Mexican cuisine in a cozy, festive atmosphere." } = Astro.props;
 
 const productionDomain = 'sucasamexicanrestaurant.com';
-const canonicalURL = new URL(Astro.url.pathname, `https://${productionDomain}`);
+// GitHub Pages serves directory URLs with a trailing slash and 301s the
+// slashless variant, so the canonical must always end in a slash.
+const canonicalPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(canonicalPath, `https://${productionDomain}`);
 const isProduction = import.meta.env.PROD;
-const ogImage = `https://${productionDomain}/_astro/logo.ChkLogVw_XKnHR.webp`;
+const ogImage = new URL(logoImg.src, `https://${productionDomain}`).href;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="F-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="keywords" content="Mexican restaurant, Midvale, Utah, authentic Mexican food, tacos, burritos, enchiladas, catering, family restaurant" />

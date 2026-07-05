@@ -9,10 +9,10 @@ const siteUrl = 'https://sucasamexicanrestaurant.com';
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${siteUrl}/about`,
+  "@id": `${siteUrl}/about/`,
   "name": "About Su Casa | Family-Owned Mexican Restaurant Since 1978 | Midvale, UT",
   "description": "Learn about Su Casa Mexican Restaurant's story — family-owned and serving authentic Mexican food in Midvale, Utah since 1978. Meet the Osterloh family.",
-  "url": `${siteUrl}/about`,
+  "url": `${siteUrl}/about/`,
   "isPartOf": { "@id": `${siteUrl}/#website` }
 };
 
@@ -30,14 +30,14 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "About",
-      "item": `${siteUrl}/about`
+      "item": `${siteUrl}/about/`
     }
   ]
 };
 ---
 
 <Layout
-  title="Best Family-Owned Mexican Restaurant Since 1978 | Midvale, UT"
+  title="Family-Owned Mexican Restaurant Since 1978 | Midvale, Utah"
   description="Learn about Su Casa Mexican Restaurant's story — family-owned and serving authentic Mexican food in Midvale, Utah since 1978. Meet the Osterloh family."
 >
 <Fragment slot="head">
@@ -88,8 +88,8 @@ const breadcrumbSchema = {
         <h2>Visit Us Today</h2>
         <p>Come taste the tradition that Midvale has loved since 1978. We're open Monday through Saturday — stop by for lunch or dinner, or order online for pickup and delivery.</p>
         <div class="cta-buttons">
-          <a href="/order" class="btn btn-primary">Order Online</a>
-          <a href="/contact" class="btn btn-outline">Contact Us</a>
+          <a href="/order/" class="btn btn-primary">Order Online</a>
+          <a href="/contact/" class="btn btn-outline">Contact Us</a>
         </div>
       </div>
     </div>
