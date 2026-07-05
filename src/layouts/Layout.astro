@@ -13,13 +13,15 @@ const { title, description = "Family owned since 1978, Su Casa Mexican Restauran
 const productionDomain = 'sucasamexicanrestaurant.com';
 const canonicalURL = new URL(Astro.url.pathname, `https://${productionDomain}`);
 const isProduction = import.meta.env.PROD;
-const ogImage = `https://${productionDomain}/_astro/logo.ChkLogVw_XKnHR.webp`;
+// Use a stable asset in /public — build-hashed /_astro/* filenames change on
+// every rebuild/dependency bump and silently break the social preview image.
+const ogImage = `https://${productionDomain}/media/logo.png`;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="F-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="keywords" content="Mexican restaurant, Midvale, Utah, authentic Mexican food, tacos, burritos, enchiladas, catering, family restaurant" />

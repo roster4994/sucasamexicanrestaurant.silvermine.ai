@@ -77,10 +77,10 @@ const siteUrl = 'https://sucasamexicanrestaurant.com';
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${siteUrl}/specials`,
+  "@id": `${siteUrl}/specials/`,
   "name": "Specials | Su Casa Mexican Restaurant",
   "description": "Check out our daily specials, lunch combos, and happy hour deals at Su Casa Mexican Restaurant in Midvale, UT.",
-  "url": `${siteUrl}/specials`,
+  "url": `${siteUrl}/specials/`,
   "isPartOf": { "@id": `${siteUrl}/#website` }
 };
 
@@ -98,7 +98,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "Specials",
-      "item": `${siteUrl}/specials`
+      "item": `${siteUrl}/specials/`
     }
   ]
 };
@@ -189,7 +189,7 @@ const breadcrumbSchema = {
           <div class="promo-content">
             <h2>Planning an Event?</h2>
             <p>Ask about our catering specials for large orders! We offer package deals for corporate events, parties, and celebrations.</p>
-            <a href="/catering" class="btn btn-primary">Get Catering Info</a>
+            <a href="/catering/" class="btn btn-primary">Get Catering Info</a>
           </div>
           <div class="promo-icon">🎂</div>
         </div>
@@ -201,7 +201,7 @@ const breadcrumbSchema = {
         <p>Visit us today or call to learn more about our current specials</p>
         <div class="cta-buttons">
           <a href="tel:+18012551042" class="btn btn-primary">📞 Call (801) 255-1042</a>
-          <a href="/contact" class="btn btn-secondary">Get Directions</a>
+          <a href="/contact/" class="btn btn-secondary">Get Directions</a>
         </div>
       </div>
     </div>
