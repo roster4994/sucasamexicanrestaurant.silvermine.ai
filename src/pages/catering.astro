@@ -7,10 +7,10 @@ const siteUrl = 'https://sucasamexicanrestaurant.com';
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${siteUrl}/catering`,
+  "@id": `${siteUrl}/catering/`,
   "name": "Catering | Su Casa Mexican Restaurant",
   "description": "Bring the fiesta to your event! Su Casa Mexican Restaurant offers catering services for parties, corporate events, weddings, and more in the Midvale, UT area.",
-  "url": `${siteUrl}/catering`,
+  "url": `${siteUrl}/catering/`,
   "isPartOf": { "@id": `${siteUrl}/#website` }
 };
 
@@ -28,7 +28,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "Catering",
-      "item": `${siteUrl}/catering`
+      "item": `${siteUrl}/catering/`
     }
   ]
 };
@@ -75,8 +75,8 @@ const breadcrumbSchema = {
       </section>
 
       <div class="catering-links">
-        <a href="/contact" class="catering-link">Contact us to plan your event &rarr;</a>
-        <a href="/menu" class="catering-link">View our full menu &rarr;</a>
+        <a href="/contact/" class="catering-link">Contact us to plan your event &rarr;</a>
+        <a href="/menu/" class="catering-link">View our full menu &rarr;</a>
       </div>
     </div>
   </div>
