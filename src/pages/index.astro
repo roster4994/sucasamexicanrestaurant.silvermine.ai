@@ -1,12 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import collageMexicanDinner from '../assets/images/collage/mexican-dinner.jpg';
 import collageNachoSupreme from '../assets/images/collage/nacho-supreme.jpg';
 import collageQuesoDip from '../assets/images/collage/queso-dip.jpg';
 import mediaComboPlate from '../assets/images/media/combo-plate-10.jpg';
 import mediaChileRelleno from '../assets/images/media/chili-relleno.jpg';
 import mediaChileVerde from '../assets/images/media/chile-verde-dinner.jpg';
+
+// Hero video poster: the source photo is 4500px / 6.8 MB, so serve a resized
+// webp. It is preloaded in the head since it is the first thing the hero paints.
+const heroPoster = await getImage({ src: mediaComboPlate, width: 1600, format: 'webp' });
 
 const testimonials = [
   {
@@ -205,6 +209,7 @@ const faqs = [
 
 <Layout title="Best Mexican Restaurant in Midvale, Utah | Su Casa" description="Family-owned since 1978, Su Casa serves authentic Mexican food in Midvale, Utah. Enjoy enchiladas, fajitas & chile verde. Dine in, order online, or cater.">
   <Fragment slot="head">
+    <link rel="preload" as="image" href={heroPoster.src} type="image/webp" fetchpriority="high" />
     <script type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
@@ -213,7 +218,7 @@ const faqs = [
   </Fragment>
   <!-- Hero Section -->
   <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/media/hero-poster.jpg">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster={heroPoster.src}>
       <source src="/media/banner-video.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
