@@ -14,9 +14,10 @@ export const cateringFacts = {
   deliveryRadiusMiles: 10,
 };
 
-// TODO: replace with the Formspree endpoint for the catering form (the form
-// must deliver to scscmo@gmail.com). The build warns while this is unset.
-export const quoteFormEndpoint = 'https://formspree.io/f/TODO_FORM_ID';
+// Formspree form for catering quote requests. The recipient is set in the
+// Formspree dashboard, not here (temporarily the site manager until Denice
+// verifies scscmo@gmail.com).
+export const quoteFormEndpoint = 'https://formspree.io/f/mbgdvozg';
 
 export type CateringItem = {
   name: string;
