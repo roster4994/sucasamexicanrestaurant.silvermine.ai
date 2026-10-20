@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { business, addressLines } from '../data/business';
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
 
@@ -75,9 +76,11 @@ const breadcrumbSchema = {
         <p>We welcome your feedback on the accessibility of our website. If you encounter any accessibility barriers, have difficulty accessing any content, or have suggestions for improvement, please contact us. We take accessibility concerns seriously and will do our best to address any issues promptly.</p>
 
         <h2>Contact Information</h2>
-        <p><strong>Phone:</strong> <a href="tel:+18012551042">(801) 255-1042</a></p>
-        <p><strong>Email:</strong> <a href="mailto:scscmo@gmail.com">scscmo@gmail.com</a></p>
-        <p><strong>Address:</strong> 6878 S State Street, Midvale, UT 84047</p>
+        <address>
+          <p><strong>Phone:</strong> <a href={business.telephoneHref}>{business.telephoneDisplay}</a></p>
+          <p><strong>Email:</strong> <a href={business.emailHref}>{business.email}</a></p>
+          <p><strong>Address:</strong> {addressLines[0]}<br>{addressLines[1]}</p>
+        </address>
         <p>We aim to respond to accessibility feedback within 5 business days.</p>
       </div>
     </div>
@@ -154,5 +157,9 @@ const breadcrumbSchema = {
   .content-card a {
     color: var(--color-primary);
     font-weight: 600;
+  }
+
+  .content-card address {
+    font-style: normal;
   }
 </style>

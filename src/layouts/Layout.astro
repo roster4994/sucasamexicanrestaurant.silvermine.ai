@@ -1,15 +1,22 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getImage } from 'astro:assets';
 import logoImg from '../assets/images/logo.png';
+import heroImg from '../assets/images/media/combo-plate-10.jpg';
+import { business, restaurantSchema } from '../data/business';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
+  /** Page hero for og:image / twitter:image. Falls back to the logo. */
+  image?: ImageMetadata;
+  /** Keep the page out of search results (e.g. form thank-you pages). */
+  noindex?: boolean;
 }
 
-const { title, description = "Family owned since 1978, Su Casa Mexican Restaurant in Midvale, Utah offers authentic Mexican cuisine in a cozy, festive atmosphere." } = Astro.props;
+const { title, description = "Family owned since 1978, Su Casa Mexican Restaurant in Midvale, Utah offers authentic Mexican cuisine in a cozy, festive atmosphere.", image, noindex = false } = Astro.props;
 
 const productionDomain = 'sucasamexicanrestaurant.com';
 // GitHub Pages serves directory URLs with a trailing slash and 301s the
@@ -17,7 +24,15 @@ const productionDomain = 'sucasamexicanrestaurant.com';
 const canonicalPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonicalURL = new URL(canonicalPath, `https://${productionDomain}`);
 const isProduction = import.meta.env.PROD;
-const ogImage = new URL(logoImg.src, `https://${productionDomain}`).href;
+const ogImageSrc = image ? (await getImage({ src: image, width: 1200, format: 'jpg' })).src : logoImg.src;
+const ogImage = new URL(ogImageSrc, `https://${productionDomain}`).href;
+
+// Stable public logo URL plus an optimized hero photo for the Restaurant node.
+const heroPhoto = await getImage({ src: heroImg, width: 1200, format: 'jpg' });
+const schemaImages = [
+  `${business.url}/media/logo.png`,
+  new URL(heroPhoto.src, business.url).href,
+];
 ---
 
 <!doctype html>
@@ -26,10 +41,9 @@ const ogImage = new URL(logoImg.src, `https://${productionDomain}`).href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="keywords" content="Mexican restaurant, Midvale, Utah, authentic Mexican food, tacos, burritos, enchiladas, catering, family restaurant" />
 
     <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="restaurant" />
+    <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Su Casa Mexican Restaurant" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -44,13 +58,14 @@ const ogImage = new URL(logoImg.src, `https://${productionDomain}`).href;
     <meta name="twitter:image" content={ogImage} />
 
     <!-- Geo Meta Tags -->
-    <meta name="geo.region" content="US-Utah" />
-    <meta name="geo.placename" content="Midvale" />
-    <meta name="geo.position" content="40.6264145;-111.8904448" />
+    <meta name="geo.region" content={`US-${business.addressRegion}`} />
+    <meta name="geo.placename" content={business.addressLocality} />
+    <meta name="geo.position" content={`${business.geo.latitude};${business.geo.longitude}`} />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL.href} />
     {!isProduction && <meta name="robots" content="noindex, nofollow" />}
+    {isProduction && noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- Preconnect to ordering platform -->
     <link rel="dns-prefetch" href="https://order.spoton.com" />
@@ -70,6 +85,7 @@ const ogImage = new URL(logoImg.src, `https://${productionDomain}`).href;
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(restaurantSchema(schemaImages))} />
     <slot name="head" />
   </head>
   <body>

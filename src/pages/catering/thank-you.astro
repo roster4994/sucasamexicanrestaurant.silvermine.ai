@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { business } from '../../data/business';
+---
+
+<Layout
+  title="Catering Request Received | Su Casa Mexican Restaurant"
+  description="Thanks for your catering request. Su Casa will reply within one business day."
+  noindex
+>
+  <section class="page-header">
+    <div class="container">
+      <h1>Thanks, we got your catering request</h1>
+      <p>We'll reply within one business day.</p>
+    </div>
+  </section>
+
+  <div class="thank-you-content">
+    <div class="container">
+      <div class="content-card">
+        <p>
+          We'll look over your date, headcount, and package and get back to you by email or phone. If your event is
+          coming up soon or you need to change something, call us at
+          <a href={business.telephoneHref}>{business.telephoneDisplay}</a> or email
+          <a href={business.emailHref}>{business.email}</a>.
+        </p>
+        <div class="cta-buttons">
+          <a href="/menu/" class="btn btn-primary">View Our Menu</a>
+          <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, var(--bg-dark) 0%, #415f84 100%);
+    padding: 14rem 0 var(--spacing-lg);
+    text-align: center;
+  }
+
+  .page-header h1 {
+    color: var(--color-tertiary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .page-header p {
+    color: var(--color-cream);
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .thank-you-content {
+    padding: var(--spacing-lg) 0 var(--spacing-xl);
+  }
+
+  .content-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .content-card p {
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-md);
+  }
+</style>

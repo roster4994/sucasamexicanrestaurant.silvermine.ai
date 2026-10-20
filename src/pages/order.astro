@@ -1,26 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+import orderBannerImg from '../assets/images/order/chile-verde-dinner.jpg';
+import { business, addressLines, hours, hoursRange, ordering } from '../data/business';
 
 const deliveryPartners = [
-  {
-    name: "DoorDash",
-    link: "https://www.doordash.com/store/su-casa-mexican-restaurant-midvale-922561/",
-    color: "#FF3008",
-    logo: "/doordash-logo.svg"
-  },
-  {
-    name: "Uber Eats",
-    link: "https://www.ubereats.com/store/su-casa-mexican-restaurant/x48U_gbMSeislBSIokiUXQ",
-    color: "#06C167",
-    logo: "/ubereats-logo.svg"
-  },
-  {
-    name: "GrubHub",
-    link: "https://www.grubhub.com/restaurant/su-casa-mexican-restaurant-6878-state-st-midvale/1472764?orderMethod=delivery&locationMode=DELIVERY&facetSet=umamiV2&pageSize=20&hideHateos=true&searchMetrics=true&queryText=Su%20Casa%20Mexican%20Restaurant&latitude=40.58205795&longitude=-111.86144257&preciseLocation=true&facet=open_now%3Atrue&sortSetId=umamiv3&sponsoredSize=3&countOmittingTimes=true&whenFor=2020-03-19T17%3A30%3A00.000Z&isFutureOrder=true",
-    color: "#F63440",
-    logo: "/grubhub-logo.svg"
-  }
+  { name: "DoorDash", link: ordering.doorDash, color: "#FF3008", logo: "/doordash-logo.svg" },
+  { name: "Uber Eats", link: ordering.uberEats, color: "#06C167", logo: "/ubereats-logo.svg" },
+  { name: "GrubHub", link: ordering.grubhub, color: "#F63440", logo: "/grubhub-logo.svg" }
 ];
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
@@ -56,8 +44,9 @@ const breadcrumbSchema = {
 ---
 
 <Layout
+  image={orderBannerImg}
   title="Order Mexican Food Online | Su Casa Restaurant Midvale, Utah"
-  description="Order Su Casa's authentic Mexican food for pickup or delivery in Midvale, Utah. Order direct or through DoorDash, GrubHub & Uber Eats. (801) 255-1042."
+  description={`Order Su Casa's authentic Mexican food for pickup or delivery in Midvale, Utah. Order direct or through DoorDash, GrubHub & Uber Eats. ${business.telephoneDisplay}.`}
 >
 <Fragment slot="head">
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
@@ -66,7 +55,7 @@ const breadcrumbSchema = {
 <div class="order-page-wrapper">
   <!-- Banner -->
   <section class="page-banner">
-    <img src="https://i.postimg.cc/N0K0mJhL/Copy-of-chili-verde-dinner.jpg" alt="Chile verde dinner plate — order online from Su Casa Mexican Restaurant Midvale" class="banner-image" width="1600" height="900" decoding="async" />
+    <Image src={orderBannerImg} alt="Chile verde with warm flour tortillas, rice, and cheese from Su Casa Mexican Restaurant in Midvale" class="banner-image" width={1279} loading="eager" fetchpriority="high" />
   </section>
 
   <Breadcrumb current="Order Online" />
@@ -76,7 +65,7 @@ const breadcrumbSchema = {
 
       <!-- Main Order Button -->
       <section class="main-order-section">
-        <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" target="_blank" rel="noopener noreferrer" class="main-order-btn">
+        <a href={ordering.spotOn} target="_blank" rel="noopener noreferrer" class="main-order-btn">
           DELIVERY & PICK-UP
         </a>
         <p class="order-note">Ordering directly through us supports our small business and lets you pay in-restaurant prices,<br>with third-party delivery options available below for your convenience.</p>
@@ -87,7 +76,7 @@ const breadcrumbSchema = {
         <div class="partners-grid">
           {deliveryPartners.map((partner) => (
             <a href={partner.link} target="_blank" rel="noopener noreferrer" class="partner-card" style={`--partner-color: ${partner.color}`}>
-              <img src={partner.logo} alt={partner.name} class="partner-logo" />
+              <img src={partner.logo} alt={partner.name} class="partner-logo" width="200" height="40" loading="lazy" />
             </a>
           ))}
         </div>
@@ -98,16 +87,16 @@ const breadcrumbSchema = {
         <div class="pickup-content">
           <div class="pickup-text">
             <h2>Prefer to Call?</h2>
-            <a href="tel:+18012551042" class="btn btn-primary">(801) 255 - 1042</a>
+            <a href={business.telephoneHref} class="btn btn-primary">{business.telephoneDisplay}</a>
           </div>
           <div class="pickup-info">
             <h3>Pickup Location</h3>
-            <address>6878 State Street, Midvale, Utah 84047</address>
+            <address>{addressLines[0]}<br>{addressLines[1]}</address>
             <p class="pickup-hours">
-              <strong>Hours:</strong><br>
-              Mon-Thu: 11am - 8pm<br>
-              Fri-Sat: 11am - 9pm<br>
-              Sunday: Closed
+              <strong>Hours:</strong>
+              {hours.map((entry) => (
+                <Fragment><br>{entry.label}: {hoursRange(entry, 'short')}</Fragment>
+              ))}
             </p>
           </div>
         </div>
