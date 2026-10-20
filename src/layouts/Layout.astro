@@ -10,9 +10,13 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  /** Page hero for og:image / twitter:image. Falls back to the logo. */
+  image?: ImageMetadata;
+  /** Keep the page out of search results (e.g. form thank-you pages). */
+  noindex?: boolean;
 }
 
-const { title, description = "Family owned since 1978, Su Casa Mexican Restaurant in Midvale, Utah offers authentic Mexican cuisine in a cozy, festive atmosphere." } = Astro.props;
+const { title, description = "Family owned since 1978, Su Casa Mexican Restaurant in Midvale, Utah offers authentic Mexican cuisine in a cozy, festive atmosphere.", image, noindex = false } = Astro.props;
 
 const productionDomain = 'sucasamexicanrestaurant.com';
 // GitHub Pages serves directory URLs with a trailing slash and 301s the
@@ -20,7 +24,8 @@ const productionDomain = 'sucasamexicanrestaurant.com';
 const canonicalPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const canonicalURL = new URL(canonicalPath, `https://${productionDomain}`);
 const isProduction = import.meta.env.PROD;
-const ogImage = new URL(logoImg.src, `https://${productionDomain}`).href;
+const ogImageSrc = image ? (await getImage({ src: image, width: 1200, format: 'jpg' })).src : logoImg.src;
+const ogImage = new URL(ogImageSrc, `https://${productionDomain}`).href;
 
 // Stable public logo URL plus an optimized hero photo for the Restaurant node.
 const heroPhoto = await getImage({ src: heroImg, width: 1200, format: 'jpg' });
@@ -39,7 +44,7 @@ const schemaImages = [
     <meta name="keywords" content="Mexican restaurant, Midvale, Utah, authentic Mexican food, tacos, burritos, enchiladas, catering, family restaurant" />
 
     <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="restaurant" />
+    <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Su Casa Mexican Restaurant" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -61,6 +66,7 @@ const schemaImages = [
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL.href} />
     {!isProduction && <meta name="robots" content="noindex, nofollow" />}
+    {isProduction && noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- Preconnect to ordering platform -->
     <link rel="dns-prefetch" href="https://order.spoton.com" />

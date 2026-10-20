@@ -169,6 +169,7 @@ const breadcrumbSchema = {
   <!-- Menu Content -->
   <div class="menu-content">
     <div class="container">
+      <p class="catering-callout">Feeding a group? <a href="/catering/">See our catering menu.</a></p>
       <!-- Appetizers -->
       <section id="appetizers" class="menu-section">
         <div class="section-header">
@@ -487,6 +488,19 @@ const breadcrumbSchema = {
   /* Menu Content */
   .menu-content {
     padding: var(--spacing-lg) 0 var(--spacing-xl);
+  }
+
+  .catering-callout {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .catering-callout a {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .menu-intro {

@@ -8,6 +8,10 @@ import mediaComboPlate from '../assets/images/media/combo-plate-10.jpg';
 import mediaChileRelleno from '../assets/images/media/chili-relleno.jpg';
 import mediaChileVerde from '../assets/images/media/chile-verde-dinner.jpg';
 import { business, addressOneLine, hoursSentence, maps } from '../data/business';
+import { cateringFacts, tacoBar, formatPrice } from '../data/catering';
+
+const tacoBarFrom = formatPrice(tacoBar.items[0].price);
+const cateringSummary = `Our taco bar catering starts at ${tacoBarFrom} per person, and we also offer enchilada meals and take-and-bake trays. Orders start at ${cateringFacts.minimumGuests} people with ${cateringFacts.noticeHours} hours' notice.`;
 
 const testimonials = [
   {
@@ -78,7 +82,7 @@ const faqSchema = {
       "name": "Does Su Casa offer catering?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": `Yes! We cater events of all sizes across Salt Lake County — from birthday parties and corporate lunches to wedding receptions. Call ${business.telephoneDisplay} to discuss your event.`
+        "text": `Yes. ${cateringSummary} Call ${business.telephoneDisplay} to plan your order.`
       }
     },
     {
@@ -123,7 +127,7 @@ const faqs = [
   },
   {
     question: "Does Su Casa offer catering?",
-    answer: `Yes! We cater events of all sizes across Salt Lake County — from birthday parties and corporate lunches to wedding receptions. Visit our <a href="/catering/">catering page</a> or call us at <a href="${business.telephoneHref}">${business.telephoneDisplay}</a> to discuss your event.`
+    answer: `Yes. ${cateringSummary} See our <a href="/catering/">catering menu</a> or call us at <a href="${business.telephoneHref}">${business.telephoneDisplay}</a> to plan your order.`
   },
   {
     question: "Can I order Su Casa food for delivery?",
@@ -281,7 +285,7 @@ const faqs = [
           Our menu features the authentic Mexican food that Salt Lake County has come to love: hand-rolled enchiladas smothered in our homemade red or green sauce, oversized burritos stuffed with seasoned meats and fresh toppings, crispy Baja fish tacos with cabbage slaw and our secret Baja sauce, and golden chile rellenos filled with melting cheese. Start your meal with our famous queso dip or a plate of loaded nachos topped with beans, jalape&ntilde;os, and sour cream — perfect for sharing with family and friends.
         </p>
         <p>
-          Whether you're joining us for a weekday lunch on State Street, ordering delivery across Midvale and the greater Salt Lake Valley, or letting us cater your next celebration, you'll taste the difference that nearly five decades of family tradition makes at Su Casa Mexican Restaurant. <a href="/menu/">Explore our full menu</a> and discover why generations of families keep coming back.
+          Whether you're joining us for a weekday lunch on State Street, ordering delivery across Midvale and the greater Salt Lake Valley, or letting us cater your next celebration, you'll taste the difference that nearly five decades of family tradition makes at Su Casa Mexican Restaurant. Feeding a group? Our <a href="/catering/">taco bar catering</a> starts at {tacoBarFrom} per person for {cateringFacts.minimumGuests} or more guests. <a href="/menu/">Explore our full menu</a> and discover why generations of families keep coming back.
         </p>
       </div>
     </div>

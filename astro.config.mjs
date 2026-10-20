@@ -29,13 +29,17 @@ const redirects = {
   '/specials/': '/menu/',
 };
 
-const redirectPaths = new Set(Object.keys(redirects).map((path) => path.replace(/\/$/, '')));
+// Redirect stubs and noindex pages stay out of the sitemap.
+const excludedPaths = new Set([
+  ...Object.keys(redirects).map((path) => path.replace(/\/$/, '')),
+  '/catering/thank-you',
+]);
 
 export default defineConfig({
   site: 'https://sucasamexicanrestaurant.com',
   integrations: [
     sitemap({
-      filter: (page) => !redirectPaths.has(new URL(page).pathname.replace(/\/$/, '')),
+      filter: (page) => !excludedPaths.has(new URL(page).pathname.replace(/\/$/, '')),
     }),
   ],
   redirects,

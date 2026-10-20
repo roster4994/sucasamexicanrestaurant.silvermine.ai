@@ -1,18 +1,44 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
-import { business } from '../data/business';
+import { Image } from 'astro:assets';
+import { business, addressLines } from '../data/business';
+import {
+  cateringFacts,
+  tacoBar,
+  enchiladaMeals,
+  traysAndSides,
+  formatPrice,
+  deliveryAreas,
+  quotePackages,
+  cateringFaqs,
+  cateringPhotos,
+  quoteFormEndpoint,
+  cateringServiceSchema,
+  cateringFaqSchema,
+} from '../data/catering';
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
+const { minimumGuests, noticeHours, deliveryRadiusMiles } = cateringFacts;
+const [bannerPhoto, tacoPhoto] = cateringPhotos;
+const thankYouUrl = `${siteUrl}/catering/thank-you/`;
+
+if (quoteFormEndpoint.includes('TODO')) {
+  console.warn('[catering] quoteFormEndpoint is still a placeholder; set the Formspree endpoint in src/data/catering.ts before going live.');
+}
+
+const pageTitle = `Mexican Catering in Midvale, UT | Taco Bar ${formatPrice(tacoBar.items[0].price)}/Person`;
+const pageDescription = `Taco bar catering from ${formatPrice(tacoBar.items[0].price)} per person, enchilada trays and meals for ${minimumGuests}+ guests. Pickup or delivery within ${deliveryRadiusMiles} miles of Midvale. ${noticeHours}-hour notice.`;
 
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "@id": `${siteUrl}/catering/`,
-  "name": "Catering | Su Casa Mexican Restaurant",
-  "description": "Bring the fiesta to your event! Su Casa Mexican Restaurant offers catering services for parties, corporate events, weddings, and more in the Midvale, UT area.",
+  "name": pageTitle,
+  "description": pageDescription,
   "url": `${siteUrl}/catering/`,
-  "isPartOf": { "@id": `${siteUrl}/#website` }
+  "isPartOf": { "@id": `${siteUrl}/#website` },
+  "about": { "@id": cateringServiceSchema["@id"] }
 };
 
 const breadcrumbSchema = {
@@ -33,67 +59,237 @@ const breadcrumbSchema = {
     }
   ]
 };
+
+const steps = [
+  `Tell us your date, headcount, and pickup or delivery address at least ${noticeHours} hours ahead.`,
+  'We confirm your order by email or phone.',
+  `Pick up at ${business.streetAddress} in Midvale, or we deliver within ${deliveryRadiusMiles} miles.`,
+  'Food arrives in trays. Sterno heating setups are available on request.',
+];
+
+const areaList = `${deliveryAreas.slice(0, -1).join(', ')}, and ${deliveryAreas[deliveryAreas.length - 1]}`;
 ---
 
-<Layout
-  title="Mexican Catering & Party Platters | Su Casa Midvale, Utah"
-  description="Cater your next event with Su Casa's authentic Mexican food. Serving Midvale & Salt Lake County since 1978. Custom menus for parties, corporate events & more."
->
+<Layout title={pageTitle} description={pageDescription} image={bannerPhoto.src}>
 <Fragment slot="head">
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(cateringServiceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(cateringFaqSchema)} />
 </Fragment>
 <div class="catering-page-wrapper">
   <!-- Banner -->
   <section class="page-banner">
-    <img src="https://i.postimg.cc/cJ7LtpDq/Copy-of-queso-dip-pic-(1).jpg" alt="Su Casa Mexican catering spread with fresh queso dip and appetizers" class="banner-image" width="1600" height="900" decoding="async" />
+    <Image src={bannerPhoto.src} alt={bannerPhoto.alt} class="banner-image" width={1279} loading="eager" fetchpriority="high" />
   </section>
 
-  <h1 class="sr-only">Mexican Catering & Party Platters — Su Casa Midvale, UT</h1>
   <Breadcrumb current="Catering" />
 
   <div class="catering-content">
     <div class="container">
-      <!-- Taco Bar Promo -->
-      <div class="taco-bar-promo">
-        <img src="https://i.postimg.cc/0N2Q9NX8/Copy-of-8.jpg" alt="Su Casa taco bar catering setup for parties and events in Midvale" class="taco-bar-image" width="240" height="240" loading="lazy" decoding="async" />
-        <div class="taco-bar-content">
-          <p>Planning a party or family gathering? Our popular <strong>Taco Bar</strong> is just <strong>$8.59 per person</strong> and includes a taco, rice, beans, chips, and salsa!</p>
-
-        </div>
-      </div>
-
-      <!-- Catering Info -->
-      <section class="catering-info">
-        <h2>Authentic Mexican Catering for Any Occasion</h2>
+      <!-- Intro -->
+      <header class="catering-intro">
+        <h1>Mexican Catering in Midvale, Utah</h1>
+        <p class="catering-subhead">Taco bars, enchilada meals, and take-and-bake trays for offices, family gatherings, and events across the Salt Lake Valley.</p>
         <p>
-          From birthday parties and family reunions to corporate lunches, holiday events, and wedding
-          receptions, Su Casa brings the same homemade Mexican food we've served in Midvale since 1978
-          straight to your event. We cater gatherings of all sizes across Midvale, Sandy, Murray, West
-          Jordan, and the greater Salt Lake Valley.
+          Su Casa has been family-owned and cooking in Midvale since 1978, and our Mexican catering is the same food we
+          serve in the restaurant, packed up for a group. We cater office lunches, family gatherings, and businesses that
+          provide food with their services. Orders start at {minimumGuests} people with {noticeHours} hours' notice, and you
+          can pick up or have us deliver within {deliveryRadiusMiles} miles of Midvale.
         </p>
+        <ul class="quick-facts" aria-label="Catering at a glance">
+          <li>{minimumGuests}-person minimum</li>
+          <li>{noticeHours} hours' notice</li>
+          <li>Pickup or delivery within {deliveryRadiusMiles} miles</li>
+        </ul>
+      </header>
+
+      <!-- Taco Bar -->
+      <section class="menu-block" id={tacoBar.id} aria-labelledby="taco-bar-heading">
+        <div class="menu-block-grid">
+          <div>
+            <h2 id="taco-bar-heading">Taco Bar (Our Most Popular Option)</h2>
+            <p>
+              Taco bar catering is what most of our customers order, and it's the easiest way to feed a group. Everyone
+              builds their own plate, so picky eaters and big appetites are both covered.
+            </p>
+            <table class="price-table">
+              <caption class="sr-only">Taco bar catering prices</caption>
+              <thead>
+                <tr><th scope="col">{tacoBar.itemHeading}</th><th scope="col">Per person</th></tr>
+              </thead>
+              <tbody>
+                {tacoBar.items.map((item) => (
+                  <tr><th scope="row">{item.name}</th><td>{formatPrice(item.price)}</td></tr>
+                ))}
+              </tbody>
+            </table>
+            <p class="table-note">
+              Includes your choice of meat, tortillas (soft; hard shells available on request), cheese, lettuce, tomatoes,
+              refried or black beans, rice, chips, and salsa. It's the favorite for office lunches and family gatherings.
+            </p>
+          </div>
+          <Image src={tacoPhoto.src} alt={tacoPhoto.alt} class="menu-block-photo" width={640} loading="lazy" />
+        </div>
+      </section>
+
+      <!-- Enchilada Meals -->
+      <section class="menu-block" id={enchiladaMeals.id} aria-labelledby="enchilada-meals-heading">
+        <h2 id="enchilada-meals-heading">Enchilada Meals</h2>
+        <p>Prefer enchiladas? Choose cheese or meat, with one or two enchiladas per guest.</p>
+        <table class="price-table">
+          <caption class="sr-only">Enchilada meal catering prices</caption>
+          <thead>
+            <tr><th scope="col">{enchiladaMeals.itemHeading}</th><th scope="col">Per person</th></tr>
+          </thead>
+          <tbody>
+            {enchiladaMeals.items.map((item) => (
+              <tr><th scope="row">{item.name}</th><td>{formatPrice(item.price)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="table-note">Each meal includes refried or black beans, rice, chips, and salsa.</p>
+      </section>
+
+      <!-- Trays & Sides -->
+      <section class="menu-block" id={traysAndSides.id} aria-labelledby="trays-heading">
+        <h2 id="trays-heading">Take-and-Bake Trays &amp; Sides</h2>
         <p>
-          Build your own spread with guest favorites like enchiladas, chile verde, fajitas, rice, beans,
-          and fresh chips and salsa — or keep it simple with our popular taco bar. We'll work with your
-          headcount, budget, and venue to make your event easy and delicious.
+          Our take-and-bake enchilada trays go in your oven when you're ready to eat. They're great for adding to a spread
+          or feeding a crowd at home, and the sides round out any order.
+        </p>
+        <table class="price-table">
+          <caption class="sr-only">Enchilada trays and sides prices</caption>
+          <thead>
+            <tr><th scope="col">{traysAndSides.itemHeading}</th><th scope="col">Serves</th><th scope="col">Price</th></tr>
+          </thead>
+          <tbody>
+            {traysAndSides.items.map((item) => (
+              <tr><th scope="row">{item.name}</th><td>{item.serves ?? ''}</td><td>{formatPrice(item.price)}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      {/* TODO: add a gallery of 2-3 more catering photos from Denice (taco bar setup, enchilada trays). Add them to cateringPhotos in src/data/catering.ts. */}
+
+      <!-- How Catering Works -->
+      <section class="menu-block" aria-labelledby="how-heading">
+        <h2 id="how-heading">How Catering Works</h2>
+        <ol class="steps">
+          {steps.map((step, i) => (
+            <li><span class="step-number" aria-hidden="true">{i + 1}</span><p>{step}</p></li>
+          ))}
+        </ol>
+        <p class="steps-note">We do not provide on-site serving staff.</p>
+      </section>
+
+      <!-- Delivery Area -->
+      <section class="menu-block" aria-labelledby="areas-heading">
+        <h2 id="areas-heading">Areas We Deliver</h2>
+        <p>
+          We deliver catering within about {deliveryRadiusMiles} miles of our restaurant, which covers {areaList}. If you're
+          farther out, you're welcome to pick up your order at {addressLines[0]} in Midvale.
         </p>
       </section>
 
-      <!-- Catering Contact Section -->
-      <section class="catering-contact" id="catering-quote">
-        <h2>Get a Catering Quote</h2>
-        <p class="contact-intro">For catering requests, availability, and estimates, please reach out directly:</p>
+      <!-- Quote Form -->
+      <section class="catering-contact" id="catering-quote" aria-labelledby="quote-heading">
+        <h2 id="quote-heading">Request a Catering Quote</h2>
+        <p class="contact-intro">Send us your details and we'll reply within one business day.</p>
+
+        <form
+          id="catering-quote-form"
+          class="quote-form"
+          action={quoteFormEndpoint}
+          method="POST"
+          data-thank-you="/catering/thank-you/"
+        >
+          <input type="hidden" name="_subject" value="Catering request" />
+          <input type="hidden" name="_next" value={thankYouUrl} />
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="honeypot" aria-hidden="true" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="quote-name">Name</label>
+              <input class="form-input" id="quote-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="quote-email">Email</label>
+              <input class="form-input" id="quote-email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="quote-phone">Phone</label>
+              <input class="form-input" id="quote-phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="quote-date">Event date</label>
+              <input class="form-input" id="quote-date" name="event_date" type="date" required aria-describedby="quote-date-hint" />
+              <p class="form-hint" id="quote-date-hint">We need at least {noticeHours} hours' notice.</p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="quote-guests">Guest count</label>
+              <input class="form-input" id="quote-guests" name="guest_count" type="number" inputmode="numeric" min={minimumGuests} step="1" required aria-describedby="quote-guests-hint" />
+              <p class="form-hint" id="quote-guests-hint">{minimumGuests}-person minimum.</p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="quote-package">Which package?</label>
+              <select class="form-select" id="quote-package" name="package" required>
+                <option value="">Choose one</option>
+                {quotePackages.map((option) => <option value={option}>{option}</option>)}
+              </select>
+            </div>
+          </div>
+
+          <fieldset class="form-group fulfillment">
+            <legend class="form-label">Pickup or delivery</legend>
+            <label class="radio-label"><input type="radio" name="pickup_or_delivery" value="Pickup" required /> Pickup at {addressLines[0]}</label>
+            <label class="radio-label"><input type="radio" name="pickup_or_delivery" value="Delivery" /> Delivery (within {deliveryRadiusMiles} miles)</label>
+          </fieldset>
+
+          <div class="form-group" id="delivery-address-group" hidden>
+            <label class="form-label" for="quote-address">Delivery address</label>
+            <input class="form-input" id="quote-address" name="delivery_address" type="text" autocomplete="street-address" aria-describedby="quote-address-hint" />
+            <p class="form-hint" id="quote-address-hint">We deliver within about {deliveryRadiusMiles} miles of Midvale.</p>
+          </div>
+          <noscript><style>#delivery-address-group[hidden] { display: block; }</style></noscript>
+
+          <div class="form-group">
+            <label class="form-label" for="quote-notes">Notes</label>
+            <textarea class="form-textarea" id="quote-notes" name="notes" rows="4" aria-describedby="quote-notes-hint"></textarea>
+            <p class="form-hint" id="quote-notes-hint">Event time, dietary needs, hard shells, sterno, or anything else we should know.</p>
+          </div>
+
+          <button type="submit" class="btn btn-primary quote-submit">Send Quote Request</button>
+          <p class="form-status" id="quote-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="contact-note">Prefer to talk it through? Call or email us:</p>
         <div class="contact-buttons">
           <a href={business.telephoneHref} class="btn contact-btn contact-btn-call">Call: {business.telephoneDisplay}</a>
           <a href={business.emailHref} class="btn contact-btn contact-btn-email">Email: {business.email}</a>
         </div>
-        <p class="contact-note">Please include your event date, guest count, and location when emailing.</p>
-        <p class="contact-closing">Our team is happy to help you plan the perfect event!</p>
+      </section>
+
+      <!-- FAQ -->
+      <section class="menu-block catering-faq" aria-labelledby="faq-heading">
+        <h2 id="faq-heading">Catering FAQ</h2>
+        <dl class="faq-list">
+          {cateringFaqs.map((faq) => (
+            <div class="faq-item">
+              <dt>{faq.question}</dt>
+              <dd>{faq.answer}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <div class="catering-links">
-        <a href="/contact/" class="catering-link">Contact us to plan your event &rarr;</a>
         <a href="/menu/" class="catering-link">View our full menu &rarr;</a>
+        <a href="/contact/" class="catering-link">Contact us and get directions &rarr;</a>
       </div>
     </div>
   </div>
@@ -124,104 +320,273 @@ const breadcrumbSchema = {
   }
 
   .catering-content {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0 var(--spacing-xl);
   }
 
-  .options-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
-  }
-
-  .option-card {
-    background: white;
-    padding: var(--spacing-md);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-normal);
-    border-top: 4px solid var(--color-tertiary);
-  }
-
-  .option-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .option-card h3 {
-    color: var(--color-brown-dark);
-    margin: 0 0 var(--spacing-xs);
-  }
-
-  .option-desc {
-    color: var(--color-text);
-    font-size: 0.95rem;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .option-includes {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: var(--color-cream);
-    padding: var(--spacing-sm);
-    border-radius: var(--radius-md);
-  }
-
-  .option-includes li {
-    padding: 0.35rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-    font-size: 0.9rem;
-    color: var(--color-text);
-  }
-
-  .option-includes li::before {
-    content: '\2713';
-    position: absolute;
-    left: 0;
-    color: var(--color-green);
-    font-weight: bold;
-  }
-
-  /* Catering Contact Section */
-  .catering-info {
-    max-width: 800px;
+  /* Intro */
+  .catering-intro {
+    max-width: 820px;
     margin: 0 auto var(--spacing-lg);
     text-align: center;
   }
 
-  .catering-info h2 {
+  .catering-intro h1 {
     color: var(--color-brown-dark);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
   }
 
-  .catering-info p {
+  .catering-subhead {
+    font-size: 1.2rem;
     color: var(--color-text-light);
-    line-height: 1.7;
     margin-bottom: var(--spacing-sm);
   }
 
+  .catering-intro p {
+    line-height: 1.7;
+  }
+
+  .quick-facts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: var(--spacing-sm);
+    padding: 0;
+  }
+
+  .quick-facts li {
+    background: var(--color-tertiary);
+    color: var(--bg-dark);
+    font-weight: 600;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+  }
+
+  /* Menu blocks */
+  .menu-block {
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border-top: 4px solid var(--color-tertiary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .menu-block h2 {
+    color: var(--color-brown-dark);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .menu-block p {
+    line-height: 1.7;
+  }
+
+  .menu-block-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--spacing-md);
+    align-items: start;
+  }
+
+  .menu-block-photo {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  .price-table {
+    width: 100%;
+    max-width: 640px;
+    border-collapse: collapse;
+    margin: var(--spacing-sm) 0;
+    font-size: 1rem;
+  }
+
+  .price-table th,
+  .price-table td {
+    padding: 0.65rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .price-table thead th {
+    background: var(--color-brown-dark);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .price-table tbody th {
+    font-weight: 500;
+  }
+
+  .price-table td:last-child,
+  .price-table thead th:last-child {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .price-table td:last-child {
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .price-table tbody tr:nth-child(even) {
+    background: #fef9f3;
+  }
+
+  .table-note {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-bottom: 0;
+  }
+
+  /* Steps */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-sm);
+    padding: 0;
+    margin: var(--spacing-sm) 0;
+  }
+
+  .steps li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    background: #fef9f3;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+  }
+
+  .steps p {
+    margin: 0;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .steps-note {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* Quote form */
   .catering-contact {
     background: linear-gradient(135deg, #fff 0%, #fef9f3 100%);
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     border-top: 5px solid var(--color-primary);
     border-bottom: 3px solid var(--color-tertiary);
-    text-align: center;
   }
 
   .catering-contact h2 {
     color: var(--color-brown-dark);
     margin-bottom: var(--spacing-xs);
+    text-align: center;
   }
 
   .contact-intro {
     color: var(--color-text);
     font-size: 1.05rem;
     margin-bottom: var(--spacing-md);
+    text-align: center;
+  }
+
+  .quote-form {
+    max-width: 860px;
+    margin: 0 auto var(--spacing-md);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0 var(--spacing-sm);
+  }
+
+  .quote-form .form-input,
+  .quote-form .form-select,
+  .quote-form .form-textarea {
+    border-color: #d9c8a8;
+  }
+
+  .quote-form .form-input:focus-visible,
+  .quote-form .form-select:focus-visible,
+  .quote-form .form-textarea:focus-visible,
+  .quote-form input[type="radio"]:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+    border-color: var(--color-primary);
+  }
+
+  .quote-form .form-textarea {
+    min-height: 110px;
+  }
+
+  .form-hint {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin: 0.35rem 0 0;
+  }
+
+  .fulfillment {
+    border: none;
+    padding: 0;
+  }
+
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+    cursor: pointer;
+  }
+
+  .radio-label input {
+    width: 1.15rem;
+    height: 1.15rem;
+    accent-color: var(--color-primary);
+  }
+
+  .honeypot {
+    display: none;
+  }
+
+  .quote-submit {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+
+  .quote-submit:disabled {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  .form-status {
+    margin: var(--spacing-xs) 0 0;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .form-status:empty {
+    display: none;
   }
 
   .contact-buttons {
@@ -229,7 +594,6 @@ const breadcrumbSchema = {
     gap: var(--spacing-sm);
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: var(--spacing-md);
   }
 
   .contact-btn {
@@ -258,72 +622,54 @@ const breadcrumbSchema = {
 
   .contact-btn-email {
     background: var(--color-tertiary);
-    color: #ffffff;
+    color: var(--bg-dark);
     border: 2px solid var(--color-tertiary);
   }
 
   .contact-btn-email:hover {
     background: #ffffff;
-    color: var(--color-tertiary);
+    color: var(--bg-dark);
     transform: translateY(-2px);
   }
 
   .contact-note {
     color: var(--color-text-light);
-    font-size: 0.9rem;
-    font-style: italic;
+    text-align: center;
     margin-bottom: var(--spacing-xs);
   }
 
-  .contact-closing {
-    color: var(--color-text);
-    font-size: 1.05rem;
-    font-weight: 500;
+  /* FAQ */
+  .faq-list {
+    margin: 0;
   }
 
-  .taco-bar-promo {
-    background: linear-gradient(135deg, var(--color-tertiary) 0%, #f5a623 100%);
-    color: white;
-    padding: var(--spacing-md);
-    border-radius: var(--radius-lg);
-    margin-bottom: var(--spacing-lg);
-    box-shadow: var(--shadow-md);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
+  .faq-item {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
-  .taco-bar-image {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: var(--radius-md);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    flex-shrink: 0;
+  .faq-item:last-child {
+    border-bottom: none;
   }
 
-  .taco-bar-content {
-    flex: 1;
+  .faq-item dt {
+    font-weight: 700;
+    color: var(--color-brown-dark);
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
   }
 
-  .taco-bar-promo p {
-    margin: 0 0 var(--spacing-xs) 0;
-    font-size: 1.35rem;
-    line-height: 1.5;
+  .faq-item dd {
+    margin: 0;
+    line-height: 1.6;
   }
-
-  .taco-bar-promo strong {
-    color: white;
-  }
-
-
 
   .catering-links {
     display: flex;
     gap: var(--spacing-md);
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: var(--spacing-lg);
+    margin-top: var(--spacing-md);
   }
 
   .catering-link {
@@ -350,15 +696,84 @@ const breadcrumbSchema = {
       padding-top: 250px;
     }
 
-    .taco-bar-promo {
-      flex-direction: column;
-      text-align: center;
+    .menu-block {
+      padding: var(--spacing-sm);
     }
 
-    .taco-bar-image {
-      width: 100px;
-      height: 100px;
+    .menu-block-grid {
+      grid-template-columns: 1fr;
     }
 
+    .menu-block-photo {
+      max-width: 420px;
+    }
+
+    .catering-contact {
+      padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .price-table th,
+    .price-table td {
+      padding: 0.55rem 0.5rem;
+      font-size: 0.95rem;
+    }
   }
 </style>
+
+<script>
+  const form = document.getElementById('catering-quote-form') as HTMLFormElement | null;
+
+  if (form) {
+    const status = form.querySelector<HTMLParagraphElement>('#quote-status');
+    const submit = form.querySelector<HTMLButtonElement>('.quote-submit');
+    const subject = form.querySelector<HTMLInputElement>('input[name="_subject"]');
+    const nameInput = form.querySelector<HTMLInputElement>('#quote-name');
+    const dateInput = form.querySelector<HTMLInputElement>('#quote-date');
+    const addressGroup = form.querySelector<HTMLDivElement>('#delivery-address-group');
+    const addressInput = form.querySelector<HTMLInputElement>('#quote-address');
+    const radios = form.querySelectorAll<HTMLInputElement>('input[name="pickup_or_delivery"]');
+
+    // Show and require the delivery address only when delivery is chosen.
+    const syncDelivery = () => {
+      const isDelivery = form.querySelector<HTMLInputElement>('input[name="pickup_or_delivery"]:checked')?.value === 'Delivery';
+      if (addressGroup) addressGroup.hidden = !isDelivery;
+      if (addressInput) addressInput.required = isDelivery;
+    };
+    radios.forEach((radio) => radio.addEventListener('change', syncDelivery));
+    syncDelivery();
+
+    // Earliest selectable date is tomorrow (24 hours' notice).
+    if (dateInput) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const pad = (n: number) => String(n).padStart(2, '0');
+      dateInput.min = `${tomorrow.getFullYear()}-${pad(tomorrow.getMonth() + 1)}-${pad(tomorrow.getDate())}`;
+    }
+
+    // Submit in the background so we can land on our own thank-you page.
+    // Without JavaScript the form still posts normally to Formspree.
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const name = nameInput?.value.trim();
+      if (subject && name) subject.value = `Catering request from ${name}`;
+      if (submit) submit.disabled = true;
+      if (status) status.textContent = 'Sending your request...';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (!response.ok) throw new Error(`Formspree returned ${response.status}`);
+        window.location.assign(form.dataset.thankYou ?? '/catering/thank-you/');
+      } catch {
+        if (status) {
+          status.setAttribute('role', 'alert');
+          status.textContent = 'Sorry, your request did not go through. Please call or email us using the buttons below.';
+        }
+        if (submit) submit.disabled = false;
+      }
+    });
+  }
+</script>
