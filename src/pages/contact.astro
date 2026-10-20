@@ -3,16 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import { Image } from 'astro:assets';
 import headerImg from '../assets/images/collage/nacho-supreme.jpg';
+import { business, addressLines, hoursByDay, hoursCompact, social, maps } from '../data/business';
 
-const hours = [
-  { days: "Monday", time: "11:00 AM - 8:00 PM" },
-  { days: "Tuesday", time: "11:00 AM - 8:00 PM" },
-  { days: "Wednesday", time: "11:00 AM - 8:00 PM" },
-  { days: "Thursday", time: "11:00 AM - 8:00 PM" },
-  { days: "Friday", time: "11:00 AM - 9:00 PM" },
-  { days: "Saturday", time: "11:00 AM - 9:00 PM" },
-  { days: "Sunday", time: "Closed" }
-];
+const pageTitle = 'Contact Su Casa Mexican Restaurant | Midvale, Utah';
+const pageDescription = `Contact Su Casa Mexican Restaurant in Midvale, Utah. Call ${business.telephoneDisplay}, visit us at ${business.streetAddress}, or order online. ${hoursCompact}.`;
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
 
@@ -20,8 +14,8 @@ const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "@id": `${siteUrl}/contact/`,
-  "name": "Contact Su Casa Mexican Restaurant | Midvale, Utah | (801) 255-1042",
-  "description": "Contact Su Casa Mexican Restaurant in Midvale, Utah. Call (801) 255-1042, visit us at 6878 S State Street, or order online. Mon–Thu 11–8, Fri–Sat 11–9.",
+  "name": `Contact Su Casa Mexican Restaurant | Midvale, Utah | ${business.telephoneDisplay}`,
+  "description": pageDescription,
   "url": `${siteUrl}/contact/`,
   "isPartOf": { "@id": `${siteUrl}/#website` }
 };
@@ -47,8 +41,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="Contact Su Casa Mexican Restaurant | Midvale, Utah"
-  description="Contact Su Casa Mexican Restaurant in Midvale, Utah. Call (801) 255-1042, visit us at 6878 S State Street, or order online. Mon–Thu 11–8, Fri–Sat 11–9."
+  title={pageTitle}
+  description={pageDescription}
 >
 <Fragment slot="head">
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
@@ -67,7 +61,7 @@ const breadcrumbSchema = {
   <div class="contact-content">
     <div class="container">
       <p class="contact-page-intro">
-        You'll find us at 6878 S State Street in the heart of Midvale, just minutes from Sandy, Murray, and
+        You'll find us at {business.streetAddress} in the heart of Midvale, just minutes from Sandy, Murray, and
         Fort Union. Whether you have a question about our menu, want to plan catering for your next event, or
         just want to check tonight's wait, give us a call and our team will be happy to help.
       </p>
@@ -85,7 +79,7 @@ const breadcrumbSchema = {
                 </svg>
                 <div>
                   <strong>Address</strong>
-                  <p>6878 S State Street<br>Midvale, Utah 84047</p>
+                  <p>{addressLines[0]}<br>{addressLines[1]}</p>
                 </div>
               </div>
               <div class="info-item">
@@ -94,7 +88,7 @@ const breadcrumbSchema = {
                 </svg>
                 <div>
                   <strong>Phone</strong>
-                  <p><a href="tel:+18012551042">(801) 255-1042</a></p>
+                  <p><a href={business.telephoneHref}>{business.telephoneDisplay}</a></p>
                 </div>
               </div>
               <div class="info-item">
@@ -104,7 +98,7 @@ const breadcrumbSchema = {
                 </svg>
                 <div>
                   <strong>Email</strong>
-                  <p><a href="mailto:scscmo@gmail.com">scscmo@gmail.com</a></p>
+                  <p><a href={business.emailHref}>{business.email}</a></p>
                 </div>
               </div>
             </address>
@@ -113,9 +107,9 @@ const breadcrumbSchema = {
           <div class="hours-card">
             <h2>Hours of Operation</h2>
             <ul class="hours-list">
-              {hours.map((item) => (
+              {hoursByDay.map((item) => (
                 <li class:list={[{ closed: item.time === "Closed" }]}>
-                  <span class="day">{item.days}</span>
+                  <span class="day">{item.day}</span>
                   <span class="time">{item.time}</span>
                 </li>
               ))}
@@ -126,13 +120,13 @@ const breadcrumbSchema = {
             <h2>Follow Us</h2>
             <p>Stay connected for updates and news from Su Casa.</p>
             <div class="social-links">
-              <a href="https://facebook.com/sucasamexicanrestaurant" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-btn facebook">
+              <a href={social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-btn facebook">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                 </svg>
                 Facebook
               </a>
-              <a href="https://www.instagram.com/sucasamidvale/" target="_blank" rel="noopener noreferrer" aria-label="Follow Su Casa on Instagram" class="social-btn instagram">
+              <a href={social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Follow Su Casa on Instagram" class="social-btn instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
@@ -140,13 +134,13 @@ const breadcrumbSchema = {
                 </svg>
                 Instagram
               </a>
-              <a href="https://www.yelp.com/biz/su-casa-mexican-restaurant-midvale" target="_blank" rel="noopener noreferrer" aria-label="Su Casa on Yelp" class="social-btn yelp">
+              <a href={social.yelp} target="_blank" rel="noopener noreferrer" aria-label="Su Casa on Yelp" class="social-btn yelp">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                 </svg>
                 Yelp
               </a>
-              <a href="https://google.com/maps/place/Su+Casa+Mexican+Restaurant" target="_blank" rel="noopener noreferrer" aria-label="Google" class="social-btn google">
+              <a href={social.googleMaps} target="_blank" rel="noopener noreferrer" aria-label="Google" class="social-btn google">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                 </svg>
@@ -160,7 +154,7 @@ const breadcrumbSchema = {
         <div class="map-section">
           <div class="map-container">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.5!2d-111.8926335!3d40.6264145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x875289b066322b6f%3A0x1b428f9fb0f21030!2sSu%20Casa%20Mexican%20Restaurant!5e0!3m2!1sen!2sus!4v1706489600000!5m2!1sen!2sus"
+              src={maps.embed}
               width="100%"
               height="100%"
               style="border:0;"
@@ -170,7 +164,7 @@ const breadcrumbSchema = {
               title="Su Casa Mexican Restaurant location in Midvale, Utah"
             ></iframe>
             <div class="map-overlay">
-              <a href="https://www.google.com/maps/place/Su+Casa+Mexican+Restaurant/@40.6264145,-111.8904448,17z/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <a href={maps.directions} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                 Get Directions
               </a>
             </div>
@@ -185,8 +179,9 @@ const breadcrumbSchema = {
           </div>
         </div>
       </div>
-
-  
+    </div>
+  </div>
+</Layout>
 
 <style>
   .page-header {

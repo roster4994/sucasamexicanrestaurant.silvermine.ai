@@ -7,6 +7,7 @@ import collageQuesoDip from '../assets/images/collage/queso-dip.jpg';
 import mediaComboPlate from '../assets/images/media/combo-plate-10.jpg';
 import mediaChileRelleno from '../assets/images/media/chili-relleno.jpg';
 import mediaChileVerde from '../assets/images/media/chile-verde-dinner.jpg';
+import { business, addressOneLine, hoursSentence, maps } from '../data/business';
 
 const testimonials = [
   {
@@ -26,66 +27,6 @@ const testimonials = [
 
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
-
-const restaurantSchema = {
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "Su Casa Mexican Restaurant",
-  "image": "https://sucasamexicanrestaurant.com/_astro/logo.ChkLogVw_XKnHR.webp",
-  "url": "https://sucasamexicanrestaurant.com",
-  "telephone": "+1-801-255-1042",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "6878 S State Street",
-    "addressLocality": "Midvale",
-    "addressRegion": "Utah",
-    "postalCode": "84047",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 40.6264145,
-    "longitude": -111.8904448
-  },
-  "servesCuisine": ["Mexican", "Tex-Mex", "Latin American"],
-  "priceRange": "$$",
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
-      "opens": "11:00",
-      "closes": "20:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Friday","Saturday"],
-      "opens": "11:00",
-      "closes": "21:00"
-    }
-  ],
-  "menu": "https://sucasamexicanrestaurant.com/menu/",
-  "hasMenu": {
-    "@type": "Menu",
-    "url": "https://sucasamexicanrestaurant.com/menu/"
-  },
-  "acceptsReservations": "No",
-  "foundingDate": "1978",
-  "description": "Family-owned since 1978, Su Casa serves authentic Mexican food in Midvale, Utah. Dine in, order online, or cater your next event.",
-  "sameAs": [
-    "https://www.instagram.com/sucasamidvale/",
-    "https://www.yelp.com/biz/su-casa-mexican-restaurant-midvale",
-    "https://www.doordash.com/store/su-casa-mexican-restaurant-midvale-922561/",
-    "https://www.grubhub.com/restaurant/su-casa-mexican-restaurant-6878-state-st-midvale/1472764"
-  ],
-  "potentialAction": {
-    "@type": "OrderAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/"
-    },
-    "deliveryMethod": ["http://purl.org/goodrelations/v1#DeliveryModePickUp"]
-  }
-};
 
 const webSiteSchema = {
   "@context": "https://schema.org",
@@ -129,7 +70,7 @@ const faqSchema = {
       "name": "What are Su Casa's hours of operation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We're open Monday through Thursday from 11 AM to 8:00 PM, and Friday through Saturday from 11 AM to 9 PM. We're closed on Sundays."
+        "text": hoursSentence
       }
     },
     {
@@ -137,7 +78,7 @@ const faqSchema = {
       "name": "Does Su Casa offer catering?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! We cater events of all sizes across Salt Lake County — from birthday parties and corporate lunches to wedding receptions. Call (801) 255-1042 to discuss your event."
+        "text": `Yes! We cater events of all sizes across Salt Lake County — from birthday parties and corporate lunches to wedding receptions. Call ${business.telephoneDisplay} to discuss your event.`
       }
     },
     {
@@ -153,7 +94,7 @@ const faqSchema = {
       "name": "Where is Su Casa located?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "6878 S State Street, Midvale, Utah 84047 — on the State Street corridor in the heart of Midvale, serving the greater Salt Lake Valley."
+        "text": `${addressOneLine}, on the State Street corridor in the heart of Midvale, serving the greater Salt Lake Valley.`
       }
     },
     {
@@ -169,7 +110,7 @@ const faqSchema = {
       "name": "Does Su Casa take reservations?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We operate on a first-come, first-served basis. For large parties or private events, contact us at (801) 255-1042."
+        "text": `We operate on a first-come, first-served basis. For large parties or private events, contact us at ${business.telephoneDisplay}.`
       }
     }
   ]
@@ -178,11 +119,11 @@ const faqSchema = {
 const faqs = [
   {
     question: "What are Su Casa's hours of operation?",
-    answer: "We're open Monday through Thursday from 11 AM to 8:00 PM, and Friday through Saturday from 11 AM to 9 PM. We're closed on Sundays."
+    answer: hoursSentence
   },
   {
     question: "Does Su Casa offer catering?",
-    answer: 'Yes! We cater events of all sizes across Salt Lake County — from birthday parties and corporate lunches to wedding receptions. Visit our <a href="/catering/">catering page</a> or call us at <a href="tel:+18012551042">(801) 255-1042</a> to discuss your event.'
+    answer: `Yes! We cater events of all sizes across Salt Lake County — from birthday parties and corporate lunches to wedding receptions. Visit our <a href="/catering/">catering page</a> or call us at <a href="${business.telephoneHref}">${business.telephoneDisplay}</a> to discuss your event.`
   },
   {
     question: "Can I order Su Casa food for delivery?",
@@ -190,7 +131,7 @@ const faqs = [
   },
   {
     question: "Where is Su Casa located?",
-    answer: 'We\'re at 6878 S State Street, Midvale, Utah 84047 — right on the State Street corridor in the heart of Midvale, serving the greater Salt Lake Valley. <a href="https://www.google.com/maps/place/Su+Casa+Mexican+Restaurant/@40.6264145,-111.8904448,17z/" target="_blank" rel="noopener noreferrer">Get directions</a>.'
+    answer: `We're at ${addressOneLine}, right on the State Street corridor in the heart of Midvale, serving the greater Salt Lake Valley. <a href="${maps.directions}" target="_blank" rel="noopener noreferrer">Get directions</a>.`
   },
   {
     question: "How long has Su Casa been open?",
@@ -198,14 +139,13 @@ const faqs = [
   },
   {
     question: "Does Su Casa take reservations?",
-    answer: 'We operate on a first-come, first-served basis and don\'t take reservations. For large parties or private events, please contact us at <a href="tel:+18012551042">(801) 255-1042</a> or visit our <a href="/catering/">catering page</a>.'
+    answer: `We operate on a first-come, first-served basis and don't take reservations. For large parties or private events, please contact us at <a href="${business.telephoneHref}">${business.telephoneDisplay}</a> or visit our <a href="/catering/">catering page</a>.`
   }
 ];
 ---
 
 <Layout title="Best Mexican Restaurant in Midvale, Utah | Su Casa" description="Family-owned since 1978, Su Casa serves authentic Mexican food in Midvale, Utah. Enjoy enchiladas, fajitas & chile verde. Dine in, order online, or cater.">
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(restaurantSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -371,9 +311,9 @@ const faqs = [
     <div class="container">
       <div class="cta-grid">
         <div class="cta-map-container">
-          <a href="https://www.google.com/maps/place/Su+Casa+Mexican+Restaurant/@40.6264145,-111.8904448,17z/data=!3m1!4b1!4m6!3m5!1s0x875289b066322b6f:0x1b428f9fb0f21030!8m2!3d40.6264145!4d-111.8904448!16s%2Fg%2F1tffvdvd?entry=ttu" target="_blank" rel="noopener" class="map-link">
+          <a href={maps.directions} target="_blank" rel="noopener" class="map-link">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.5!2d-111.8926335!3d40.6264145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x875289b066322b6f%3A0x1b428f9fb0f21030!2sSu%20Casa%20Mexican%20Restaurant!5e0!3m2!1sen!2sus!4v1706489600000!5m2!1sen!2sus"
+              src={maps.embed}
               width="100%"
               height="100%"
               style="border:0;"

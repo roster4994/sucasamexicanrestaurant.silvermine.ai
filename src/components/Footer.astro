@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logoImg from '../assets/images/logo.png';
+import { business, addressLines, hours, hoursRange, social, ordering } from '../data/business';
 
 const currentYear = new Date().getFullYear();
 
@@ -10,12 +11,6 @@ const quickLinks = [
   { href: '/order/', label: 'Order Online' },
   { href: '/about/', label: 'About' },
   { href: '/contact/', label: 'Contact' },
-];
-
-const hours = [
-  { days: 'Monday - Thursday', time: '11:00 AM - 8:00 PM' },
-  { days: 'Friday - Saturday', time: '11:00 AM - 9:00 PM' },
-  { days: 'Sunday', time: 'Closed' },
 ];
 ---
 
@@ -32,24 +27,24 @@ const hours = [
           Family owned since 1978. Where comfort food meets vibrant tradition in the heart of Midvale, Utah.
         </p>
         <div class="social-links">
-          <a href="https://facebook.com/sucasamexicanrestaurant" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <a href={social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
             </svg>
           </a>
-          <a href="https://www.instagram.com/sucasamidvale/" target="_blank" rel="noopener noreferrer" aria-label="Follow Su Casa on Instagram">
+          <a href={social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Follow Su Casa on Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
             </svg>
           </a>
-          <a href="https://www.yelp.com/biz/su-casa-mexican-restaurant-midvale" target="_blank" rel="noopener noreferrer" aria-label="Su Casa on Yelp">
+          <a href={social.yelp} target="_blank" rel="noopener noreferrer" aria-label="Su Casa on Yelp">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12.871 13.881l2.809 1.396c.137.069.349-.009.471-.171l1.313-1.734c.121-.162.136-.374-.002-.44l-2.846-1.322c-.138-.064-.369.02-.49.182l-1.257 1.677c-.123.163-.135.344.002.412zm-1.735-.256l-2.846 1.322c-.138.066-.123.278-.002.44l1.313 1.734c.122.162.334.24.471.171l2.809-1.396c.137-.068.125-.249.002-.412l-1.257-1.677c-.121-.162-.352-.246-.49-.182zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3.5c1.381 0 2.5 1.119 2.5 2.5s-1.119 2.5-2.5 2.5-2.5-1.119-2.5-2.5 1.119-2.5 2.5-2.5zm3.682 11.754l-1.6 2.113c-.122.162-.333.238-.471.171l-1.611-.802-1.611.802c-.138.067-.349-.009-.471-.171l-1.6-2.113c-.122-.162-.136-.374.002-.44l1.636-.76V12.5c0-.165.151-.3.337-.3h3.416c.186 0 .337.135.337.3v3.555l1.636.76c.138.066.124.278.002.44z"/>
             </svg>
           </a>
-          <a href="https://google.com/maps/place/Su+Casa+Mexican+Restaurant" target="_blank" rel="noopener noreferrer" aria-label="Google">
+          <a href={social.googleMaps} target="_blank" rel="noopener noreferrer" aria-label="Google">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm-1.5 18.75h-3v-3h3v3zm0-4.5h-3v-7.5h3v7.5zm6 4.5h-3v-7.5h3v7.5zm0-9h-3v-3h3v3z"/>
             </svg>
@@ -73,8 +68,8 @@ const hours = [
         <ul class="hours-list">
           {hours.map((item) => (
             <li>
-              <span class="days">{item.days}</span>
-              <span class="time">{item.time}</span>
+              <span class="days">{item.label}</span>
+              <span class="time">{hoursRange(item)}</span>
             </li>
           ))}
         </ul>
@@ -89,22 +84,29 @@ const hours = [
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
               <circle cx="12" cy="10" r="3"/>
             </svg>
-            6878 S State Street<br>Midvale, Utah 84047
+            <span>{addressLines[0]}<br>{addressLines[1]}</span>
           </p>
           <p>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
-            <a href="tel:+18012551042">(801) 255-1042</a>
+            <a href={business.telephoneHref}>{business.telephoneDisplay}</a>
+          </p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <a href={business.emailHref}>{business.email}</a>
           </p>
         </address>
         <div class="delivery-partners">
           <span>Order on:</span>
           <div class="partner-links">
-            <a href="https://www.doordash.com/store/su-casa-mexican-restaurant-midvale-922561/" target="_blank" rel="noopener noreferrer">DoorDash</a>
-            <a href="https://www.grubhub.com/restaurant/su-casa-mexican-restaurant-6878-state-st-midvale/1472764" target="_blank" rel="noopener noreferrer">GrubHub</a>
-            <a href="https://www.ubereats.com/store/su-casa-mexican-restaurant/midvale" target="_blank" rel="noopener noreferrer">Uber Eats</a>
-            <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" target="_blank" rel="noopener noreferrer">Spothopper</a>
+            <a href={ordering.doorDash} target="_blank" rel="noopener noreferrer">DoorDash</a>
+            <a href={ordering.grubhub} target="_blank" rel="noopener noreferrer">GrubHub</a>
+            <a href={ordering.uberEats} target="_blank" rel="noopener noreferrer">Uber Eats</a>
+            <a href={ordering.spotOn} target="_blank" rel="noopener noreferrer">Spothopper</a>
           </div>
         </div>
       </div>

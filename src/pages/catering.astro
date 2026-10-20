@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { business } from '../data/business';
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
 
@@ -83,8 +84,8 @@ const breadcrumbSchema = {
         <h2>Get a Catering Quote</h2>
         <p class="contact-intro">For catering requests, availability, and estimates, please reach out directly:</p>
         <div class="contact-buttons">
-          <a href="tel:+18012551042" class="btn contact-btn contact-btn-call">Call: (801) 255-1042</a>
-          <a href="mailto:scscmo@gmail.com" class="btn contact-btn contact-btn-email">Email: scscmo@gmail.com</a>
+          <a href={business.telephoneHref} class="btn contact-btn contact-btn-call">Call: {business.telephoneDisplay}</a>
+          <a href={business.emailHref} class="btn contact-btn contact-btn-email">Email: {business.email}</a>
         </div>
         <p class="contact-note">Please include your event date, guest count, and location when emailing.</p>
         <p class="contact-closing">Our team is happy to help you plan the perfect event!</p>

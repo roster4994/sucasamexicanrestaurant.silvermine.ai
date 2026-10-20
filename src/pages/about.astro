@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import { Image } from 'astro:assets';
 import headerImg from '../assets/images/media/combo-plate-10.jpg';
+import { business } from '../data/business';
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
 
@@ -60,7 +61,7 @@ const breadcrumbSchema = {
       <div class="content-card">
         <h2>Our Story</h2>
         <p>
-          Su Casa Mexican Restaurant has been a beloved fixture of Midvale, Utah since 1978. For over 45 years, our family-owned restaurant at 6878 S State Street has served the community with authentic Mexican food made from scratch using recipes perfected over decades. What started as one man's passion for bold, homemade flavors has grown into a multigenerational tradition that thousands of families across the Salt Lake Valley call their favorite.
+          Su Casa Mexican Restaurant has been a beloved fixture of Midvale, Utah since 1978. For over 45 years, our family-owned restaurant at {business.streetAddress} has served the community with authentic Mexican food made from scratch using recipes perfected over decades. What started as one man's passion for bold, homemade flavors has grown into a multigenerational tradition that thousands of families across the Salt Lake Valley call their favorite.
         </p>
         <p>
           Our founder, Fred Osterloh, was a lifelong restaurateur with a deep love for Mexican cuisine. Before opening Su Casa, Fred spent years traveling across Mexico and the American Southwest, tasting, learning, and carefully refining recipes that would eventually become the backbone of our menu. He brought that experience to several successful restaurants — including Frederico's, Fred's Burger Chalet, and his first Mexican restaurant, El Sol — before channeling everything he'd learned into Su Casa in June of 1978.
@@ -76,7 +77,7 @@ const breadcrumbSchema = {
 
         <h2>Rooted in Midvale, Serving the Community</h2>
         <p>
-          Located in the heart of Midvale at 6878 S State Street, Su Casa is more than just a restaurant — we're part of the community. Over the decades, we've catered countless birthday parties, graduation celebrations, office lunches, and family reunions. Our taco bar catering remains one of the most popular options for events across the valley. Whether you're dining in our festive restaurant, ordering online for pickup, or having us cater your next gathering, you'll taste the difference that 45+ years of family tradition makes.
+          Located in the heart of Midvale at {business.streetAddress}, Su Casa is more than just a restaurant — we're part of the community. Over the decades, we've catered countless birthday parties, graduation celebrations, office lunches, and family reunions. Our taco bar catering remains one of the most popular options for events across the valley. Whether you're dining in our festive restaurant, ordering online for pickup, or having us cater your next gathering, you'll taste the difference that 45+ years of family tradition makes.
         </p>
         <p>
           We're proud to be Midvale's longest-running family-owned Mexican restaurant, and we look forward to serving you and your family for many more years to come.
