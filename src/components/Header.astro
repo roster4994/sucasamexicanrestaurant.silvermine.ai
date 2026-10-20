@@ -36,7 +36,7 @@ const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${A
 
       <!-- Centered Logo -->
       <a href="/" class="logo" aria-label="Su Casa Mexican Restaurant - Home">
-        <Image src={logoImg} alt="Su Casa Mexican Restaurant" class="logo-image" height={280} />
+        <Image src={logoImg} alt="Su Casa Mexican Restaurant" class="logo-image" height={280} loading="eager" />
       </a>
 
       <!-- Right nav items -->

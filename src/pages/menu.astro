@@ -9,11 +9,19 @@ import menuMexicanDinner from '../assets/images/menu/mexican-dinner.jpg';
 import menuBajaFishTacos from '../assets/images/menu/baja-fish-tacos.jpg';
 import menuChileVerdeDinner from '../assets/images/menu/chile-verde-dinner.jpg';
 import menuTaco from '../assets/images/menu/taco.jpg';
+import menuQuesoDip from '../assets/images/catering/queso-dip-skillet-chips.jpg';
+import menuChimichanga from '../assets/images/menu/chimichanga.jpg';
+import menuMexicanPizza from '../assets/images/menu/mexican-pizza.jpg';
+import menuNachosSupreme from '../assets/images/menu/nachos-supreme.jpg';
+import menuTostadaSupreme from '../assets/images/menu/tostada-supreme.jpg';
+import menuCombo1 from '../assets/images/menu/combo-1.jpg';
+import menuCombo2 from '../assets/images/menu/combo-2.jpg';
+import menuCombo7 from '../assets/images/menu/combo-7.jpg';
 
 const appetizers = [
   { name: "Cheese Crisp", description: "A deep-fried flour tortilla topped with melted cheese", price: "$5.49" },
   { name: "Nachos", description: "A heaping plate of tortilla chips smothered with melted cheese", price: "$7.97" },
-  { name: "Queso Dip", description: "Melted cream cheese, diced Anaheim Chiles, and roasted corn served in a skillet with tortilla chips", price: "Small $5.09 | Large $8.89", image: "https://i.postimg.cc/mZKMp9ZB/Copy-of-queso-dip-pic.jpg" },
+  { name: "Queso Dip", description: "Melted cream cheese, diced Anaheim Chiles, and roasted corn served in a skillet with tortilla chips", price: "Small $5.09 | Large $8.89", image: menuQuesoDip },
   { name: "Quesadilla App", description: "A flour tortilla covered with melted cheese, tomatoes, olives, lettuce, sour cream, and guacamole | add your choice of meat for $3.29", price: "$9.29" },
   { name: "Guacamole and Chips", description: "Fresh guacamole topped with pico de gallo and crispy tortilla chips", price: "$9.99" },
   { name: "House Salad", description: "Chilled lettuce, tomatoes and shredded cheese served with your choice of dressing", price: "$6.19" },
@@ -28,15 +36,15 @@ const houseFavorites = [
   { name: "Large Soft Shelled Taco", description: "A huge soft shell taco filled with your choice of meat. Enchilada style for just $1.99 extra", price: "$10.19" },
   { name: "Quesadillas", description: "A large tortilla covered with melted cheese. Tomatoes, olives, onions, lettuce, sour cream, and guacamole are served on the side for you to garnish. Add meat for just $3.29 extra", price: "$10.99" },
   { name: "Chile Verde Dinner", description: "A generous serving of our homemade chile verde served with hot flour tortillas", price: "$13.69", image: menuChileVerdeDinner },
-  { name: "Chimichanga", description: "A deep-fried burrito filled with your choice of meat topped with sour cream and cheese.", price: "$13.19", image: "https://i.postimg.cc/nhFL3VDy/Copy-of-Chimichanga-copy.jpg" },
+  { name: "Chimichanga", description: "A deep-fried burrito filled with your choice of meat topped with sour cream and cheese.", price: "$13.19", image: menuChimichanga },
   { name: "Veggie Burrito Grande", description: "A huge burrito stuffed with beans, rice, lettuce, tomatoes, olives, cheese, sour cream, guacamole & hot sauce. (Served enchilada style for just $1.99 extra)", price: "$11.99" },
 ];
 
 const specialtyPlates = [
-  { name: "Mexican Pizza", description: "A layer of beans and your choice of meat between two crisp flour tortillas, covered with enchilada sauce, cheese, olives, tomatoes, guacamole, and sour cream", price: "Medium $11.59 | Large $14.99", image: "https://i.postimg.cc/3wyYqkx7/Copy-of-mexican-pizza.jpg" },
-  { name: "Nachos Supreme", description: "Tortilla chips covered with melted cheese, refried beans, olives, tomatoes, guacamole, sour cream, and your choice of meat", price: "Medium Plate $11.59 | Large Plate $14.89", image: "https://i.postimg.cc/FzhthzNh/Copy-of-nacho-supreme-1167.jpg" },
+  { name: "Mexican Pizza", description: "A layer of beans and your choice of meat between two crisp flour tortillas, covered with enchilada sauce, cheese, olives, tomatoes, guacamole, and sour cream", price: "Medium $11.59 | Large $14.99", image: menuMexicanPizza },
+  { name: "Nachos Supreme", description: "Tortilla chips covered with melted cheese, refried beans, olives, tomatoes, guacamole, sour cream, and your choice of meat", price: "Medium Plate $11.59 | Large Plate $14.89", image: menuNachosSupreme },
   { name: "Taco Salad", description: "A large flour tortilla, fried crisp and filled with lettuce, beans, cheese, tomatoes, olives, sour cream, and guacamole. Served with your choice of meat", price: "$14.29" },
-  { name: "Tostada Supreme", description: "A crisp tortilla covered with beans, lettuce, cheese, tomatoes, olives, sour cream, guacamole, and your choice of meat", price: "$14.99", image: "https://i.postimg.cc/qRXYDrn9/Copy-of-tostada-supreme-copy.jpg" },
+  { name: "Tostada Supreme", description: "A crisp tortilla covered with beans, lettuce, cheese, tomatoes, olives, sour cream, guacamole, and your choice of meat", price: "$14.99", image: menuTostadaSupreme },
   { name: "Gordita", description: "Grilled Chicken served on Mexican fry bread and topped with chipotle cheese sauce, tortilla strips, shredded jack", price: "$10.59" },
   { name: "Grilled Chicken Salad", description: "Grilled fajita chicken served atop a healthy portion of romaine lettuce, homemade salsa, Monterey Jack cheese, and tortilla strips", price: "$11.99" },
   { name: "Fajitas", description: "Marinated strips of steak or chicken, bell peppers, and onions served sizzling on a cast iron skillet with cheese, black beans, sour cream, guacamole, and hot tortillas", price: "Veggie $13.99 | Chicken $17.49 | Steak $19.29" },
@@ -46,13 +54,13 @@ const specialtyPlates = [
 ];
 
 const combinations = [
-  { name: "#1 Cheese enchilada, taco", price: "$11.19", image: "https://i.postimg.cc/qqqLcHGY/Copy-of-1-copy.jpg" },
-  { name: "#2 Two cheese enchiladas, taco, bean tostada", price: "$14.59", image: "https://i.postimg.cc/Tw7j3HXn/Copy-of-2.jpg" },
+  { name: "#1 Cheese enchilada, taco", price: "$11.19", image: menuCombo1 },
+  { name: "#2 Two cheese enchiladas, taco, bean tostada", price: "$14.59", image: menuCombo2 },
   { name: "#3 Two cheese enchiladas", price: "$10.99" },
   { name: "#4 Bean tostada, cheese enchilada", price: "$11.49" },
   { name: "#5 Beef enchilada, cheese enchilada, taco", price: "$14.59" },
   { name: "#6 Burrito verde", price: "$11.99" },
-  { name: "#7 Burrito verde, bean tostada & cheese enchilada", price: "$14.19", image: "https://i.postimg.cc/RVwKn077/Copy-of-7-copy.jpg" },
+  { name: "#7 Burrito verde, bean tostada & cheese enchilada", price: "$14.19", image: menuCombo7 },
   { name: "#8 Taco", price: "$7.89", image: menuTaco },
   { name: "#9 Cheese enchilada", price: "$7.29" },
   { name: "#10 Bean tostada", price: "$7.89" },
@@ -131,8 +139,9 @@ const breadcrumbSchema = {
 ---
 
 <Layout
+  image={menuCombo2}
   title="Mexican Food Menu | Su Casa Restaurant Midvale, Utah"
-  description="Explore our full menu of authentic Mexican dishes — enchiladas, fajitas, burritos, chile rellenos & more. View prices and order online from Su Casa in Midvale."
+  description="See our full menu of authentic Mexican dishes: enchiladas, fajitas, burritos, chile rellenos & more. View prices and order online from Su Casa in Midvale."
 >
 <Fragment slot="head">
   <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
@@ -141,7 +150,7 @@ const breadcrumbSchema = {
 <div class="menu-page-wrapper">
   <!-- Banner -->
   <section class="page-banner">
-    <img src="https://i.postimg.cc/y6DCMqF7/Copy-of-2.jpg" alt="Su Casa Mexican Restaurant menu — authentic Mexican food in Midvale, UT" class="banner-image" width="1600" height="900" decoding="async" />
+    <Image src={menuCombo2} alt="Combination plate with two cheese enchiladas, a crispy taco, and a bean tostada at Su Casa in Midvale" class="banner-image" width={1279} loading="eager" fetchpriority="high" />
   </section>
 
   <h1 class="sr-only">Su Casa Mexican Food Menu — Midvale, UT</h1>
@@ -180,10 +189,7 @@ const breadcrumbSchema = {
             <div class={`menu-item ${item.image ? 'has-image' : ''}`}>
               {item.image && (
                 <div class="item-image">
-                  {typeof item.image === 'string'
-                    ? <img src={item.image} alt={item.name} width="400" height="267" loading="lazy" decoding="async" />
-                    : <Image src={item.image} alt={item.name} width={400} height={267} loading="lazy" />
-                  }
+                  <Image src={item.image} alt={item.name} width={400} height={267} loading="lazy" />
                 </div>
               )}
               <div class="item-content">
@@ -212,10 +218,7 @@ const breadcrumbSchema = {
             <div class={`menu-item ${item.image ? 'has-image' : ''}`}>
               {item.image && (
                 <div class="item-image">
-                  {typeof item.image === 'string'
-                    ? <img src={item.image} alt={item.name} width="400" height="267" loading="lazy" decoding="async" />
-                    : <Image src={item.image} alt={item.name} width={400} height={267} loading="lazy" />
-                  }
+                  <Image src={item.image} alt={item.name} width={400} height={267} loading="lazy" />
                 </div>
               )}
               <div class="item-content">
@@ -243,10 +246,7 @@ const breadcrumbSchema = {
             <div class={`menu-item ${item.image ? 'has-image' : ''}`}>
               {item.image && (
                 <div class="item-image">
-                  {typeof item.image === 'string'
-                    ? <img src={item.image} alt={item.name} width="400" height="267" loading="lazy" decoding="async" />
-                    : <Image src={item.image} alt={item.name} width={400} height={267} loading="lazy" />
-                  }
+                  <Image src={item.image} alt={item.name} width={400} height={267} loading="lazy" />
                 </div>
               )}
               <div class="item-content">
@@ -275,10 +275,7 @@ const breadcrumbSchema = {
             <div class={`menu-item combo-item ${item.image ? 'has-image' : ''}`}>
               {item.image && (
                 <div class="item-image">
-                  {typeof item.image === 'string'
-                    ? <img src={item.image} alt={item.name} width="400" height="267" loading="lazy" decoding="async" />
-                    : <Image src={item.image} alt={item.name} width={400} height={267} loading="lazy" />
-                  }
+                  <Image src={item.image} alt={item.name} width={400} height={267} loading="lazy" />
                 </div>
               )}
               <div class="item-content">
@@ -387,7 +384,6 @@ const breadcrumbSchema = {
       </div>
     </div>
   </div>
-</div>
 </Layout>
 
 <style>

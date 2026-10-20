@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+import orderBannerImg from '../assets/images/order/chile-verde-dinner.jpg';
 import { business, addressLines, hours, hoursRange, ordering } from '../data/business';
 
 const deliveryPartners = [
@@ -42,6 +44,7 @@ const breadcrumbSchema = {
 ---
 
 <Layout
+  image={orderBannerImg}
   title="Order Mexican Food Online | Su Casa Restaurant Midvale, Utah"
   description={`Order Su Casa's authentic Mexican food for pickup or delivery in Midvale, Utah. Order direct or through DoorDash, GrubHub & Uber Eats. ${business.telephoneDisplay}.`}
 >
@@ -52,7 +55,7 @@ const breadcrumbSchema = {
 <div class="order-page-wrapper">
   <!-- Banner -->
   <section class="page-banner">
-    <img src="https://i.postimg.cc/N0K0mJhL/Copy-of-chili-verde-dinner.jpg" alt="Chile verde dinner plate — order online from Su Casa Mexican Restaurant Midvale" class="banner-image" width="1600" height="900" decoding="async" />
+    <Image src={orderBannerImg} alt="Chile verde with warm flour tortillas, rice, and cheese from Su Casa Mexican Restaurant in Midvale" class="banner-image" width={1279} loading="eager" fetchpriority="high" />
   </section>
 
   <Breadcrumb current="Order Online" />
@@ -73,7 +76,7 @@ const breadcrumbSchema = {
         <div class="partners-grid">
           {deliveryPartners.map((partner) => (
             <a href={partner.link} target="_blank" rel="noopener noreferrer" class="partner-card" style={`--partner-color: ${partner.color}`}>
-              <img src={partner.logo} alt={partner.name} class="partner-logo" />
+              <img src={partner.logo} alt={partner.name} class="partner-logo" width="200" height="40" loading="lazy" />
             </a>
           ))}
         </div>

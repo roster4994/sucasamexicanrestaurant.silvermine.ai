@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import { Image } from 'astro:assets';
 import headerImg from '../assets/images/media/combo-plate-10.jpg';
+import muralImg from '../assets/images/home/restaurant-mural.avif';
 import { business } from '../data/business';
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
@@ -38,6 +39,7 @@ const breadcrumbSchema = {
 ---
 
 <Layout
+  image={muralImg}
   title="Family-Owned Mexican Restaurant Since 1978 | Midvale, Utah"
   description="Learn about Su Casa Mexican Restaurant's story — family-owned and serving authentic Mexican food in Midvale, Utah since 1978. Meet the Osterloh family."
 >

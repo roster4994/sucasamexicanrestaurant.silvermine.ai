@@ -7,6 +7,10 @@ import collageQuesoDip from '../assets/images/collage/queso-dip.jpg';
 import mediaComboPlate from '../assets/images/media/combo-plate-10.jpg';
 import mediaChileRelleno from '../assets/images/media/chili-relleno.jpg';
 import mediaChileVerde from '../assets/images/media/chile-verde-dinner.jpg';
+import homeMural from '../assets/images/home/restaurant-mural.avif';
+import homeSpecialBurrito from '../assets/images/home/special-burrito-enchilada-style.jpg';
+import homeBajaFishTacos from '../assets/images/home/baja-fish-tacos.jpg';
+import menuCombo7 from '../assets/images/menu/combo-7.jpg';
 import { business, addressOneLine, hoursSentence, maps } from '../data/business';
 import { cateringFacts, tacoBar, formatPrice } from '../data/catering';
 
@@ -148,7 +152,7 @@ const faqs = [
 ];
 ---
 
-<Layout title="Best Mexican Restaurant in Midvale, Utah | Su Casa" description="Family-owned since 1978, Su Casa serves authentic Mexican food in Midvale, Utah. Enjoy enchiladas, fajitas & chile verde. Dine in, order online, or cater.">
+<Layout image={mediaComboPlate} title="Best Mexican Restaurant in Midvale, Utah | Su Casa" description="Family-owned since 1978, Su Casa serves authentic Mexican food in Midvale, Utah. Enjoy enchiladas, fajitas & chile verde. Dine in, order online, or cater.">
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
@@ -194,7 +198,7 @@ const faqs = [
         </div>
         <div class="about-visual">
           <div class="about-image-container slide-in-image">
-            <img src="https://i.postimg.cc/Qd38H8mx/IMG-5925.avif" alt="Su Casa Mexican Restaurant exterior in Midvale, Utah — family owned since 1978" class="about-image" width="1200" height="900" loading="lazy" decoding="async" />
+            <Image src={homeMural} alt="Colorful Mexican folk art mural on the outside wall of Su Casa Mexican Restaurant in Midvale, Utah" class="about-image" width={1200} loading="lazy" />
           </div>
         </div>
       </div>
@@ -212,7 +216,7 @@ const faqs = [
           </div>
         </div>
         <div class="collage-item collage-item-2">
-          <img src="https://i.postimg.cc/fyGxtdST/Copy-of-special-burrito-copy.jpg" alt="Su Casa's special burrito with homemade salsa and fresh guacamole" width="800" height="534" loading="lazy" decoding="async" />
+          <Image src={homeSpecialBurrito} alt="Su Casa's special burrito smothered in enchilada sauce and cheese, served with rice, beans, and lettuce" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Special Burrito</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Burritos Online</a>
@@ -233,14 +237,14 @@ const faqs = [
           </div>
         </div>
         <div class="collage-item collage-item-5">
-          <img src="https://i.postimg.cc/RVwKn077/Copy-of-7-copy.jpg" alt="#7 Burrito verde, bean tostada & cheese enchilada" width="800" height="534" loading="lazy" decoding="async" />
+          <Image src={menuCombo7} alt="Combination #7: burrito verde, bean tostada, and cheese enchilada at Su Casa" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">#7 Burrito verde, bean tostada & cheese enchilada</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Now</a>
           </div>
         </div>
         <div class="collage-item collage-item-6">
-          <img src="https://i.postimg.cc/Y0jvKXt6/Copy-of-baja-dinner-(2).jpg" alt="Baja fish tacos with cabbage slaw and secret Baja sauce — Su Casa Midvale" width="800" height="534" loading="lazy" decoding="async" />
+          <Image src={homeBajaFishTacos} alt="Baja fish tacos with cabbage slaw and secret Baja sauce at Su Casa in Midvale" width={800} loading="lazy" />
           <div class="collage-overlay">
             <span class="dish-name">Baja Fish Tacos</span>
             <a href="https://order.spoton.com/so-su-casa-mexican-restaurant-midvale-3200/midvale-ut/600f52b924b4c47e9cc94655" class="order-btn" target="_blank" rel="noopener">Order Baja Fish Tacos</a>
