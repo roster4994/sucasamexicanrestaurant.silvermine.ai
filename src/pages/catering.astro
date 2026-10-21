@@ -19,7 +19,7 @@ import {
 } from '../data/catering';
 
 const siteUrl = 'https://sucasamexicanrestaurant.com';
-const { minimumGuests, noticeHours, deliveryRadiusMiles } = cateringFacts;
+const { minimumGuests, noticeHours, deliveryRadiusMiles, deliveryFee } = cateringFacts;
 const [bannerPhoto, tacoPhoto] = cateringPhotos;
 const thankYouUrl = `${siteUrl}/catering/thank-you/`;
 
@@ -63,7 +63,7 @@ const breadcrumbSchema = {
 const steps = [
   `Tell us your date, headcount, and pickup or delivery address at least ${noticeHours} hours ahead.`,
   'We confirm your order by email or phone.',
-  `Pick up at ${business.streetAddress} in Midvale, or we deliver within ${deliveryRadiusMiles} miles.`,
+  `Pick up at ${business.streetAddress} in Midvale, or we deliver within ${deliveryRadiusMiles} miles for ${formatPrice(deliveryFee)}.`,
   'Food arrives in trays. Sterno heating setups are available on request.',
 ];
 
