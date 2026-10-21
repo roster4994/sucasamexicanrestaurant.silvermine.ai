@@ -11,12 +11,12 @@ import beefTacoImg from '../assets/images/catering/beef-taco-rice-beans.jpg';
 export const cateringFacts = {
   minimumGuests: 15,
   noticeHours: 24,
-  deliveryRadiusMiles: 10,
+  deliveryRadiusMiles: 15,
+  deliveryFee: 25,
 };
 
-// Formspree form for catering quote requests. The recipient is set in the
-// Formspree dashboard, not here (temporarily the site manager until Denice
-// verifies scscmo@gmail.com).
+// Formspree form for catering quote requests. Submissions go to
+// scscmo@gmail.com; the recipient is set in the Formspree dashboard.
 export const quoteFormEndpoint = 'https://formspree.io/f/mbgdvozg';
 
 export type CateringItem = {
@@ -82,7 +82,7 @@ export function formatPrice(price: number) {
   return Number.isInteger(price) ? `$${price}` : `$${price.toFixed(2)}`;
 }
 
-// Real suburbs inside roughly 10 miles of 6878 S State Street.
+// Real cities inside roughly 15 miles of 6878 S State Street.
 export const deliveryAreas = [
   'Midvale',
   'Sandy',
@@ -92,11 +92,16 @@ export const deliveryAreas = [
   'Taylorsville',
   'Draper',
   'Holladay',
+  'Salt Lake City',
+  'South Jordan',
+  'West Valley City',
+  'Riverton',
+  'Herriman',
 ];
 
 export const quotePackages = ['Taco bar', 'Enchilada meals', 'Trays & sides', 'Not sure yet'];
 
-const { minimumGuests, noticeHours, deliveryRadiusMiles } = cateringFacts;
+const { minimumGuests, noticeHours, deliveryRadiusMiles, deliveryFee } = cateringFacts;
 
 export const cateringFaqs = [
   {
@@ -104,9 +109,8 @@ export const cateringFaqs = [
     answer: `Catering orders start at ${minimumGuests} people. Please place your order at least ${noticeHours} hours ahead.`,
   },
   {
-    // TODO: confirm delivery fee with Denice, then state it here.
     question: 'Do you deliver, and is there a delivery fee?',
-    answer: `Yes, we deliver within about ${deliveryRadiusMiles} miles of our Midvale restaurant. Send us your address and we'll confirm the delivery details with your order.`,
+    answer: `Yes. Delivery is ${formatPrice(deliveryFee)} within ${deliveryRadiusMiles} miles of our Midvale restaurant.`,
   },
   {
     question: 'Do you have vegetarian options?',
@@ -125,9 +129,8 @@ export const cateringFaqs = [
     answer: 'Yes. Taco bars come with soft tortillas, and hard shells are available on request.',
   },
   {
-    // TODO: confirm accepted payment methods with Denice, then list them here.
     question: 'How do I pay for catering?',
-    answer: "We'll go over payment when we confirm your order by email or phone.",
+    answer: 'We accept all credit cards.',
   },
   {
     question: 'Can you cater a larger event?',
